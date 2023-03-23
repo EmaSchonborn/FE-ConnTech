@@ -1,35 +1,20 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+//import { useState, useEffect } from 'react'
+//import {Routes, Route,} from "react-router-dom"
+import "./App.css";
+
+import Card from "./Components/Card/Card.jsx";
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  //const [count, setCount] = useState(0)
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>PF Henry</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <div className="flex justify-center items-center h-screen bg-gray-100">
+      <Card
+        title="Example Title"
+        description="This is an example card description."
+        imageUrl="https://picsum.photos/600/400"
+      />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
