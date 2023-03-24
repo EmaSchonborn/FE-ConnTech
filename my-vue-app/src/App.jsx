@@ -1,18 +1,17 @@
-//import { useState, useEffect } from 'react'
-//import {Routes, Route,} from "react-router-dom"
+import { Route, BrowserRouter } from "react-router-dom";
+import LandingPage from "./Views/LandingPage";
+import Home from "./Views/Home";
+import Login from "./Views/Login";
 import "./App.css";
 
-import Card from "./Components/Card/Card.jsx";
-
 function App() {
-  //const [count, setCount] = useState(0)
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
-      <Card
-        title="Example Title"
-        description="This is an example card description."
-        imageUrl="https://picsum.photos/600/400"
-      />
+    <div className="App">
+      <BrowserRouter>
+        <Route exact path="/" component={LandingPage} />
+        <Route exact path="/login" component={Login} />
+        <Route path="/home" component={Home} />
+      </BrowserRouter>
     </div>
   );
 }
