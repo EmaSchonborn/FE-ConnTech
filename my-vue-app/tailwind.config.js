@@ -10,6 +10,6 @@ module.exports = {
     },
   },
   variants: {},
-  plugins: [],
+<<<<<<<<< Temporary merge branch 1
   plugins: [require("daisyui")],
 };
