@@ -9,7 +9,6 @@ const Home = () => {
       <div className="py-4 bg-white shadow-md">
         <SearchBar />
       </div>
-
       <SideBar />
       <div className="fixed top-50 left-80 transform -translate-x-1/4 flex flex-col md:flex-row">
         <div className="md:flex-1 ml-50 ">

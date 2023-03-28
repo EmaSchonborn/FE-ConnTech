@@ -10,7 +10,6 @@ const Card = (props) => {
         className=""
       />
       <div className="">
-        {props.id}
         <h3>{props.name}</h3>
       </div>
       <div>
