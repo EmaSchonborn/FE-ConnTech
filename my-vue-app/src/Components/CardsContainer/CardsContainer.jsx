@@ -29,7 +29,7 @@ const CardsContainer = () => {
 
   //esto tiene que estar asociado a state.filteredUsers (para no perder array original)
   //parche temporal
-  const users = useSelector((state) => state.users);
+  const users = useSelector((state) => state.filteredUsers);
   
   useEffect(() => {
     dispatch(getUsers());
@@ -53,10 +53,12 @@ const CardsContainer = () => {
     totalPages.push(i);
   }
   
+  console.log(paginationUsers)
+
   return (
     <div className="">
       <div>
-        {paginationUsers.map((user) => {
+        {paginationUsers?.map((user) => {
           <Card
             key={user.id}
             name={user.name}
