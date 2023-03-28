@@ -1,7 +1,5 @@
 import React from "react";
-import Card from "../Card/Card";
 import CardsContainer from "../CardsContainer/CardsContainer";
-//import "./styles/Card.css";
 
 const Pagination = () => {
   return (
