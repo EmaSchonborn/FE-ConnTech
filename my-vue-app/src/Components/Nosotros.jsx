@@ -2,12 +2,16 @@ import { Link } from "react-router-dom";
 
 const Nosotros = (props) => {
 	return (
-		<div className='aboutContainer'>
-			<Link
-				class='bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded'
-				to='/login'>
-				Home
-			</Link>
+		<div
+			className='aboutContainer bg-gradient-to-r from-sky-500 to-indigo-500
+		w-full h-screen flex flex-col items-center justify-center'>
+			<div className='absolute top-0 right-0 h-16 w-16'>
+				<Link
+					className='bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded'
+					to='/login'>
+					Home
+				</Link>
+			</div>
 			<div className='titleContainer'>
 				<div className='profilePic'>
 					<img />
@@ -15,8 +19,8 @@ const Nosotros = (props) => {
 				<h1>Nosotros</h1>
 			</div>
 			<hr className='divisor' />
-			<div className='aboutMe'>
-				<p>
+			<div className='flex justify-center items-center text-center text-lg'>
+				<p className='text-xl font-bold'>
 					Somos tu mejor elección. Nuestra plataforma, con una
 					interfaz inteligente y fácil de usar te brinda todas las
 					posibilidades de encontrar al freelancer calificado para tu

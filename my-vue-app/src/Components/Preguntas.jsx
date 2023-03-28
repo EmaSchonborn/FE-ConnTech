@@ -2,8 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 const Preguntas = () => {
 	return (
-		<div>
-	
+		<div className='w-full h-full bg-gradient-to-r from-sky-500 to-indigo-500 flex flex-col items-center justify-center'>
 			<div class='font-bold'>Preguntas</div>
 			<div>
 				<div>
@@ -14,11 +13,11 @@ const Preguntas = () => {
 				<br />
 				<label>
 					{" "}
-					 Generalmente, puedes enviar tu solicitud a través
-					del sitio web de la empresa o utilizando la información de
-					contacto proporcionada en la descripción del trabajo. Si
-					tienes alguna duda, comunícate con el departamento de
-					recursos humanos de la empresa.
+					Generalmente, puedes enviar tu solicitud a través del sitio
+					web de la empresa o utilizando la información de contacto
+					proporcionada en la descripción del trabajo. Si tienes
+					alguna duda, comunícate con el departamento de recursos
+					humanos de la empresa.
 				</label>
 				<br />
 				<div> ¿Qué documentos necesito para solicitar un trabajo?</div>
@@ -43,9 +42,7 @@ const Preguntas = () => {
 					recibieron tu solicitud.
 				</label>
 			</div>
-			
-        </div>
-        
+		</div>
 	);
 };
 export default Preguntas;
