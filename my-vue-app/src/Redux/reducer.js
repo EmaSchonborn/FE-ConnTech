@@ -14,7 +14,6 @@ const initialState = {
   userDetail: [],
 };
 
-initialState.filteredUsers = initialState.users;
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -32,6 +31,7 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         users: action.payload,
+        filteredUsers: action.payload,
       };
     case GET_USER_BY_ID:
       return {

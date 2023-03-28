@@ -27,12 +27,14 @@ const CardsContainer = () => {
     setCurrentPage((nextPage) => nextPage + 1);
   };
 
+  //esto tiene que estar asociado a state.filteredUsers (para no perder array original)
+  //parche temporal
   const users = useSelector((state) => state.users);
-
+  
   useEffect(() => {
     dispatch(getUsers());
   }, [dispatch]);
-
+  
   //función de paginado y botones adyacentes
   const displayedUsers = 5;
   const finalReference = currentPage * displayedUsers;
@@ -50,11 +52,11 @@ const CardsContainer = () => {
   for (let i = startPage; i <= endPage; i++) {
     totalPages.push(i);
   }
-
+  
   return (
     <div className="">
       <div>
-        {paginationUsers?.map((user) => {
+        {paginationUsers.map((user) => {
           <Card
             key={user.id}
             name={user.name}
