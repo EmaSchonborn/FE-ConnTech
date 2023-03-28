@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Card = ({ title, description, imageUrl }) => {
   return (
@@ -10,7 +11,8 @@ const Card = ({ title, description, imageUrl }) => {
       />
       <div className="p-4">
         <h5 className="text-lg font-medium text-gray-900">{title}</h5>
-        <p className="mt-2 text-base text-gray-500">{description}</p>
+        <p className="text-gray-600 mb-4">{description}</p>
+        <Link to="/otra pagina" className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors duration-300">APLICAR</Link>
       </div>
     </div>
   );
