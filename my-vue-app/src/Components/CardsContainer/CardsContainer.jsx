@@ -6,13 +6,6 @@ import Card from "../Card/Card";
 const CardsContainer = () => {
   const [vacants, setVacants] = useState([]);
 
-  useEffect(() => {
-    // fetch("https://api-conntech.onrender.com/vacant/")
-    //   .then((e) => e.json())
-    //   .then((el) => setVacants(el));
-    axios.get("https://api-conntech.onrender.com/vacant/").then(el => console.log(el.data))
-  }, []);
-
   return (
     <div>
       {vacants
