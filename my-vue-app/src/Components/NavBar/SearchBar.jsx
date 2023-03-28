@@ -16,7 +16,7 @@ export default function SearchBar() {
   }
 
   return (
-    <div class="flex justify-center">
+    <div className="flex justify-center">
       <form>
         <input type="text" placeholder="Buscar..." onChange={handleChange} />
         <button type="submit" onClick={handleClick}>Find</button>
