@@ -10,10 +10,6 @@ module.exports = {
     },
   },
   variants: {},
-<<<<<<< HEAD
   plugins: [],
-};
-=======
   plugins: [require("daisyui")],
 };
->>>>>>> 149a9bbcf576be49f74c934ec93cbf8057c63a67

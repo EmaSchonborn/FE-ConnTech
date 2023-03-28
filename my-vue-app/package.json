@@ -13,11 +13,8 @@
     "@heroicons/react": "^2.0.16",
     "autoprefixer": "^10.4.14",
     "axios": "^1.3.4",
-<<<<<<< HEAD
     "cors": "^2.8.5",
-=======
     "daisyui": "^2.51.5",
->>>>>>> 149a9bbcf576be49f74c934ec93cbf8057c63a67
     "normalize.css": "^8.0.1",
     "postcss": "^8.4.21",
     "postcss-cli": "^10.1.0",
