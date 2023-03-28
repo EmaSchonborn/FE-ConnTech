@@ -4,10 +4,7 @@ module.exports = {
 	darkMode: false,
 	theme: {
 		extend: {},
-		fontFamily: {
-			"D-DIN": ["D-DIN", "sans-serif"],
-		},
 	},
 	variants: {},
-	plugins: [require("daisyui")],
+	plugins: [],
 };
