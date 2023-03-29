@@ -58,14 +58,14 @@ const CardsContainer = () => {
   return (
     <div className="">
       <div>
-        {paginationUsers?.map((user) => {
+        {paginationUsers?.map((user) =>
           <Card
             key={user.id}
             name={user.name}
             email={user.email}
             phone={user.phone}
-          />;
-        })}
+          />
+        )}
       </div>
       <div>
         <button disabled={currentPage === 1} onClick={handleFirstCell}>

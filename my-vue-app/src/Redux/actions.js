@@ -128,11 +128,11 @@ const pruebaUsers = [
 
 export function getUsers() {
   return async function (dispatch) {
-    // const apiData = await axios.get("https://api-conntech.onrender.com/user/");
-    // const users = apiData.users;
+    const apiData = await axios.get("https://api-conntech.onrender.com/user/");
+    const users = apiData.data;
     dispatch({
       type: GET_USERS,
-      payload: pruebaUsers,
+      payload: users,
     });
   };
 }
