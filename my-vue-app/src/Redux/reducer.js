@@ -3,6 +3,7 @@ import {
   GET_DETAILS,
   GET_USERS,
   GET_USER_BY_ID,
+  CREATE_USER,
 } from "../redux/actions";
 
 const initialState = {
@@ -37,6 +38,10 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         userDetail: action.payload,
+      };
+    case CREATE_USER:
+       return{
+        ...state
       };
     default:
       return { ...state };
