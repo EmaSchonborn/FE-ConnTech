@@ -1,6 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getUsers } from "../../Redux/actions";
 import Card from "../Card/Card";
@@ -54,19 +53,21 @@ const CardsContainer = () => {
     totalPages.push(i);
   }
 
-  console.log(paginationUsers);
+  //console.log(paginationUsers);
 
   return (
-    <div className="">
-      <div>
-        {paginationUsers?.map((user) => {
+    <div className="relative flex min-h-screen flex-col justify-center">
+      <div className="flex flex-row gap-2">
+
+        {paginationUsers?.map((user) => (
           <Card
             key={user.id}
             name={user.name}
             email={user.email}
             phone={user.phone}
-          />;
-        })}
+          />
+        ))}
+        <p>prueba</p>
       </div>
       <div>
         <button disabled={currentPage === 1} onClick={handleFirstCell}>

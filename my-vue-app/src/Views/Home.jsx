@@ -2,7 +2,9 @@ import { Link } from "react-router-dom";
 import CardsContainer from "../Components/CardsContainer/CardsContainer";
 import SearchBar from "../Components/NavBar/SearchBar";
 import SideBar from "../Components/SideBar/SideBar";
-import Pagination from "../components/Pagination/Pagination";
+//import Pagination from "../components/Pagination/Pagination";
+
+
 
 const Home = () => {
   return (
