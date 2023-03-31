@@ -1,15 +1,13 @@
-import React from "react";
+import React from "react"; 
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
-const CardDetail = (props) => {
+const CardDetail = () => {
+  const valor = useSelector((state) => state.card)
+
   return (
     <div>
-      <div>
-        <NavLink to={`/detail/${props.id}`}>
-          <h2>{props.name}</h2>
-        </NavLink>
-      </div>
-      <div>{props}</div>
+      <span>{valor.name}</span>
     </div>
   );
 };
