@@ -6,7 +6,7 @@ import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import Card from "../Card/Card";
 import Paginate from "../Pagination/Pagination";
 
-const CardsContainer = () => {
+const CardsContainer = (props) => {
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -28,7 +28,7 @@ const CardsContainer = () => {
   };
   //esto tiene que estar asociado a state.filteredUsers (para no perder array original)
   //parche temporal
-  const users = useSelector((state) => state.filteredUsers);
+  //const users = useSelector((state) => state.filteredUsers);
 
   useEffect(() => {
     dispatch(getUsers());
