@@ -5,6 +5,8 @@ import { Link , useHistory } from "react-router-dom";
 import {createUser } from "../../redux/actions";
 import { useEffect } from "react";
 
+import style from "./Register.module.css";
+
 
 
 export default function CreateUser(){
@@ -111,45 +113,45 @@ export default function CreateUser(){
         <div>
             <form onSubmit={(e) => handleSubmit(e)}>
                 <div>
-                    <h1>Create User</h1>
-                <div>
-                <div>
+                    <h1 className={style.h1}>Create User</h1>
+                    <div className={style.divtextimg}>
+                <div className={style.divtext}>
 
-                <div>
-                    <label>Name: </label>
-                    <input type="text" name="name" value={input.name} onChange={(e) => handleInput(e)}/>
+                <div className={style.diverror}>
+                    <label className={style.label}>Name: </label>
+                    <input type="text" name="name" value={input.name} onChange={(e) => handleInput(e)} className={style.input}/>
                     {error.name && (
-                        <p>{error.name}</p>
+                        <p className={style.error}>{error.name}</p>
                         )}
                 </div>
 
-                <div>
-                    <label>Email: </label>
-                    <input type="email" name="email" value={input.email} onChange={(e) => handleInput(e)}/>
+                <div className={style.diverror}>
+                    <label className={style.label}>Email: </label>
+                    <input type="email" name="email" value={input.email} onChange={(e) => handleInput(e)} className={style.input}/>
                     {error.email && (
-                        <p>{error.email}</p>
+                        <p className={style.error}>{error.email}</p>
                         )}
                 </div>
                 
-                <div>
-                    <label>Phone: </label>
-                    <input type="number" name="phone" value={input.phone} onChange={(e) => handleInput(e)}/>
+                <div className={style.diverror}>
+                    <label className={style.label}>Phone: </label>
+                    <input type="number" name="phone" value={input.phone} onChange={(e) => handleInput(e)} className={style.input}/>
                     {error.phone && (
-                        <p>{error.phone}</p>
+                        <p className={style.error}>{error.phone}</p>
                         )}
                 </div>
 
-                <div>
-                    <label>Password: </label>
-                    <input type="password" name="password" value={input.password} onChange={(e) => handleInput(e)}/>
+                <div className={style.diverror}>
+                    <label className={style.label}>Password: </label>
+                    <input type="password" name="password" value={input.password} onChange={(e) => handleInput(e)} className={style.input}/>
                     {error.password && (
-                        <p>{error.password}</p>
+                        <p className={style.error}>{error.password}</p>
                         )}
                 </div>
 
                 <div>
-                    <label>Roles: </label>
-                    <select defaultValue={"none"} name="role1" onChange={(e) => handleSelect(e)}>
+                    <label className={style.label}>Roles: </label>
+                    <select defaultValue={"none"} name="role1" onChange={(e) => handleSelect(e)} className={style.select}>
                     <option value="none">Select role...</option>
                         {roles.map((e) => {
                             return(
@@ -162,14 +164,14 @@ export default function CreateUser(){
                     </div>
 
                 </div>
-                <div>
-                <Link to="/home"><button>
+                <div className={style.divbutton}>
+                <Link to="/home"><button className={style.button}>
                     Go Home
                 </button></Link>
 
                 {
                     !error.name && !error.email && !error.phone && !error.password ?  
-                    <button type="submit">
+                    <button type="submit" className={style.button}>
                             Create User
                          </button> : null
                 }
