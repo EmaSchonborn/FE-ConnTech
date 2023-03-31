@@ -56,6 +56,7 @@ const CardsContainer = () => {
       <div className="flex flex-col gap-10">
         {paginationUsers.map((user) => {
           return <Card
+            id={user.id}
             key={user.id}
             name={user.name}
             email={user.email}
