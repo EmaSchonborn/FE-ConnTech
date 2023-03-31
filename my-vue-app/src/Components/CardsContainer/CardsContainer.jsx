@@ -1,9 +1,9 @@
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import React, { useState } from "react";
-import { useEffect } from "react";
+//import { useEffect } from "react";
 import { getUsers } from "../../Redux/actions";
-import Card from "../Card/Card";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
+import Card from "../Card/Card";
 import Paginate from "../Pagination/Pagination";
 
 const CardsContainer = () => {
@@ -26,6 +26,9 @@ const CardsContainer = () => {
   const handleNextPagination = () => {
     setCurrentPage((nextPage) => nextPage + 1);
   };
+  //esto tiene que estar asociado a state.filteredUsers (para no perder array original)
+  //parche temporal
+  const users = useSelector((state) => state.filteredUsers);
 
   useEffect(() => {
     dispatch(getUsers());
@@ -51,6 +54,7 @@ const CardsContainer = () => {
     totalPages.push(i);
   }
 
+
   return (
     <div className="">
       <div className="flex flex-col gap-10">
@@ -75,8 +79,11 @@ const CardsContainer = () => {
           totalPages={totalPages}
           paginate={handlerPaginate}
           currentPage={currentPage}
-        />  
-        <button disabled={currentPage === lastCell} onClick={handleNextPagination}>
+        />
+        <button
+          disabled={currentPage === lastCell}
+          onClick={handleNextPagination}
+        >
           <FiArrowRight />
         </button>
         <button disabled={currentPage === lastCell} onClick={handleLastCell}>

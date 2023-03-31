@@ -9,9 +9,7 @@ export default function Paginate({ paginate, currentPage, totalPages }) {
             <button
               key={No}
               onClick={() => paginate(No)}
-              className={
-                currentPage === No ? `` : ``
-              }
+              className={currentPage === No ? `` : ``}
             >
               {No}
             </button>
