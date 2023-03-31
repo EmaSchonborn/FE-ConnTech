@@ -1,0 +1,124 @@
+
+.h1{
+    display: flex;
+    justify-content: space-around;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    font-size: 37px;
+    color: rgb(5, 5, 5);
+    text-shadow: #6443f5 2px 2px 2px;
+    margin-bottom: 50px;
+}
+
+.divtextimg{
+    padding: 3rem;
+    display:grid;
+    flex-direction:column;
+    justify-content:center;
+}
+
+
+
+.divimg{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -10px;
+    width: 420px;
+    height: 420px;
+    border: 2px solid;
+    border-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    padding-top: 10px;
+}
+
+.img{
+    width: 300px;
+    height: 300px;
+    margin-top: 30px;
+}
+
+.labelimg{
+    margin-top: 30px;
+}
+
+.divbutton{
+    display: flex;
+    justify-content: center;
+    margin-top: 55px;
+}
+
+.button{
+    margin-right: 20px;
+    min-height: 45px;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    color: #fff;
+    background-color: #023e8a;
+    box-shadow: #023e8a  0px 1px 3px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+}
+
+.button:hover{
+    Transform:scale(0.9);
+    background-color: #6443f5;
+    -webkit-box-shadow: 0px 10px 88px 18px #0a0a0a;
+    -moz-box-shadow: 0px 10px 88px 18px #dbd2fd;
+    box-shadow: 0px 10px 88px 18px #dbd2fd;
+}
+
+.label{
+    font-family: 'Signika Negative', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    margin-right: 10px;
+}
+
+.input{
+  
+    width: 120px;
+    color: rgb(36, 35, 42);
+    font-size: 16px;
+    line-height: 20px;
+    min-height: 28px;
+    margin-bottom: 25px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: #f4f4f5 0px 1px 3px;
+    background: rgb(122, 119, 119);
+    transition: all 0.1s ease 0s;
+}
+
+.input:focus{
+    outline: none;
+}
+
+.select{
+    height: 30px;
+    width: 123px;
+    border: 1px solid var(--select-border);
+    border-radius: 0.25em;
+    padding: 0.25em 0.5em;
+    margin-right: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #fbfbfb;
+    background-color: #023e8a;
+    box-shadow: #023e8a  0px 1px 3px;
+  }
+  
+
+.diverror{
+    display: flex;
+}
+
+.error{
+    font-size: 14px;
+    color: red;
+    font-weight: bold;
+    margin-left: 5px;
+}

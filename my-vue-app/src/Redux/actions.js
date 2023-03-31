@@ -4,6 +4,7 @@ export const GET_VACANTS = "GET_VACANTE";
 export const GET_DETAILS = "GET_DETAILS";
 export const GET_USERS = "GET_USERS";
 export const GET_USER_BY_ID = "GET_USER_BY_ID";
+export const CREATE_USER = "CREATE_USER";
 export const LOGIN="LOGIN";
 
 const pruebaUsers = [
@@ -186,6 +187,19 @@ export function getUserById(id) {
     }
   };
 }
+
+export function createUser(payload){  
+  const body = { 
+  name : "",
+  email: "",
+  phone: "",
+  password: "",
+  role: []}
+  return async function(){
+      let json = await axios.post(`https://api-conntech.onrender.com/user/register%27,${body}`,payload)
+      return json
+  }
+};
 
 export function verifyUser(Email,Password){
   let body={
