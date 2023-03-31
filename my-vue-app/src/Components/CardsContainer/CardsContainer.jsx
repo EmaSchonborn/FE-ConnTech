@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import React, { useState } from "react";
 import { useEffect } from "react";
-import { getUsers } from "../../Redux/actions";
+import { getUsers, getVacants } from "../../Redux/actions";
 import Card from "../Card/Card";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import Paginate from "../Pagination/Pagination";
@@ -9,6 +9,7 @@ import Paginate from "../Pagination/Pagination";
 const CardsContainer = () => {
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
+  const [usertype,setUsertype]=useState();
 
   //handlers de paginado
   const handlerPaginate = (indexPage) => {
@@ -30,17 +31,37 @@ const CardsContainer = () => {
   //esto tiene que estar asociado a state.filteredUsers (para no perder array original)
   //parche temporal
   const users = useSelector((state) => state.filteredUsers);
+  const vacants=useSelector((state)=>state.vacants);
+  if (vacants.length===null) {
+    dispatch(getVacants());
+  }
+  const userVerified=useSelector((state)=>state.userVerified);
+  if (userVerified.roleId===1) {
+    setUsertype('company');
+  } else if(userVerified.roleId===2) {
+    setUsertype('normal');
+  }
   
   useEffect(() => {
     dispatch(getUsers());
   }, [dispatch]);
   
   //función de paginado y botones adyacentes
-  const displayedUsers = 5;
-  const finalReference = currentPage * displayedUsers;
-  const initialReference = finalReference - displayedUsers;
-  const paginationUsers = users?.slice(initialReference, finalReference);
-  const lastCell = Math.ceil(users?.length / displayedUsers);
+  const displayedItems = 5;
+  const finalReference = currentPage * displayedItems;
+  const initialReference = finalReference - displayedItems;
+  let paginationUsers=[];
+  let paginationVacants=[];
+  let lastCell=0;
+  if (usertype==='normal') {
+    paginationVacants=vacants?.slice(initialReference, finalReference);
+    lastCell = Math.ceil(vacants?.length / displayedItems);
+  }
+  if (usertype==='company') {
+    paginationUsers=users?.slice(initialReference, finalReference);
+    lastCell = Math.ceil(users?.length / displayedItems);
+  }
+  //const lastCell = Math.ceil(users?.length / displayedItems);
 
   //lógica para mostrar sólo algunos botones de paginado
   let startPage = Math.max(currentPage - 1, 1);
@@ -53,11 +74,21 @@ const CardsContainer = () => {
     totalPages.push(i);
   }
   
-  console.log(paginationUsers)
+  console.log(paginationUsers);
 
   return (
     <div className="">
       <div>
+        {
+          paginationVacants?.map((vacant)=>
+          <Card
+            key={vacant.id}
+            title={vacant.title}
+            requeriments={vacant.requeriments}
+            description={vacant.description}
+            typeJob={vacant.typeId}
+          />
+          )}
         {paginationUsers?.map((user) =>
           <Card
             key={user.id}

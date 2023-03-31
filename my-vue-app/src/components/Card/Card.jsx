@@ -10,16 +10,18 @@ const Card = (props) => {
         className=""
       />
       <div className="">
-        <h3>{props.name}</h3>
+        {props.name?<h3>{props.name}</h3>:<h3>{props.title}</h3>}
       </div>
       <div>
-      <p>Teléfono: {!props.phone ? "No indicado" : props.phone}</p>
+      {props.phone? <p>Teléfono:{props.phone}</p> : null}
         <Link className="flex justify-center" to={`/detail/${props.id}`}>
           <h2 className="flex justify-center bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors duration-300">
-            <p>Perfil</p>
+            <p>Detalles</p>
           </h2>
         </Link>
       </div>
+      {props.requeriments?<p>{props.requeriments}</p>:null}
+      {props.description?<p>{props.description}</p>:null}
     </div>
   );
 };

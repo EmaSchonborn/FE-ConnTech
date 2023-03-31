@@ -1,8 +1,10 @@
 import axios from "axios";
-export const GET_VACANT = "GET_VACANTE";
+import { func } from "prop-types";
+export const GET_VACANTS = "GET_VACANTE";
 export const GET_DETAILS = "GET_DETAILS";
 export const GET_USERS = "GET_USERS";
 export const GET_USER_BY_ID = "GET_USER_BY_ID";
+export const LOGIN="LOGIN";
 
 const pruebaUsers = [
     {
@@ -137,15 +139,15 @@ export function getUsers() {
   };
 }
 
-// export function getVacantes() {
-//   return async function (dispatch) {
-//     const json = await axios.get("https://api-conntech.onrender.com/vacant/");
-//     return dispatch({
-//       type: GET_VACANT,
-//       payload: json.data,
-//     });
-//   };
-// }
+export function getVacants() {
+   return async function (dispatch) {
+     const json = await axios.get("https://api-conntech.onrender.com/vacant/");
+     return dispatch({
+       type: GET_VACANTS,
+       payload: json.data,
+     });
+    };
+}
 
 // export const getVacantes = ()=> async (dispatch) =>{
 //     return fetch("https://api-conntech.onrender.com/vacant/")
@@ -183,4 +185,23 @@ export function getUserById(id) {
       console.log(e.message);
     }
   };
+}
+
+export function verifyUser(Email,Password){
+  let body={
+    email:Email,
+    password:Password
+  }
+  return async function(dispatch){
+    try {
+      let userVerified=await axios.post('https://api-conntech.onrender.com/user/login',body);
+      return dispatch({
+        type:LOGIN,
+        payload: userVerified.data.user
+      })
+      
+    } catch (error) {
+      console.log(error.message);
+    }
+  }
 }

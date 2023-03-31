@@ -1,8 +1,9 @@
 import {
-  GET_VACANT,
+  GET_VACANTS,
   GET_DETAILS,
   GET_USERS,
   GET_USER_BY_ID,
+  LOGIN,
 } from "../redux/actions";
 
 const initialState = {
@@ -12,12 +13,14 @@ const initialState = {
   users: [],
   filteredUsers: [],
   userDetail: [],
+  loged:false,
+  userVerified:[]
 };
 
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
-    case GET_VACANT:
+    case GET_VACANTS:
       return {
         ...state,
         vacants: action.payload,
@@ -37,6 +40,11 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         userDetail: action.payload,
+      };
+    case LOGIN:
+      return {
+        ...state,
+        userVerified: action.payload,
       };
     default:
       return { ...state };
