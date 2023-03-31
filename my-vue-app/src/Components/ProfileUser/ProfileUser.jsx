@@ -16,7 +16,7 @@ const ProfileUser = () => {
           </div>
         </div>
       </nav>
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center mt-4">
         <div className="w-40 h-50">
           <div className="w-full mb-8">
             <img
