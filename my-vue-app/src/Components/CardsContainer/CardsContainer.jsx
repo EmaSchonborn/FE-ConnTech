@@ -34,7 +34,7 @@ const CardsContainer = () => {
     dispatch(getUsers());
   }, [dispatch]);
   
-  //const users = useSelector((state) => state.filteredUsers);
+  const users = useSelector((state) => state.filteredUsers);
   
   //función de paginado y botones adyacentes
   const displayedUsers = 5;
