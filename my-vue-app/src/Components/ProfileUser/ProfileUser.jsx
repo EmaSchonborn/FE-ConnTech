@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import userImage from "./imagen/imgPerfil.png"
+import userImage from "./imagen/imgPerfil.png";
+import { useDispatch } from "react-redux";
 
 const ProfileUser = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getUserById());
+  }, [dispatch]);
+  
   return (
     <div className="min-h-screen bg-gray-100">
       <nav className="bg-white shadow">
