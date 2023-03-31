@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import { Link } from "react-router-dom";
 
 const navigation = [
   { name: "Sign In", href: "#" },
@@ -42,7 +43,7 @@ export const Hero = () => {
             <a href="#" className="font-semibold leading-6 text-white mr-10">
               Sign In <span aria-hidden="true">&rarr;</span>
             </a>
-            <Link>
+            <Link to='/login'>
             <button
               className="rounded-md bg-indigo-600 px-3.5 py-2.5 font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
