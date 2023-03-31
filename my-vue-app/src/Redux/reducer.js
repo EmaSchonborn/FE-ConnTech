@@ -4,7 +4,6 @@ import {
   GET_USERS,
   GET_USER_BY_ID,
   CREATE_USER,
-  LOGIN
 } from "../redux/actions";
 
 const initialState = {
@@ -14,7 +13,6 @@ const initialState = {
   users: [],
   filteredUsers: [],
   userDetail: [],
-  userVerified:[]
 };
 
 
@@ -45,11 +43,6 @@ const rootReducer = (state = initialState, action) => {
        return{
         ...state
       };
-    case LOGIN:
-      return{
-        ...state,
-        userVerified:action.payload
-      }
     default:
       return { ...state };
   }
