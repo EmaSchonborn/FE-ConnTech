@@ -3,6 +3,8 @@ export const GET_VACANT = "GET_VACANTE";
 export const GET_DETAILS = "GET_DETAILS";
 export const GET_USERS = "GET_USERS";
 export const GET_USER_BY_ID = "GET_USER_BY_ID";
+export const CREATE_USER = "CREATE_USER";
+export const LOGIN="LOGIN";
 
 const pruebaUsers = [
     {
@@ -184,3 +186,33 @@ export function getUserById(id) {
     }
   };
 }
+
+export function createUser(payload){  
+  const body = { 
+  name : "",
+  email: "",
+  phone: "",
+  password: "",
+  role: []}
+  return async function(){
+      let json = await axios.post(`https://api-conntech.onrender.com/user/register%27,${body}`,payload)
+      return json
+  }
+};
+
+export function verifyUser(Email,Password){
+  const body = {
+  email:Email,
+  password: Password}
+  return async function(dispatch){
+  try {
+    let json = await axios.post('https://api-conntech.onrender.com/user/login',body)
+    return dispatch({
+      type: LOGIN,
+      payload: json.data,
+    });
+  } catch (error) {
+    console.log(error.message);
+  }
+  }
+};

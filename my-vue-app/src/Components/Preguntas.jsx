@@ -42,6 +42,14 @@ const Preguntas = () => {
 					de recursos humanos de la empresa para confirmar que
 					recibieron tu solicitud.
 				</label>
+				<div>¿Cómo hago para crear una oferta?</div>
+				<br />
+				<label>
+					{" "}
+					Inicia sesión y selecciona el botón “Publicar oferta”. Rellena los campos obligatorios como título y descripción, así como otros que encuentres de utilidad para explicar de forma clara en qué consiste la oferta de trabajo.
+
+				</label>
+				
 			</div>
 		</div>
 	);
