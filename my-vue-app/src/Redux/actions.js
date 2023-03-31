@@ -188,13 +188,13 @@ export function getUserById(id) {
 
 export function createUser(payload){  
   const body = { 
-  name : "",
-  email: "",
-  phone: "",
-  password: "",
-  role: []}
+  name : payload.name,
+  email: payload.email,
+  phone: payload.phone,
+  password: payload.password,
+  role: {name: payload.role.name} }
   return async function(){
-      let json = await axios.post(`https://api-conntech.onrender.com/user/register%27,${body}`,payload)
+      let json = await axios.post(`https://api-conntech.onrender.com/user/register/`,body)
       return json
   }
 };

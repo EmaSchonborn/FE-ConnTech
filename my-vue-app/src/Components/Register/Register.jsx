@@ -103,7 +103,7 @@ export default function CreateUser(){
             email: "",
             phone: "",
             password: "",
-            roles: []
+            roles: {}
         })
         alert("Register successfull!")
         history.push("/home")
