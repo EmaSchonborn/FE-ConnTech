@@ -5,7 +5,7 @@ import Login from "./Views/Login";
 import { Landing } from "./Views/Landing";
 import About from "./Views/About";
 import Preguntas from "./Components/Preguntas";
-import Profile from "./components/ProfileUser/ProfileUser"
+import Profile from "./Components/ProfileUser/ProfileUser";
 function App() {
   return (
     <div className="App">

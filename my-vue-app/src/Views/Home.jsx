@@ -1,9 +1,7 @@
 import { Link } from "react-router-dom";
-import CardsContainer from "../components/CardsContainer/CardsContainer";
-import SearchBar from "../components/NavBar/SearchBar";
-import SideBar from "../components/SideBar/SideBar";
-import Paginate from "../components/Pagination/Pagination";
-//import Pagination from "../components/Pagination/Pagination";
+import CardsContainer from "../Components/CardsContainer/CardsContainer";
+import SearchBar from "../Components/NavBar/SearchBar";
+import SideBar from "../Components/SideBar/SideBar";
 
 const Home = () => {
   return (
@@ -24,9 +22,6 @@ const Home = () => {
             <div className="absolute z-0 h-screen w-screen bg-white">
               <CardsContainer />
             </div>
-          </div>
-          <div className="bg-black">
-            <Paginate />
           </div>
         </div>
       </div>
