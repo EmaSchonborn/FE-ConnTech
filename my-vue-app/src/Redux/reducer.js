@@ -3,7 +3,7 @@ import {
   GET_DETAILS,
   GET_USERS,
   GET_USER_BY_ID,
-} from "../redux/actions";
+} from "./actions";
 
 const initialState = {
   vacants: [],

@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
-import CardsContainer from "../Components/CardsContainer/CardsContainer";
-import SearchBar from "../Components/NavBar/SearchBar";
-import SideBar from "../Components/SideBar/SideBar";
+import CardsContainer from "../components/CardsContainer/CardsContainer";
+import SearchBar from "../components/NavBar/SearchBar";
+import SideBar from "../components/SideBar/SideBar";
+import Paginate from "../components/Pagination/Pagination";
 //import Pagination from "../components/Pagination/Pagination";
-
-
 
 const Home = () => {
   return (
@@ -21,18 +20,13 @@ const Home = () => {
           </h1>
 
           {/* UserCard */}
-          <div className="bg-white shadow-md rounded-lg p-4">
-          <CardsContainer/>
-            <div className="mb-4">
-              <h2 className="text-xl font-medium">name</h2>
-              <p className="text-gray-500 text-sm">descripción</p>
+          <div className="relative">
+            <div className="absolute z-0 h-screen w-screen bg-white">
+              <CardsContainer />
             </div>
-            <Link
-              to="/user/detail"
-              className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors duration-300"
-            >
-              Perfil
-            </Link>
+          </div>
+          <div className="bg-black">
+            <Paginate />
           </div>
         </div>
       </div>

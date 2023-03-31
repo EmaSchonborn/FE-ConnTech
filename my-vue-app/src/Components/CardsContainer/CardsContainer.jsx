@@ -1,9 +1,9 @@
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import React, { useState } from "react";
-import { useEffect } from "react";
+//import { useEffect } from "react";
 import { getUsers } from "../../Redux/actions";
-import Card from "../Card/Card";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
+import Card from "../Card/Card";
 import Paginate from "../Pagination/Pagination";
 
 const CardsContainer = () => {
@@ -56,9 +56,8 @@ const CardsContainer = () => {
   //console.log(paginationUsers);
 
   return (
-    <div className="relative flex min-h-screen flex-col justify-center">
-      <div className="flex flex-row gap-2">
-
+    <div className="flex flex-auto bg-red-500">
+      <div className="flex flex-row gap-4 grid-cols-3 grid-rows-3 font-weight-bold bg-green-600">
         {paginationUsers?.map((user) => (
           <Card
             key={user.id}
@@ -67,9 +66,8 @@ const CardsContainer = () => {
             phone={user.phone}
           />
         ))}
-        <p>prueba</p>
       </div>
-      <div>
+      <div className="flex flex-auto">
         <button disabled={currentPage === 1} onClick={handleFirstCell}>
           First
         </button>

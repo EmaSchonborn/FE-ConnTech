@@ -1,12 +1,11 @@
 module.exports = {
-  mode: 'jit',
+  mode: "jit",
   purge: ['./index.html', './src/**/*.{js,jsx,ts,tsx,vue}'],
   darkMode: false,
   theme: {
-    extend: {
-    },
+    extend: {},
     fontFamily: {
-      'D-DIN': ['D-DIN', 'sans-serif'],
+      "D-DIN": ["D-DIN", "sans-serif"],
     },
   },
   variants: {},
