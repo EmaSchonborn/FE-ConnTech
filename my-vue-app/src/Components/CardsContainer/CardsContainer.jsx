@@ -27,13 +27,11 @@ const CardsContainer = () => {
     setCurrentPage((nextPage) => nextPage + 1);
   };
 
-  //esto tiene que estar asociado a state.filteredUsers (para no perder array original)
-  //parche temporal
-  const users = useSelector((state) => state.filteredUsers);
-  
   useEffect(() => {
     dispatch(getUsers());
   }, [dispatch]);
+  
+  const users = useSelector((state) => state.filteredUsers);
   
   //función de paginado y botones adyacentes
   const displayedUsers = 5;
@@ -52,22 +50,20 @@ const CardsContainer = () => {
   for (let i = startPage; i <= endPage; i++) {
     totalPages.push(i);
   }
-  
-  console.log(paginationUsers)
 
   return (
     <div className="">
-      <div>
-        {paginationUsers?.map((user) => {
-          <Card
+      <div className="flex flex-col gap-10">
+        {paginationUsers.map((user) => {
+          return <Card
             key={user.id}
             name={user.name}
             email={user.email}
             phone={user.phone}
           />;
         })}
-      </div>
-      <div>
+      </div >
+      <div className="flex flex-row fixed bottom-0 left-1/2 transform -translate-x-1/2">
         <button disabled={currentPage === 1} onClick={handleFirstCell}>
           First
         </button>
