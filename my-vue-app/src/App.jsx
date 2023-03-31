@@ -6,6 +6,7 @@ import { Landing } from "./Views/Landing";
 import About from "./Views/About";
 import Preguntas from "./Components/Preguntas";
 import Profile from "./components/ProfileUser/ProfileUser"
+import Register from "./Components/Register/Register";
 function App() {
   return (
     <div className="App">
@@ -16,6 +17,7 @@ function App() {
         <Route path="/about" component={About} />
         <Route path="/info" component={Preguntas} />
         <Route path="/perfil" component={Profile} />
+        <Route path="/register" component={Register} />
       </BrowserRouter>
     </div>
   );
