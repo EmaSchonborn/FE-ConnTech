@@ -5,7 +5,7 @@ import {
   GET_USER_BY_ID,
   CREATE_USER,
   LOGIN
-} from "../redux/actions";
+} from "../Redux/actions";
 
 const initialState = {
   vacants: [],

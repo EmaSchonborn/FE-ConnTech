@@ -2,16 +2,20 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import userImage from "./imagen/imgPerfil.png";
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 const ProfileUser = () => {
-  const dispatch = useDispatch();
+  //const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getUserById());
-  }, [dispatch]);
-  
+  // useEffect(() => {
+  //   dispatch(getUserById());
+  // }, [dispatch]);
+
+  const userVerified = useSelector((state) => state.userVerified);
+
   return (
     <div className="min-h-screen bg-gray-100">
+      {console.log(userVerified)}
       <nav className="bg-white shadow">
         <div className="mx-auto px-4 max-w-7xl sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
@@ -86,15 +90,13 @@ const ProfileUser = () => {
               </h2>
             </div>
           </div>
-          <div className="-mx-3 md:flex mb-6">
+          <div className="-mx-3 md:flex mb-6 mt-2">
             <div className="md:w-full px-3">
-              <textarea
-                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                id="grid-experiencia"
-                type="text"
-                placeholder="Informacion de contacto"
-                rows="5"
-              />
+              <ul className="p-7 rounded-md list-disc bg-red-100">
+                <li className="mb-2 text-slate-950">{userVerified.user.name}</li>
+                <li className="mb-2 text-slate-950">{userVerified.user.phone}</li>
+                <li className="mb-2 text-slate-950">{userVerified.user.email}</li>
+              </ul>
             </div>
           </div>
         </div>
