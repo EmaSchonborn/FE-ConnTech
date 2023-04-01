@@ -4,127 +4,130 @@ export const GET_DETAILS = "GET_DETAILS";
 export const GET_USERS = "GET_USERS";
 export const GET_USER_BY_ID = "GET_USER_BY_ID";
 export const CREATE_USER = "CREATE_USER";
+export const ORDER_BY_ALPHABET = "ORDER_BY_ALPHABET";
+export const FILTER_BY_TECHNOLOGY = "FILTER_BY_TECHNOLOGY";
+export const FILTER_BY_SOURCE = "FILTER_BY_SOURCE";
 
 const pruebaUsers = [
-    {
-      id: 1,
-      name: "User 1",
-      email: "user1@mail.com",
-      phone: "+592766735944",
-      roleId: 1
-    },
-    {
-      id: 2,
-      name: "User 2",
-      email: "user2@mail.com",
-      phone: "+592766735944",
-      roleId: 2
-    },
-    {
-      id: 3,
-      name: "User 3",
-      email: "user3@mail.com",
-      phone: "+592766735944",
-      roleId: 3
-    },
-    {
-      id: 4,
-      name: "User 4",
-      email: "user4@mail.com",
-      phone: "+592766735944",
-      roleId: 1
-    },
-    {
-      id: 5,
-      name: "User 5",
-      email: "user5@mail.com",
-      phone: "+592766735944",
-      roleId: 2
-    },
-    {
-      id: 6,
-      name: "User 6",
-      email: "user6@mail.com",
-      phone: "+592766735944",
-      roleId: 3
-    },
-    {
-      id: 7,
-      name: "User 7",
-      email: "user7@mail.com",
-      phone: "+592766735944",
-      roleId: 1
-    },
-    {
-      id: 8,
-      name: "User 8",
-      email: "user8@mail.com",
-      phone: "+592766735944",
-      roleId: 2
-    },
-    {
-      id: 9,
-      name: "User 9",
-      email: "user9@mail.com",
-      phone: "+592766735944",
-      roleId: 3
-    },
-    {
-      id: 10,
-      name: "User 10",
-      email: "user10@mail.com",
-      phone: "+592766735944",
-      roleId: 1
-    },
-    {
-      id: 11,
-      name: "User 11",
-      email: "user11@mail.com",
-      phone: "+592766735944",
-      roleId: 2
-    },
-    {
-      id: 12,
-      name: "User 12",
-      email: "user12@mail.com",
-      phone: "+592766735944",
-      roleId: 3
-    },
-    {
-      id: 13,
-      name: "User 13",
-      email: "user13@mail.com",
-      phone: "+592766735944",
-      roleId: 1
-    },
-    {
-      id: 14,
-      name: "User 14",
-      email: "user14@mail.com",
-      phone: "+592766735944",
-      roleId: 2
-    },
-    {
-      id: 15,
-      name: "User 15",
-      email: "user15@mail.com",
-      phone: "+592766735944",
-      roleId: 3
-    },
-    {
-      id: 16,
-      name: "User 16",
-      email: "user16@mail.com",
-      phone: "+592766735944",
-      roleId: 1
-    },
-    {
-      id: 17,
-      name: "User 17",
-      email: "user17@mail.com",
-      phone: "+592766735944",
-      roleId: 2
-    },
+  {
+    id: 1,
+    name: "User 1",
+    email: "user1@mail.com",
+    phone: "+592766735944",
+    roleId: 1,
+  },
+  {
+    id: 2,
+    name: "User 2",
+    email: "user2@mail.com",
+    phone: "+592766735944",
+    roleId: 2,
+  },
+  {
+    id: 3,
+    name: "User 3",
+    email: "user3@mail.com",
+    phone: "+592766735944",
+    roleId: 3,
+  },
+  {
+    id: 4,
+    name: "User 4",
+    email: "user4@mail.com",
+    phone: "+592766735944",
+    roleId: 1,
+  },
+  {
+    id: 5,
+    name: "User 5",
+    email: "user5@mail.com",
+    phone: "+592766735944",
+    roleId: 2,
+  },
+  {
+    id: 6,
+    name: "User 6",
+    email: "user6@mail.com",
+    phone: "+592766735944",
+    roleId: 3,
+  },
+  {
+    id: 7,
+    name: "User 7",
+    email: "user7@mail.com",
+    phone: "+592766735944",
+    roleId: 1,
+  },
+  {
+    id: 8,
+    name: "User 8",
+    email: "user8@mail.com",
+    phone: "+592766735944",
+    roleId: 2,
+  },
+  {
+    id: 9,
+    name: "User 9",
+    email: "user9@mail.com",
+    phone: "+592766735944",
+    roleId: 3,
+  },
+  {
+    id: 10,
+    name: "User 10",
+    email: "user10@mail.com",
+    phone: "+592766735944",
+    roleId: 1,
+  },
+  {
+    id: 11,
+    name: "User 11",
+    email: "user11@mail.com",
+    phone: "+592766735944",
+    roleId: 2,
+  },
+  {
+    id: 12,
+    name: "User 12",
+    email: "user12@mail.com",
+    phone: "+592766735944",
+    roleId: 3,
+  },
+  {
+    id: 13,
+    name: "User 13",
+    email: "user13@mail.com",
+    phone: "+592766735944",
+    roleId: 1,
+  },
+  {
+    id: 14,
+    name: "User 14",
+    email: "user14@mail.com",
+    phone: "+592766735944",
+    roleId: 2,
+  },
+  {
+    id: 15,
+    name: "User 15",
+    email: "user15@mail.com",
+    phone: "+592766735944",
+    roleId: 3,
+  },
+  {
+    id: 16,
+    name: "User 16",
+    email: "user16@mail.com",
+    phone: "+592766735944",
+    roleId: 1,
+  },
+  {
+    id: 17,
+    name: "User 17",
+    email: "user17@mail.com",
+    phone: "+592766735944",
+    roleId: 2,
+  },
 ];
 
 export function getUsers() {
@@ -186,15 +189,32 @@ export function getUserById(id) {
   };
 }
 
-export function createUser(payload){  
-  const body = { 
-  name : "",
-  email: "",
-  phone: "",
-  password: "",
-  role: []}
-  return async function(){
-      let json = await axios.post(`https://api-conntech.onrender.com/user/register%27,${body}`,payload)
-      return json
-  }
-};
+export function createUser(payload) {
+  const body = {
+    name: "",
+    email: "",
+    phone: "",
+    password: "",
+    role: [],
+  };
+  return async function () {
+    let json = await axios.post(
+      `https://api-conntech.onrender.com/user/register%27,${body}`,
+      payload
+    );
+    return json;
+  };
+}
+
+//en creación
+// export const orderByAlphabet = (payload) => {
+//   return { type: ORDER_BY_ALPHABET, payload };
+// };
+
+// export const filterByTechnology = (payload) => {
+//   return { type: FILTER_BY_TECHNOLOGY, payload };
+// };
+
+// export const filterBySource = (payload) => {
+//   return { type: FILTER_BY_SOURCE, payload };
+// };

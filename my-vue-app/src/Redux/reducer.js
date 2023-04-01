@@ -13,8 +13,8 @@ const initialState = {
   users: [],
   filteredUsers: [],
   userDetail: [],
+  tecnologías: [],
 };
-
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -40,9 +40,26 @@ const rootReducer = (state = initialState, action) => {
         userDetail: action.payload,
       };
     case CREATE_USER:
-       return{
-        ...state
+      return {
+        ...state,
       };
+
+    //en creación
+    // case ORDER_BY_ALPHABET:
+    //   return {
+    //     ...state,
+    //     action: action.payload,
+    //   };
+    // case FILTER_BY_TECHNOLOGY:
+    //   return {
+    //     ...state,
+    //     action: action.payload,
+    //   };
+    // case FILTER_BY_SOURCE:
+    //   return {
+    //     ...state,
+    //     action: action.payload,
+    //   };
     default:
       return { ...state };
   }
