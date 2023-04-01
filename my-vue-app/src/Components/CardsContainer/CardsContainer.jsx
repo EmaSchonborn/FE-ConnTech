@@ -1,12 +1,12 @@
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import React, { useState } from "react";
-import { useEffect } from "react";
+//import { useEffect } from "react";
 import { getUsers } from "../../Redux/actions";
-import Card from "../Card/Card";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
+import Card from "../Card/Card";
 import Paginate from "../Pagination/Pagination";
 
-const CardsContainer = () => {
+const CardsContainer = (props) => {
   const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -26,14 +26,15 @@ const CardsContainer = () => {
   const handleNextPagination = () => {
     setCurrentPage((nextPage) => nextPage + 1);
   };
-
   //esto tiene que estar asociado a state.filteredUsers (para no perder array original)
   //parche temporal
-  const users = useSelector((state) => state.filteredUsers);
-  
+  //const users = useSelector((state) => state.filteredUsers);
+
   useEffect(() => {
     dispatch(getUsers());
   }, [dispatch]);
+  
+  const users = useSelector((state) => state.filteredUsers);
   
   //función de paginado y botones adyacentes
   const displayedUsers = 5;
@@ -52,22 +53,22 @@ const CardsContainer = () => {
   for (let i = startPage; i <= endPage; i++) {
     totalPages.push(i);
   }
-  
-  console.log(paginationUsers)
+
 
   return (
     <div className="">
-      <div>
-        {paginationUsers?.map((user) => {
-          <Card
+      <div className="flex flex-col gap-10">
+        {paginationUsers.map((user) => {
+          return <Card
+            id={user.id}
             key={user.id}
             name={user.name}
             email={user.email}
             phone={user.phone}
           />;
         })}
-      </div>
-      <div>
+      </div >
+      <div className="flex flex-row fixed bottom-0 left-1/2 transform -translate-x-1/2">
         <button disabled={currentPage === 1} onClick={handleFirstCell}>
           First
         </button>
@@ -78,8 +79,11 @@ const CardsContainer = () => {
           totalPages={totalPages}
           paginate={handlerPaginate}
           currentPage={currentPage}
-        />  
-        <button disabled={currentPage === lastCell} onClick={handleNextPagination}>
+        />
+        <button
+          disabled={currentPage === lastCell}
+          onClick={handleNextPagination}
+        >
           <FiArrowRight />
         </button>
         <button disabled={currentPage === lastCell} onClick={handleLastCell}>

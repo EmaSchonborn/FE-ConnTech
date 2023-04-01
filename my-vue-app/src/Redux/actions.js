@@ -4,6 +4,7 @@ export const GET_DETAILS = "GET_DETAILS";
 export const GET_USERS = "GET_USERS";
 export const GET_USER_BY_ID = "GET_USER_BY_ID";
 export const CREATE_USER = "CREATE_USER";
+export const LOGIN="LOGIN";
 
 const pruebaUsers = [
     {
@@ -129,24 +130,24 @@ const pruebaUsers = [
 
 export function getUsers() {
   return async function (dispatch) {
-    // const apiData = await axios.get("https://api-conntech.onrender.com/user/");
-    // const users = apiData.users;
+    const apiData = await axios.get("https://api-conntech.onrender.com/user/");
+    const users = apiData.data;
     dispatch({
       type: GET_USERS,
-      payload: pruebaUsers,
+      payload: users,
     });
   };
 }
 
-// export function getVacantes() {
-//   return async function (dispatch) {
-//     const json = await axios.get("https://api-conntech.onrender.com/vacant/");
-//     return dispatch({
-//       type: GET_VACANT,
-//       payload: json.data,
-//     });
-//   };
-// }
+ export function getVacantes() {
+  return async function (dispatch) {
+    const json = await axios.get("https://api-conntech.onrender.com/vacant/");
+    return dispatch({
+      type: GET_VACANT,
+      payload: json.data,
+    });
+   };
+}
 
 // export const getVacantes = ()=> async (dispatch) =>{
 //     return fetch("https://api-conntech.onrender.com/vacant/")
@@ -192,9 +193,37 @@ export function createUser(payload){
   email: payload.email,
   phone: payload.phone,
   password: payload.password,
-  role: {name: payload.role.name} }
+  role: {name:payload.role.name}}
+  return async function(dispatch){
+    try {
+      let json = await axios.post('https://api-conntech.onrender.com/user/register/',body)
+      dispatch({
+        type: CREATE_USER,
+        payload: json.data.user,
+      });
+    } catch (error) {
+      console.log(error.message)
+    }
+  }}
   return async function(){
       let json = await axios.post(`https://api-conntech.onrender.com/user/register/`,body)
       return json
+
+};
+
+export function verifyUser(Email,Password){
+  const body = {
+  email:Email,
+  password: Password}
+  return async function(dispatch){
+  try {
+    let json = await axios.post('https://api-conntech.onrender.com/user/login',body)
+    return dispatch({
+      type: LOGIN,
+      payload: json.data,
+    });
+  } catch (error) {
+    console.log(error.message);
+  }
   }
 };
