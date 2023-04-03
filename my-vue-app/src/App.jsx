@@ -8,6 +8,9 @@ import Preguntas from "./Components/Preguntas";
 import Profile from "./Components/ProfileUser/ProfileUser"
 import Register from "./Components/Register/Register";
 import Postulation from "./Views/Postulation"
+import NewVacant from "./Components/NewVacant/NewVacant";
+import VacantDetail from "./Components/VacantDetail/VacantDetail";
+
 function App() {
   return (
     <div className="App">
@@ -20,6 +23,8 @@ function App() {
         <Route path="/perfil" component={Profile} />
         <Route path="/mis-vacantes" component={Postulation} />
         <Route path="/register" component={Register} />
+        <Route path="/newvacant" component={NewVacant} />
+        <Route path="/vacant-detail/:id" component={VacantDetail} />
       </BrowserRouter>
     </div>
   );

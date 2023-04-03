@@ -4,6 +4,7 @@ import {
   GET_USERS,
   GET_USER_BY_ID,
   CREATE_USER,
+  CREATE_VACANT,
   LOGIN
 } from "../Redux/actions";
 
@@ -46,6 +47,11 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         userVerified:action.payload
       };
+    case CREATE_VACANT:
+      return{
+        ...state,
+        vacants:action.payload
+      };  
     case LOGIN:
       return{
         ...state,
