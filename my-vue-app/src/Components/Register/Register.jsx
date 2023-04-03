@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link , useHistory } from "react-router-dom";
-import {createUser } from "../../redux/actions";
+import {createUser } from "../../Redux/actions";
 import { useEffect } from "react";
 
 import style from "./Register.module.css";

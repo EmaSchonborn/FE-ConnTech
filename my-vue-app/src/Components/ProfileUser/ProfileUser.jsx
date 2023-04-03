@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import userImage from "./imagen/imgPerfil.png";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
+import { RiHome2Fill } from "react-icons/ri";
 
 const ProfileUser = () => {
   //const dispatch = useDispatch();
@@ -21,7 +22,10 @@ const ProfileUser = () => {
           <div className="flex justify-between h-16">
             <div className="flex">
               <button className="inline-flex items-center px-3 py-2 rounded-md text-sm font-medium text-gray-700 bg-white border-gray-300 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">
-                <Link to="/home">Home</Link>
+                <Link to="/home">
+                  <RiHome2Fill className="text-2xl mr-2" />
+                  Home
+                </Link>
               </button>
             </div>
           </div>
@@ -93,9 +97,15 @@ const ProfileUser = () => {
           <div className="-mx-3 md:flex mb-6 mt-2">
             <div className="md:w-full px-3">
               <ul className="p-7 rounded-md list-disc bg-red-100">
-                <li className="mb-2 text-slate-950">{userVerified.user.name}</li>
-                <li className="mb-2 text-slate-950">{userVerified.user.phone}</li>
-                <li className="mb-2 text-slate-950">{userVerified.user.email}</li>
+                <li className="mb-2 text-slate-950">
+                  {userVerified.user.name}
+                </li>
+                <li className="mb-2 text-slate-950">
+                  {userVerified.user.phone}
+                </li>
+                <li className="mb-2 text-slate-950">
+                  {userVerified.user.email}
+                </li>
               </ul>
             </div>
           </div>

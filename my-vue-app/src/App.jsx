@@ -7,6 +7,7 @@ import About from "./Views/About";
 import Preguntas from "./Components/Preguntas";
 import Profile from "./Components/ProfileUser/ProfileUser"
 import Register from "./Components/Register/Register";
+import Postulation from "./Views/Postulation"
 function App() {
   return (
     <div className="App">
@@ -17,6 +18,7 @@ function App() {
         <Route path="/about" component={About} />
         <Route path="/info" component={Preguntas} />
         <Route path="/perfil" component={Profile} />
+        <Route path="/mis-vacantes" component={Postulation} />
         <Route path="/register" component={Register} />
       </BrowserRouter>
     </div>
