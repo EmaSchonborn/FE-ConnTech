@@ -8,12 +8,12 @@ import { getDetail} from "../../redux/actions";
 export default function VacantDetail(){
     let dispatch = useDispatch()
     let params = useParams()
-    const details = useSelector((state) => state.vacantDetail)
     
     useEffect(() => {
         dispatch(getDetail(params.id))
     },[params.id, dispatch])
     
+    const details = useSelector((state) => state.vacantDetail)
     console.log(details)
     return(
         <div>
