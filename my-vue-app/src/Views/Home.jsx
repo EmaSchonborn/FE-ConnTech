@@ -5,7 +5,7 @@ import SideBar from "../components/SideBar/SideBar";
 import Paginate from "../components/Pagination/Pagination";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getVacantes } from "../redux/actions";
+import { getVacantes } from "../Redux/actions";
 //import Pagination from "../components/Pagination/Pagination";
 
 const Home = () => {

@@ -5,10 +5,12 @@ import Login from "./Views/Login";
 import { Landing } from "./Views/Landing";
 import About from "./Views/About";
 import Preguntas from "./Components/Preguntas";
-import Profile from "./components/ProfileUser/ProfileUser"
+import Profile from "./Components/ProfileUser/ProfileUser"
 import Register from "./Components/Register/Register";
 import NewVacant from "./Components/NewVacant/NewVacant";
 import VacantDetail from "./Components/VacantDetail/VacantDetail";
+import Postulation from "./Views/Postulation"
+
 function App() {
   return (
     <div className="App">
@@ -19,6 +21,7 @@ function App() {
         <Route path="/about" component={About} />
         <Route path="/info" component={Preguntas} />
         <Route path="/perfil" component={Profile} />
+        <Route path="/mis-vacantes" component={Postulation} />
         <Route path="/register" component={Register} />
         <Route path="/newvacant" component={NewVacant} />
         <Route path="/vacant-detail/:id" component={VacantDetail} />
