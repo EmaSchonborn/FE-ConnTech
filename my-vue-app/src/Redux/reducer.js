@@ -6,7 +6,7 @@ import {
   CREATE_USER,
   CREATE_VACANT,
   LOGIN
-} from "../Redux/actions";
+} from "../Redux/actions/";
 
 const initialState = {
   vacants: [],
