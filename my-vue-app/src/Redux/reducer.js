@@ -7,7 +7,6 @@ import {
   LOGIN,
   //TYPE_USER_VERIFIED
   CREATE_VACANT,
-  LOGIN
 } from "../Redux/actions/";
   //LOGIN
 
