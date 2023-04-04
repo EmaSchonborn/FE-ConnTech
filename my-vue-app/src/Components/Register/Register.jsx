@@ -12,7 +12,7 @@ export default function CreateUser() {
   let history = useHistory();
   // const users = useSelector((state) => state.filteredUsers)
   const [error, setError] = useState({});
-
+/*  comentario de prueba */
   function validate(input) {
     let errors = {};
 
