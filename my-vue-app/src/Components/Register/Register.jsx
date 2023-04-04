@@ -52,11 +52,11 @@ export default function CreateUser(){
     email: "",
     phone: "",
     password: "",
-    roles: []
+    roles: {name: ""}
     })
 
     const [role, setRole] = useState({
-        role1: "",
+        role1: {name: ""},
        
     })
 
@@ -110,7 +110,7 @@ export default function CreateUser(){
     }
 
     return(
-        <div>
+        <div key={UUID4}>
             <form onSubmit={(e) => handleSubmit(e)}>
                 <div>
                     <h1 className={style.h1}>Create User</h1>

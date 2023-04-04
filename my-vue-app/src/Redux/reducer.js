@@ -10,7 +10,7 @@ import {
 
 const initialState = {
   vacants: [],
-  vacantDetail: [],
+  vacantDetail: {},
   empresas: [],
   users: [],
   filteredUsers: [],
