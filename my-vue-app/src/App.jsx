@@ -12,9 +12,9 @@ import Postulation from "./Views/Postulation"
 import NewVacant from "./Components/NewVacant/NewVacant";
 import VacantDetail from "./Components/VacantDetail/VacantDetail";
 
-import NewVacant from "./Components/NewVacant/NewVacant";
-import VacantDetail from "./Components/VacantDetail/VacantDetail";
-import Postulation from "./Views/Postulation"
+//import NewVacant from "./Components/NewVacant/NewVacant";
+//import VacantDetail from "./Components/VacantDetail/VacantDetail";
+//import Postulation from "./Views/Postulation"
 
 
 function App() {

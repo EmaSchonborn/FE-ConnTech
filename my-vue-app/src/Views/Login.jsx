@@ -27,8 +27,6 @@ const Login = () => {
 
   }
 
-  const userVerified=useSelector((state)=>state.userVerified);
-
   return (
     <div>
       <div>
