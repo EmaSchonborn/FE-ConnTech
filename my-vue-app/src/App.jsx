@@ -12,6 +12,7 @@ import Postulation from "./Views/Postulation"
 import NewVacant from "./Components/NewVacant/NewVacant";
 import VacantDetail from "./Components/VacantDetail/VacantDetail";
 import Vacantes from "./Views/Vacantes";
+//import Vacantes from "./Views/Vacantes";
 
 //import NewVacant from "./Components/NewVacant/NewVacant";
 //import VacantDetail from "./Components/VacantDetail/VacantDetail";

@@ -1,8 +1,12 @@
-import React, { useEffect, useState } from 'react';
-// import DetalleVacante from './DetalleVacante';
-
+import React, { useState } from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { GetVacantsByUserId } from '../Redux/actions';
+import Card from '../Components/Card/Card';
+//import DetalleVacante from './DetalleVacante';
 
 const Vacantes = () => {
+  const dispatch=useDispatch();
   const [vacanteSeleccionada, setVacanteSeleccionada] = useState(null);
 
   const vacantes = [
@@ -15,12 +19,7 @@ const Vacantes = () => {
   const handleVacanteClick = (vacante) => {
     setVacanteSeleccionada(vacante);
   }
- useEffect(() => {
-   
- 
- 
- }, [])
- 
+
   return (
     <div>
       <h2>Vacantes publicadas</h2>
@@ -32,7 +31,7 @@ const Vacantes = () => {
           </li>
         ))}
       </ul>
-      {/* {vacanteSeleccionada && <DetalleVacante vacante={vacanteSeleccionada} />} */}
+      {vacanteSeleccionada && <DetalleVacante vacante={vacanteSeleccionada} />}
     </div>
   );
 }

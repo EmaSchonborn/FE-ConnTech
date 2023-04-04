@@ -18,6 +18,7 @@ const initialState = {
   filteredUsers: [],
   userDetail: [],
   userVerified:{},
+  VacantsByUserId:[]
   //typeUserVerified:0
 };
 
@@ -65,6 +66,11 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         typeUserVerified:action.payload.user.roleId
       } */
+    case GET_VACANTS_BY_USER:
+      return{
+        ...state,
+        VacantsByUserId:action.payload,
+      }
     default:
       return { ...state };
   }
