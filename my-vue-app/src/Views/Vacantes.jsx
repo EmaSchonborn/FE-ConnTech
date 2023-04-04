@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
-import DetalleVacante from './DetalleVacante';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { GetVacantsByUserId } from '../Redux/actions';
+import Card from '../Components/Card/Card';
+//import DetalleVacante from './DetalleVacante';
 
 const Vacantes = () => {
+  const dispatch=useDispatch();
   const [vacanteSeleccionada, setVacanteSeleccionada] = useState(null);
 
   const vacantes = [
@@ -13,19 +18,25 @@ const Vacantes = () => {
   const handleVacanteClick = (vacante) => {
     setVacanteSeleccionada(vacante);
   }
+  useEffect(() => {
+    dispatch(GetVacantsByUserId())
+  }, [])
+  const VacantsByUserId=useSelector((state)=>state.VacantsByUserId);
+  
 
   return (
     <div>
       <h2>Vacantes publicadas</h2>
-      <ul>
-        {vacantes.map((vacante) => (
-          <li key={vacante.id} onClick={() => handleVacanteClick(vacante)}>
-            <h3>{vacante.title}</h3>
-            <p>{vacante.location}</p>
-          </li>
-        ))}
-      </ul>
-      {vacanteSeleccionada && <DetalleVacante vacante={vacanteSeleccionada} />}
+      {VacantsByUserId?.map(e=>
+        <Card
+        id={e.id}
+        key={e.id}
+        title={e.title}
+        description={e.description}
+        typeId={e.typeId}
+      />
+        )}
+      {/* {vacanteSeleccionada && <DetalleVacante vacante={vacanteSeleccionada} />} */}
     </div>
   );
 }
