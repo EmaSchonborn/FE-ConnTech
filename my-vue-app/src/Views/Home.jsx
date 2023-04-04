@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import CardsContainer from "../components/CardsContainer/CardsContainer";
+import CardsContainer from "../Components/CardsContainer/CardsContainer";
 import SearchBar from "../components/NavBar/SearchBar";
 import SideBar from "../components/SideBar/SideBar";
-import Paginate from "../components/Pagination/Pagination";
+//import Paginate from "../components/Pagination/Pagination";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector, useStore } from "react-redux";
 import { getUsers, getVacantes } from "../Redux/actions";
@@ -10,22 +10,22 @@ import CardsContainer2 from "../Components/CardsContainer/CardsContainer2";
 //import Pagination from "../components/Pagination/Pagination";
 
 const Home = () => {
-  //const userRole=useSelector((state)=>state.userVerified.user);
-  const store = useStore();
-  const state = store.getState();
-  const [userRole, setUserRole]=useState();
-  /* useEffect(() => {
-    setUserRole(state.userVerified.user);
-  }, []) */
-  console.log(state);
-  setUserRole(state.userVerified.user.roleId);
+  const userRole=useSelector((state)=>state.userVerified.user);
+  const [loading, setLoading] = useState(true);
+  
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  
+    return () => {
+      clearTimeout(timeout);
+    }
+  }, [])
 
-  /* let userRole1=null;
-  if (userRole.roleId.par()==='1') {
-    userRole1=true;
+  if (loading) {
+    return <div>Cargando...</div>; // Indicador de carga
   }
-
-  userRole.hasOwnProperty() */
 
   return (
     <div className="">
@@ -43,7 +43,7 @@ const Home = () => {
           {/* UserCard */}
 
           <div className="bg-white shadow-md rounded-lg p-10 h-full">
-            {userRole===null?<CardsContainer/>:<CardsContainer2/>}
+            {userRole.roleId===1?<CardsContainer/>:<CardsContainer2/>}
             {/* {userRole.userVerified.user.roleId===2?<CardsContainer2/>:undefined} */}
           </div>
         </div>
