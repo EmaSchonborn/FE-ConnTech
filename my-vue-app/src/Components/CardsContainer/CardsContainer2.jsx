@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
-import { getUsers } from "../../Redux/actions";
+import { getVacantes } from "../../Redux/actions";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
 import Card from "../Card/Card";
 import Paginate from "../Pagination/Pagination";
 
-const CardsContainer = () => {
-  const dispatch = useDispatch();
+export default function CardsContainer2() {
+    const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
 
   //handlers de paginado
@@ -30,17 +30,17 @@ const CardsContainer = () => {
   //const users = useSelector((state) => state.filteredUsers);
 
   useEffect(() => {
-    dispatch(getUsers());
+    dispatch(getVacantes());
   }, [dispatch]);
-
-  const users = useSelector((state) => state.filteredUsers);
-
+  
+  const vacants = useSelector((state) => state.vacants);
+  
   //función de paginado y botones adyacentes
-  const displayedUsers = 5;
-  const finalReference = currentPage * displayedUsers;
-  const initialReference = finalReference - displayedUsers;
-  const paginationUsers = users?.slice(initialReference, finalReference);
-  const lastCell = Math.ceil(users?.length / displayedUsers);
+  const displayedvacants = 5;
+  const finalReference = currentPage * displayedvacants;
+  const initialReference = finalReference - displayedvacants;
+  const paginationvacants = vacants?.slice(initialReference, finalReference);
+  const lastCell = Math.ceil(vacants?.length / displayedvacants);
 
   //lógica para mostrar sólo algunos botones de paginado
   let startPage = Math.max(currentPage - 1, 1);
@@ -53,19 +53,20 @@ const CardsContainer = () => {
     totalPages.push(i);
   }
 
+
   return (
     <div className="">
       <div className="flex flex-col gap-10">
-        {paginationUsers.map((user) => (
+        {paginationvacants.map((vacant) =>
           <Card
-            id={user.id}
-            key={user.id}
-            name={user.name}
-            email={user.email}
-            phone={user.phone}
+            id={vacant.id}
+            key={vacant.id}
+            title={vacant.title}
+            description={vacant.description}
+            typeId={vacant.typeId}
           />
-        ))}
-      </div>
+        )}
+      </div >
       <div className="flex flex-row fixed bottom-0 left-1/2 transform -translate-x-1/2">
         <button disabled={currentPage === 1} onClick={handleFirstCell}>
           First
@@ -89,7 +90,5 @@ const CardsContainer = () => {
         </button>
       </div>
     </div>
-  );
-};
-
-export default CardsContainer;
+  )
+}
