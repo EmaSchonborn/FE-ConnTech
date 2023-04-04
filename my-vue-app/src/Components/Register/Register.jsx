@@ -1,95 +1,94 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link , useHistory } from "react-router-dom";
-import {createUser } from "../../Redux/actions/";
+import { Link, useHistory } from "react-router-dom";
+import { createUser } from "../../Redux/actions/";
 import { useEffect } from "react";
 
 import style from "./Register.module.css";
 
+export default function CreateUser() {
+  let dispatch = useDispatch();
+  let history = useHistory();
+  // const users = useSelector((state) => state.filteredUsers)
+  const [error, setError] = useState({});
+/*  comentario de prueba */
+  function validate(input) {
+    let errors = {};
 
+    if (!input.name) {
+      errors.name = "You have to select a name!.";
+    }
+    if (input.name.search("[0-9]") !== -1) {
+      errors.name = "The name must not contain numbers.";
+    }
+    if (input.name.search("[^A-Za-z0-9]") !== -1) {
+      errors.name = "The name must not contain symbols or spaces.";
+    }
+    if (!input.password) {
+      errors.password = "You have to select a password!.";
+    }
+    if (!input.email) {
+      errors.email = "You have to select a email!.";
+    }
+    if (!input.phone) {
+      errors.phone = "You have to select a phone number!.";
+    }
+    // if(users.find(p => p.name.toLowerCase() === input.name.toLowerCase())){
+    //     errors.name = "There is already a user with that name, try to create it with another"
+    // }
+    return errors;
+  }
 
-export default function CreateUser(){
-    let dispatch = useDispatch()
-    let history = useHistory()
-    // const users = useSelector((state) => state.filteredUsers)
-    const [error, setError] = useState({})
-    
-    function validate(input){
-        let errors = {}
-        
-        if(!input.name){
-            errors.name = "You have to select a name!."
-        }
-        if(input.name.search("[0-9]") !== -1) {
-            errors.name = "The name must not contain numbers."
-        }
-        if(input.name.search("[^A-Za-z0-9]") !== -1) {
-            errors.name = "The name must not contain symbols or spaces."
-        }
-        if(!input.password){
-            errors.password = "You have to select a password!."
-        }
-        if(!input.email){
-            errors.email = "You have to select a email!."
-        }
-        if(!input.phone){
-            errors.phone = "You have to select a phone number!."
-        }
-        // if(users.find(p => p.name.toLowerCase() === input.name.toLowerCase())){
-            //     errors.name = "There is already a user with that name, try to create it with another"
-            // }
-            return errors
-        };
-        
-        // useEffect(() => {
-            //     dispatch(getRoles())
-            // },[dispatch])
-    const roles = ["normal", "company", "hibrid"]
+  // useEffect(() => {
+  //     dispatch(getRoles())
+  // },[dispatch])
+  const roles = ["normal", "company", "hibrid"];
 
-    const [input, setInput] = useState({
-    name : "",
+  const [input, setInput] = useState({
+    name: "",
     email: "",
     phone: "",
     password: "",
-    roles: {name: ""}
-    })
+    roles: { name: "" },
+  });
 
-    const [role, setRole] = useState({
-        role1: {name: ""},
-       
-    })
+  const [role, setRole] = useState({
+    role1: { name: "" },
+  });
 
-    const handleInput = (e) => {
-        setInput({
-            ...input,
-            [e.target.name] : e.target.value
-        })
-        setError(validate({
-            ...input,
-            [e.target.name] : e.target.value
-        }))
-        
+  const handleInput = (e) => {
+    setInput({
+      ...input,
+      [e.target.name]: e.target.value,
+    });
+    setError(
+      validate({
+        ...input,
+        [e.target.name]: e.target.value,
+      })
+    );
+  };
+
+  const handleSelect = (e) => {
+    setRole({
+      ...role,
+      [e.target.name]: e.target.value,
+    });
+    if (e.target.name === "role1") {
+      setInput({
+        ...input,
+        roles: [e.target.value],
+      });
     }
 
-    const handleSelect = (e) => {
-      
-        setRole({
-            ...role,
-            [e.target.name] : e.target.value
-        })
-        if(e.target.name === "role1"){
-            setInput({
-                ...input,
-                roles: [e.target.value]
-            })
-        }
-    
-        setError(validate({
-            ...input,
-            [e.target.name] : e.target.value
-        }))
-    }
+    setError(
+      validate({
+        ...input,
+        [e.target.name]: e.target.value,
+      })
+    );
+  };
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -106,11 +105,11 @@ export default function CreateUser(){
             roles: {}
         })
         alert("Register successfull!")
-        history.push("/login")
+        history.push("/home")
     }
 
     return(
-        <div>
+        <div key={UUID4}>
             <form onSubmit={(e) => handleSubmit(e)}>
                 <div>
                     <h1 className={style.h1}>Create User</h1>
@@ -169,16 +168,17 @@ export default function CreateUser(){
                     Go Home
                 </button></Link>
 
-                {
-                    !error.name && !error.email && !error.phone && !error.password ?  
-                    <button type="submit" className={style.button}>
-                            Create User
-                         </button> : null
-                }
-                </div>
-
-                </div>
-            </form>
+            {!error.name && !error.email && !error.phone && !error.password ? (
+              <button
+                type="submit"
+                className="flex-none rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+              >
+                Create User
+              </button>
+            ) : null}
+          </div>
         </div>
-    )
-};
+      </form>
+    </div>
+  );
+}

@@ -28,7 +28,7 @@ const Login = () => {
 
   return (
     <section className="flex items-center justify-center w-full h-screen bg-slate-100">
-      <div className="flex flex-col items-center justify-center w-96 h-96 rounded-md shadow-2xl bg-indigo-700">
+      <div className="flex flex-col items-center justify-center w-96 h-96 rounded-md shadow-2xl bg-indigo-700 text-white">
         <div>
           <Link to="/">BACK</Link>
         </div>
