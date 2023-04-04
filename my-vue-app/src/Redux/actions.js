@@ -194,7 +194,7 @@ export function createUser(payload){
   email: payload.email,
   phone: payload.phone,
   password: payload.password,
-  role: {name:payload.role.name}}
+  role: {name:payload.roles.name}}
   return async function(dispatch){
     try {
       let json = await axios.post('https://api-conntech.onrender.com/user/register/',body)
