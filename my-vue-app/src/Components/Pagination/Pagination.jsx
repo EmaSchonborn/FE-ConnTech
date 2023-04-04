@@ -1,14 +1,20 @@
 import React from "react";
-import Card from "../Card/Card";
-import CardsContainer from "../CardsContainer/CardsContainer";
-//import "./styles/Card.css";
 
-const Pagination = () => {
+export default function Paginate({ paginate, currentPage, totalPages }) {
   return (
-    <div className="h-25 grid content-center">
-      <CardsContainer/>
+    <div className="">
+      <ul className="">
+        {totalPages &&
+          totalPages.map((No) => (
+            <button
+              key={No}
+              onClick={() => paginate(No)}
+              className={currentPage === No ? `` : ``}
+            >
+              {No}
+            </button>
+          ))}
+      </ul>
     </div>
   );
-};
-
-export default Pagination;
+}

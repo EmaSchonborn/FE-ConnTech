@@ -1,31 +1,25 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const Card = ({ title, requeriments, description }) => {
+const Card = (props) => {
   return (
-    <div className="max-w-md mx-auto rounded-md shadow-md overflow-hidden">
-      {/* <img src={props.image} alt="bg" className="" />
-      <div className="">
-        {props.id}
-        <h3>{props.requeriments}</h3>
-        <p>
-          {props.description}
-          I'm sorry, but "text lorem impsup" is not a coherent question or
-          statement. It appears to be a random combination of words. Can you
-          please provide more context or clarify your request? I'm here to help
-          with any questions or concerns you may have.
-        </p>
-      </div>
-      <div>
-        <NavLink className="flex justify-center" to={`/detail/${props.id}`}>
+    <div className="flex flex-row items-center max-w-md mx-auto rounded-md shadow-md overflow-hidden h-auto md:h-20 ">
+      <img
+        src="https://thumbs.dreamstime.com/b/marcador-de-foto-avatar-perfil-predeterminado-ilustraci%C3%B3n-vectorial-189495158.jpg"
+        alt=""
+        className="w-10 h-10"
+      />
+
+      {props.name?<h3 className="px-4 py-2 ">{props.name}</h3>:<h3 className="px-4 py-2 ">{props.title}</h3>}
+      {props.phone?<p className="px-4 py-2">Teléfono: {props.phone}</p>:<p className="px-4 py-2">Requerimientos: {props.requeriments}</p>}
+      <div className="px-4 py-2">
+      {props.description?<p className="px-4 py-2">Descripcion: {props.description}</p>:null}
+        <Link className="flex justify-center" to={`/detail/${props.id}`}>
           <h2 className="flex justify-center bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors duration-300">
-            <p>This is Bottom</p>
+            <p>Perfil</p>
           </h2>
-        </NavLink>
-      </div> */}
-      <h2>{title}</h2>
-      <p>{requeriments}</p>
-      <p>{description}</p>
+        </Link>
+      </div>
     </div>
   );
 };
