@@ -19,7 +19,7 @@ import VacantDetail from "./Components/VacantDetail/VacantDetail";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App font-D-DIN">
       <BrowserRouter>
         <Route exact path="/" component={Landing} />
         <Route exact path="/login" component={Login} />

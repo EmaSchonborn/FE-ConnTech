@@ -32,9 +32,9 @@ const CardsContainer = () => {
   useEffect(() => {
     dispatch(getUsers());
   }, [dispatch]);
-  
+
   const users = useSelector((state) => state.filteredUsers);
-  
+
   //función de paginado y botones adyacentes
   const displayedUsers = 5;
   const finalReference = currentPage * displayedUsers;
@@ -56,7 +56,7 @@ const CardsContainer = () => {
   return (
     <div className="">
       <div className="flex flex-col gap-10">
-        {paginationUsers.map((user) =>
+        {paginationUsers.map((user) => (
           <Card
             id={user.id}
             key={user.id}
@@ -64,8 +64,8 @@ const CardsContainer = () => {
             email={user.email}
             phone={user.phone}
           />
-        )}
-      </div >
+        ))}
+      </div>
       <div className="flex flex-row fixed bottom-0 left-1/2 transform -translate-x-1/2">
         <button disabled={currentPage === 1} onClick={handleFirstCell}>
           First
