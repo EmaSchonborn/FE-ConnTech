@@ -7,10 +7,19 @@ import About from "./Views/About";
 import Preguntas from "./Components/Preguntas";
 import Profile from "./Components/ProfileUser/ProfileUser"
 import Register from "./Components/Register/Register";
+
 import Postulation from "./Views/Postulation"
+import NewVacant from "./Components/NewVacant/NewVacant";
+import VacantDetail from "./Components/VacantDetail/VacantDetail";
+
+//import NewVacant from "./Components/NewVacant/NewVacant";
+//import VacantDetail from "./Components/VacantDetail/VacantDetail";
+//import Postulation from "./Views/Postulation"
+
+
 function App() {
   return (
-    <div className="App">
+    <div className="App font-D-DIN">
       <BrowserRouter>
         <Route exact path="/" component={Landing} />
         <Route exact path="/login" component={Login} />
@@ -20,6 +29,8 @@ function App() {
         <Route path="/perfil" component={Profile} />
         <Route path="/mis-vacantes" component={Postulation} />
         <Route path="/register" component={Register} />
+        <Route path="/newvacant" component={NewVacant} />
+        <Route path="/vacant-detail/:id" component={VacantDetail} />
       </BrowserRouter>
     </div>
   );

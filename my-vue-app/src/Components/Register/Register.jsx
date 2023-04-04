@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link , useHistory } from "react-router-dom";
-import {createUser } from "../../Redux/actions";
+import {createUser } from "../../Redux/actions/";
 import { useEffect } from "react";
 
 import style from "./Register.module.css";
@@ -52,11 +52,11 @@ export default function CreateUser(){
     email: "",
     phone: "",
     password: "",
-    roles: []
+    roles: {name: ""}
     })
 
     const [role, setRole] = useState({
-        role1: "",
+        role1: {name: ""},
        
     })
 
@@ -103,14 +103,14 @@ export default function CreateUser(){
             email: "",
             phone: "",
             password: "",
-            roles: []
+            roles: {}
         })
         alert("Register successfull!")
         history.push("/home")
     }
 
     return(
-        <div>
+        <div key={UUID4}>
             <form onSubmit={(e) => handleSubmit(e)}>
                 <div>
                     <h1 className={style.h1}>Create User</h1>
