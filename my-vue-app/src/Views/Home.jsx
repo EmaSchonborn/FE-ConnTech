@@ -3,19 +3,30 @@ import CardsContainer from "../components/CardsContainer/CardsContainer";
 import SearchBar from "../components/NavBar/SearchBar";
 import SideBar from "../components/SideBar/SideBar";
 import Paginate from "../components/Pagination/Pagination";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getVacantes } from "../Redux/actions";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector, useStore } from "react-redux";
+import { getUsers, getVacantes } from "../Redux/actions";
+import CardsContainer2 from "../Components/CardsContainer/CardsContainer2";
 //import Pagination from "../components/Pagination/Pagination";
 
 const Home = () => {
-  const dispatch=useDispatch();
-  useEffect(() => {
-    dispatch(getVacantes);
-  }, [dispatch])
+  //const userRole=useSelector((state)=>state.userVerified.user);
+  const store = useStore();
+  const state = store.getState();
+  const [userRole, setUserRole]=useState();
+  /* useEffect(() => {
+    setUserRole(state.userVerified.user);
+  }, []) */
+  console.log(state);
+  setUserRole(state.userVerified.user.roleId);
 
-  const vacants=useSelector((state)=>state.vacants);
-  
+  /* let userRole1=null;
+  if (userRole.roleId.par()==='1') {
+    userRole1=true;
+  }
+
+  userRole.hasOwnProperty() */
+
   return (
     <div className="">
       <div className="py-4 bg-slate-500 shadow-md">
@@ -32,7 +43,8 @@ const Home = () => {
           {/* UserCard */}
 
           <div className="bg-white shadow-md rounded-lg p-10 h-full">
-            <CardsContainer vacants={vacants}/>
+            {userRole===null?<CardsContainer/>:<CardsContainer2/>}
+            {/* {userRole.userVerified.user.roleId===2?<CardsContainer2/>:undefined} */}
           </div>
         </div>
       </div>

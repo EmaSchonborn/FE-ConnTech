@@ -4,7 +4,8 @@ import {
   GET_USERS,
   GET_USER_BY_ID,
   CREATE_USER,
-  LOGIN
+  LOGIN,
+  //TYPE_USER_VERIFIED
 } from "../Redux/actions";
 
 const initialState = {
@@ -14,7 +15,8 @@ const initialState = {
   users: [],
   filteredUsers: [],
   userDetail: [],
-  userVerified:[]
+  userVerified:[],
+  //typeUserVerified:0
 };
 
 
@@ -49,8 +51,13 @@ const rootReducer = (state = initialState, action) => {
     case LOGIN:
       return{
         ...state,
-        userVerified:action.payload
+        userVerified:action.payload,
       }
+    /* case TYPE_USER_VERIFIED:
+      return{
+        ...state,
+        typeUserVerified:action.payload.user.roleId
+      } */
     default:
       return { ...state };
   }
