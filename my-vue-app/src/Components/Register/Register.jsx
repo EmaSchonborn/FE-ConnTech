@@ -43,7 +43,7 @@ export default function CreateUser() {
   // useEffect(() => {
   //     dispatch(getRoles())
   // },[dispatch])
-  const roles = ["user", "company", "hibrid"];
+  const roles = ["normal", "company", "hibrid"];
 
   const [input, setInput] = useState({
     name: "",
@@ -105,7 +105,7 @@ export default function CreateUser() {
       roles: {},
     });
     alert("Register successfull!");
-    history.push("/home");
+    history.push("/login");
   };
 
   return (
