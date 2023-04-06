@@ -105,11 +105,11 @@ export default function CreateUser() {
             roles: {}
         })
         alert("Register successfull!")
-        history.push("/home")
+        history.push("/login")
     }
 
     return(
-        <div key={UUID4}>
+        <div>
             <form onSubmit={(e) => handleSubmit(e)}>
                 <div>
                     <h1 className={style.h1}>Create User</h1>

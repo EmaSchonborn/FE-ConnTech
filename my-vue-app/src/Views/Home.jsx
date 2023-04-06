@@ -16,7 +16,7 @@ const Home = () => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 8000);
   
     return () => {
       clearTimeout(timeout);
@@ -36,9 +36,9 @@ const Home = () => {
       <SideBar />
       <div className="fixed top-50 left-52 transform -translate-x-3/2 flex flex-col items-center justify-center md:flex-row bg-slate-50">
         <div className="w-screen h-screen md:flex-1 bg-slate-50">
-          <h1 className="text-2xl font-bold my-4 text-black text-center">
+          {/* <h1 className="text-2xl font-bold my-4 text-black text-center">
             Usuarios en búsqueda laboral
-          </h1>
+          </h1> */}
 
           {/* UserCard */}
 

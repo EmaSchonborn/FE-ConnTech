@@ -270,7 +270,7 @@ export function createVacant(payload){
       try {
         let json = await axios.post('https://api-conntech.onrender.com/vacant/vacantsbyuser',body)
         dispatch({
-          type: CREATE_VAGET_VACANTS_BY_USERCANT,
+          type: GET_VACANTS_BY_USER,
           payload: json.data,
         });
       } catch (error) {
