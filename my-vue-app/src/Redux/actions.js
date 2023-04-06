@@ -262,15 +262,12 @@ export function createVacant(payload){
     }
   }};
 
-  export function GetVacantsByUserId(Id){  
-    const body = { 
-    id : Id
-    }
+  export function GetVacantsByUserId(id){
     return async function(dispatch){
       try {
-        let json = await axios.post('https://api-conntech.onrender.com/vacant/vacantsbyuser',body)
+        let json = await axios.get(`https://api-conntech.onrender.com/vacant/vacantsbyuser/${id}`)
         dispatch({
-          type: CREATE_VAGET_VACANTS_BY_USERCANT,
+          type: GET_VACANTS_BY_USER,
           payload: json.data,
         });
       } catch (error) {
