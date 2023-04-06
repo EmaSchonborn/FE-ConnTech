@@ -43,7 +43,7 @@ export default function CreateUser() {
   // useEffect(() => {
   //     dispatch(getRoles())
   // },[dispatch])
-  const roles = ["user", "company", "hibrid"];
+  const roles = ["normal", "company", "hibrid"];
 
   const [input, setInput] = useState({
     name: "",
