@@ -90,23 +90,23 @@ export default function CreateUser() {
     );
   };
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        if(input.roles.length === 0){
-            return alert("You need pick a role")
-         }
-         const data = {...input}
-        dispatch(createUser(data))
-        setInput({
-            name : "",
-            email: "",
-            phone: "",
-            password: "",
-            roles: {}
-        })
-        alert("Register successfull!")
-        history.push("/login")
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (input.roles.length === 0) {
+      return alert("You need pick a role");
     }
+    const data = { ...input };
+    dispatch(createUser(data));
+    setInput({
+      name: "",
+      email: "",
+      phone: "",
+      password: "",
+      roles: {},
+    });
+    alert("Register successfull!");
+    history.push("/login");
+  };
 
     return(
         <div>
