@@ -1,16 +1,43 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import userImage from "./imagen/imgPerfil.png";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { RiHome2Fill } from "react-icons/ri";
 
-const ProfileUser = () => {
-  //const dispatch = useDispatch();
+function validate(input) {
+  let errors = [];
 
-  // useEffect(() => {
-  //   dispatch(getUserById());
-  // }, [dispatch]);
+  if (!input.description) {
+    errors.description = "Agrega una descripción";
+  }
+
+  if (!input.educacion) {
+    errors.educacion = "Agrega tu descripción";
+  }
+}
+
+const ProfileUser = () => {
+  const [educacion, setEducacion] = useState("");
+  const [experiencia, setExperiencia] = useState("");
+  const dispatch = useDispatch();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    if (name === "educacion") {
+      setEducacion(value);
+    } else {
+      setExperiencia(value);
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch({
+      type: "SET_EDUCACION_EXPERIENCIA",
+      payload: { educacion, experiencia },
+    });
+  };
 
   const userVerified = useSelector((state) => state.userVerified);
 
@@ -57,17 +84,28 @@ const ProfileUser = () => {
               </h2>
             </div>
           </div>
-          <div className="-mx-3 md:flex mb-6">
+          <div className="-mx-3 md:flex mb-6 mt-2">
             <div className="md:w-full px-3">
               <textarea
+                required
                 className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="grid-experiencia"
                 type="text"
+                name="description"
                 placeholder="Experiencia laboral"
                 rows="5"
               />
             </div>
           </div>
+
+          <div className="flex justify-end h-15 p-4">
+            <div className="flex">
+              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">
+                <Link to="/home">Home</Link>
+              </button>
+            </div>
+          </div>
+
           <div className="bg-white overflow-hidden shadow sm:rounded-lg">
             <div className="px-4 py-5 sm:px-6">
               <h2 className="text-lg leading-6 font-medium text-gray-900">
@@ -75,14 +113,12 @@ const ProfileUser = () => {
               </h2>
             </div>
           </div>
-          <div className="-mx-3 md:flex mb-6">
+          <div className="-mx-3 md:flex mb-6 mt-2">
             <div className="md:w-full px-3">
               <textarea
                 className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="grid-experiencia"
                 type="text"
-                placeholder="Educacion"
-                rows="5"
               />
             </div>
           </div>
