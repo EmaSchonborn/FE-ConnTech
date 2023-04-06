@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { BiArrowFromLeft, BiArrowFromRight } from "react-icons/bi";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
 export default function SideBar() {
   const [showSidebar, setShowSidebar] = useState(true);
+  const userVerified=useSelector((state)=>state.userVerified.user);
+  console.log(userVerified.id);
 
   const toggleSidebar = () => {
     setShowSidebar(!showSidebar);
@@ -22,7 +25,7 @@ export default function SideBar() {
             Home
           </Link>
           <Link
-            to="/mis-vacantes"
+            to={`/mis-vacantes/${userVerified.id}`}
             className="flex-1 block p-10 hover:bg-indigo-500 rounded-sm "
           >
             Mis Vacantes

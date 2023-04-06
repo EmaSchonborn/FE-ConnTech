@@ -105,7 +105,7 @@ export default function CreateUser() {
       roles: {},
     });
     alert("Register successfull!");
-    history.push("/home");
+    history.push("/login");
   };
 
   return (

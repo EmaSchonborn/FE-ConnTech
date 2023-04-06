@@ -29,7 +29,7 @@ function App() {
         <Route path="/about" component={About} />
         <Route path="/info" component={Preguntas} />
         <Route path="/perfil" component={Profile} />
-        <Route path="/mis-vacantes" component={Vacantes} />
+        <Route path="/mis-vacantes/:id" component={Vacantes} />
         <Route path="/register" component={Register} />
         <Route path="/newvacant" component={NewVacant} />
         <Route path="/vacant-detail/:id" component={VacantDetail} />

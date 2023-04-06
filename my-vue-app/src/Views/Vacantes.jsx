@@ -3,11 +3,16 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { GetVacantsByUserId } from '../Redux/actions';
 import Card from '../Components/Card/Card';
+import { useParams } from 'react-router-dom';
 //import DetalleVacante from './DetalleVacante';
 
 const Vacantes = () => {
+
+  const VacantsByUserId=useSelector((state)=>state.VacantsByUserId);
   const dispatch=useDispatch();
-  const [vacanteSeleccionada, setVacanteSeleccionada] = useState(null);
+  const [loading, setLoading] = useState(true);
+  let params = useParams();
+  /* const [vacanteSeleccionada, setVacanteSeleccionada] = useState(null);
 
   const vacantes = [
     { id: 1, title: 'Back end developer', location: 'Buenos Aires' },
@@ -17,12 +22,21 @@ const Vacantes = () => {
 
   const handleVacanteClick = (vacante) => {
     setVacanteSeleccionada(vacante);
-  }
+  } */
   useEffect(() => {
-    dispatch(GetVacantsByUserId())
-  }, [])
-  const VacantsByUserId=useSelector((state)=>state.VacantsByUserId);
+    dispatch(GetVacantsByUserId(params.id));
+    const timeout = setTimeout(() => {
+      setLoading(false);
+    }, 8000);
   
+    return () => {
+      clearTimeout(timeout);
+    }
+  }, [])
+  
+  if (loading) {
+    return <div>Cargando...</div>; // Indicador de carga
+  }
 
   return (
     <div>
