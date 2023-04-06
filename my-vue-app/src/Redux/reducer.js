@@ -4,7 +4,11 @@ import {
   GET_USERS,
   GET_USER_BY_ID,
   CREATE_USER,
-  LOGIN
+  LOGIN,
+  //TYPE_USER_VERIFIED
+  CREATE_VACANT,
+  GET_VACANTS_BY_USER
+  //LOGIN
 } from "../Redux/actions";
 
 const initialState = {
@@ -13,8 +17,10 @@ const initialState = {
   empresas: [],
   users: [],
   filteredUsers: [],
-  userDetail: {},
-  userVerified:[]
+  userDetail: [],
+  userVerified:{},
+  VacantsByUserId:[]
+  //typeUserVerified:0
 };
 
 
@@ -46,10 +52,25 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         userVerified:action.payload
       };
+    case CREATE_VACANT:
+      return{
+        ...state,
+        vacants:action.payload
+      };  
     case LOGIN:
       return{
         ...state,
-        userVerified:action.payload
+        userVerified:action.payload,
+      }
+    /* case TYPE_USER_VERIFIED:
+      return{
+        ...state,
+        typeUserVerified:action.payload.user.roleId
+      } */
+    case GET_VACANTS_BY_USER:
+      return{
+        ...state,
+        VacantsByUserId:action.payload,
       }
     default:
       return { ...state };
