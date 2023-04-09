@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import CardsContainer from "../components/CardsContainer/CardsContainer";
 import SearchBar from "../components/NavBar/SearchBar";
 import SideBar from "../components/SideBar/SideBar";
-import Paginate from "../components/Pagination/Pagination";
+//import Paginate from "../components/Pagination/Pagination";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getVacantes } from "../Redux/actions";
