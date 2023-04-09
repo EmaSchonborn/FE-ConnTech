@@ -4,17 +4,27 @@ import {
   GET_USERS,
   GET_USER_BY_ID,
   CREATE_USER,
-  LOGIN
-} from "../Redux/actions";
+  LOGIN,
+  // TYPE_USER_VERIFIED,
+  CREATE_VACANT,
+  GET_VACANTS_BY_USER
+
+} from "../Redux/actions/";
+
+
+  //LOGIN
+
 
 const initialState = {
   vacants: [],
-  vacantDetail: [],
+  vacantDetail: {},
   empresas: [],
   users: [],
   filteredUsers: [],
   userDetail: [],
-  userVerified:[]
+  userVerified:{},
+  VacantsByUserId:[]
+  // typeUserVerified:0
 };
 
 
@@ -46,10 +56,25 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         userVerified:action.payload
       };
+    case CREATE_VACANT:
+      return{
+        ...state,
+        vacants:action.payload
+      };  
     case LOGIN:
       return{
         ...state,
-        userVerified:action.payload
+        userVerified:action.payload,
+      }
+    //  case TYPE_USER_VERIFIED:
+    //   return{
+    //     ...state,
+    //     typeUserVerified:action.payload.user.roleId
+    //   } 
+    case GET_VACANTS_BY_USER:
+      return{
+        ...state,
+        VacantsByUserId:action.payload,
       }
     default:
       return { ...state };
