@@ -41,20 +41,16 @@ export default function CreateUser() {
   }
 
   // useEffect(() => {
-  //     dispatch(getRoles())
+  //     dispatch(getrole())
   // },[dispatch])
-  const roles = ["user", "company", "hibrid"];
+  const role1 = ["user", "company", "hibrid"];
 
   const [input, setInput] = useState({
     name: "",
     email: "",
     phone: "",
     password: "",
-    roles: { name: "" },
-  });
-
-  const [role, setRole] = useState({
-    role1: { name: "" },
+    role: { name: "" },
   });
 
   const handleInput = (e) => {
@@ -71,15 +67,8 @@ export default function CreateUser() {
   };
 
   const handleSelect = (e) => {
-    setRole({
-      ...role,
-      [e.target.name]: e.target.value,
-    });
     if (e.target.name === "role1") {
-      setInput({
-        ...input,
-        roles: [e.target.value],
-      });
+      input.role.name = e.target.value;
     }
 
     setError(
@@ -92,9 +81,10 @@ export default function CreateUser() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (input.roles.length === 0) {
+    if (input.role.length === 0) {
       return alert("You need pick a role");
     }
+    console.log(input);
     const data = { ...input };
     dispatch(createUser(data));
     setInput({
@@ -102,7 +92,7 @@ export default function CreateUser() {
       email: "",
       phone: "",
       password: "",
-      roles: {},
+      role: {},
     });
     alert("Register successfull!");
     history.push("/login");
@@ -169,7 +159,7 @@ export default function CreateUser() {
               </div>
               <br></br>
               <div>
-                <label className={style.label}>Roles: </label>
+                <label className={style.label}>role: </label>
                 <select
                   defaultValue={"none"}
                   name="role1"
@@ -177,7 +167,7 @@ export default function CreateUser() {
                   className="bg-indigo-500 ml-9 p-1"
                 >
                   <option value="none">Select role...</option>
-                  {roles.map((e) => {
+                  {role1.map((e) => {
                     return <option value={e}>{e}</option>;
                   })}
                 </select>

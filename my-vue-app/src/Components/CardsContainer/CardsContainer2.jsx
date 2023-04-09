@@ -6,7 +6,7 @@ import Card from "../Card/Card";
 import Paginate from "../Pagination/Pagination";
 
 export default function CardsContainer2() {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
 
   //handlers de paginado
