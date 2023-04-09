@@ -3,10 +3,15 @@ import CardsContainer from "../Components/CardsContainer/CardsContainer";
 import SearchBar from "../components/NavBar/SearchBar";
 import SideBar from "../components/SideBar/SideBar";
 //import Paginate from "../components/Pagination/Pagination";
+
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector, useStore } from "react-redux";
 import { getUsers, getVacantes } from "../Redux/actions";
 import CardsContainer2 from "../Components/CardsContainer/CardsContainer2";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getVacantes } from "../Redux/actions";
+
 //import Pagination from "../components/Pagination/Pagination";
 
 const Home = () => {
