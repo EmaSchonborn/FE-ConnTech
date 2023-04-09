@@ -1,18 +1,16 @@
 import React from "react";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch} from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { createUser } from "../../Redux/actions/";
-import { useEffect } from "react";
+
 
 import style from "./Register.module.css";
 
 export default function CreateUser() {
   let dispatch = useDispatch();
   let history = useHistory();
-  // const users = useSelector((state) => state.filteredUsers)
   const [error, setError] = useState({});
-/*  comentario de prueba */
   function validate(input) {
     let errors = {};
 
@@ -34,23 +32,35 @@ export default function CreateUser() {
     if (!input.phone) {
       errors.phone = "You have to select a phone number!.";
     }
-    // if(users.find(p => p.name.toLowerCase() === input.name.toLowerCase())){
-    //     errors.name = "There is already a user with that name, try to create it with another"
-    // }
     return errors;
   }
 
+<<<<<<< HEAD
   // useEffect(() => {
   //     dispatch(getrole())
   // },[dispatch])
   const role1 = ["user", "company", "hibrid"];
+=======
+  const roles = ["normal", "company", "hibrid"];
+  const description = ["normal user type", "company user type", "hibrid user type"]
+>>>>>>> dev
 
   const [input, setInput] = useState({
     name: "",
     email: "",
     phone: "",
     password: "",
+<<<<<<< HEAD
     role: { name: "" },
+=======
+    role: {name: "",
+           description: ""}
+    
+  });
+
+  const [roleId, setRoleId] = useState({
+    name: "",
+>>>>>>> dev
   });
 
   const handleInput = (e) => {
@@ -67,9 +77,34 @@ export default function CreateUser() {
   };
 
   const handleSelect = (e) => {
+<<<<<<< HEAD
     if (e.target.name === "role1") {
       input.role.name = e.target.value;
     }
+=======
+    setRoleId({
+      ...roleId,
+      name: e.target.value,
+    });
+    if(e.target.value === "normal"){
+    setInput({
+      ...input,
+      role: {name: e.target.value,
+      description: description[0]}
+    })}
+    if(e.target.value === "company"){
+      setInput({
+        ...input,
+        role: {name: e.target.value,
+        description: description[1]}
+      })}
+      if(e.target.value === "hibrid"){
+        setInput({
+          ...input,
+          role: {name: e.target.value,
+          description: description[2]}
+        })}
+>>>>>>> dev
 
     setError(
       validate({
@@ -78,21 +113,32 @@ export default function CreateUser() {
       })
     );
   };
-
+  
+console.log(roleId)
   const handleSubmit = (e) => {
     e.preventDefault();
     if (input.role.length === 0) {
       return alert("You need pick a role");
     }
+<<<<<<< HEAD
     console.log(input);
     const data = { ...input };
+=======
+    const data = {...input};
+    console.log(data)
+>>>>>>> dev
     dispatch(createUser(data));
     setInput({
       name: "",
       email: "",
       phone: "",
       password: "",
+<<<<<<< HEAD
       role: {},
+=======
+      role: {name: ""}
+  
+>>>>>>> dev
     });
     alert("Register successfull!");
     history.push("/login");
@@ -101,9 +147,9 @@ export default function CreateUser() {
   return (
     <div className="flex flex-col items-center justify-center bg-slate-50 w-full h-screen text-white">
       <form
-        onSubmit={(e) => handleSubmit(e)}
+      onSubmit={(e)=> handleSubmit(e)}
         className="bg-indigo-700 p-5 rounded-md text-white"
-      >
+        >
         <div>
           <h1 className="text-white text-center">Create User</h1>
           <div className={style.divtextimg}>
@@ -162,7 +208,8 @@ export default function CreateUser() {
                 <label className={style.label}>role: </label>
                 <select
                   defaultValue={"none"}
-                  name="role1"
+                  type= "text"
+                  name="roleId"
                   onChange={(e) => handleSelect(e)}
                   className="bg-indigo-500 ml-9 p-1"
                 >
