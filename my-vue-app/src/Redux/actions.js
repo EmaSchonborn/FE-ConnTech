@@ -182,7 +182,7 @@ export function getUserById(id) {
       );
       return dispatch({
         type: GET_USER_BY_ID,
-        payload: json.data,
+        payload: json.data.user,
       });
     } catch (e) {
       console.log(e.message);
