@@ -10,6 +10,8 @@ import Postulation from "./Views/Postulation"
 import NewVacant from "./Components/NewVacant/NewVacant";
 import VacantDetail from "./Components/VacantDetail/VacantDetail";
 import Vacantes from "./Views/Vacantes";
+import Premium from "./Views/Premium";
+import CardDetail from "./Components/CardDetail/CardDetail";
 
 
 function App() {
@@ -27,6 +29,8 @@ function App() {
         <Route path="/register" component={Register} />
         <Route path="/newvacant" component={NewVacant} />
         <Route path="/vacant-detail/:id" component={VacantDetail} />
+        <Route path="/premium" component={Premium} />
+        <Route path="/detail/:id" component={CardDetail} />
       </BrowserRouter>
     </div>
   );

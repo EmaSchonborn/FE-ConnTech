@@ -18,7 +18,7 @@ const Home = () => {
     const timeout = setTimeout(() => {
       setLoading(false);
 
-    }, 10000);
+    }, 14000);
 
   
     return () => {
