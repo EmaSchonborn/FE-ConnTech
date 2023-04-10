@@ -18,6 +18,7 @@ const Vacantes = () => {
     { id: 1, title: 'Back end developer', location: 'Buenos Aires' },
     { id: 2, title: 'Analista it', location: 'Córdoba' },
     { id: 3, title: 'Full stack developer', location: 'Rosario' },
+    { id: 3, title: 'Front end developer', location: 'Rosario' },
   ];
 
   const handleVacanteClick = (vacante) => {
