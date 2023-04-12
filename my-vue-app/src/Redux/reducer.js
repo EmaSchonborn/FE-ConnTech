@@ -11,6 +11,8 @@ import {
 
 } from "../Redux/actions/";
 
+
+
   //LOGIN
 
 
@@ -20,7 +22,7 @@ const initialState = {
   empresas: [],
   users: [],
   filteredUsers: [],
-  userDetail: [],
+  userDetail: {},
   userVerified:{},
   VacantsByUserId:[]
   // typeUserVerified:0
