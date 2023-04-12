@@ -8,7 +8,11 @@ import {
   // TYPE_USER_VERIFIED,
   CREATE_VACANT,
   GET_VACANTS_BY_USER
+
 } from "../Redux/actions/";
+
+
+
   //LOGIN
 
 
@@ -18,7 +22,7 @@ const initialState = {
   empresas: [],
   users: [],
   filteredUsers: [],
-  userDetail: [],
+  userDetail: {},
   userVerified:{},
   VacantsByUserId:[]
   // typeUserVerified:0

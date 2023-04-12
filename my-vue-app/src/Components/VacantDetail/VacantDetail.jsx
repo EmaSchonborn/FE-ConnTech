@@ -14,7 +14,7 @@ export default function VacantDetail() {
 
   const details = useSelector((state) => state.vacantDetail);
   return (
-    <div className="flex items-center justify-center h-screen w-full bg-slate-50">
+    <div className="flex items-center justify-center h-screen w-full bg-gray-800">
       {
         details.length === 0 ? (
           setTimeout(2)
