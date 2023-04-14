@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 const Preguntas = () => {
 	return (
 		<div className='w-full h-full bg-gradient-to-r from-sky-500 to-indigo-500 flex flex-col items-center justify-center'>
