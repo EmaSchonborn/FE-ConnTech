@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import CardsContainer from "../Components/CardsContainer/CardsContainer";
 import SearchBar from "../Components/NavBar/SearchBar";
 import SideBar from "../Components/SideBar/SideBar";
+import Buttons from "../Components/Organizer/Buttons";
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
           <h1 className="text-2xl font-bold my-4">
             Usuarios en búsqueda laboral
           </h1>
+          <Buttons /> 
           {/* UserCard */}
           <div className="bg-white shadow-md rounded-lg p-10 h-full">
             <CardsContainer />

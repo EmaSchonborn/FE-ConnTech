@@ -207,14 +207,14 @@ export function createUser(payload) {
 }
 
 //en creación
-// export const orderByAlphabet = (payload) => {
-//   return { type: ORDER_BY_ALPHABET, payload };
-// };
+export function orderByAlphabet(payload) {
+  return { type: ORDER_BY_ALPHABET, payload };
+};
 
-// export const filterByTechnology = (payload) => {
-//   return { type: FILTER_BY_TECHNOLOGY, payload };
-// };
+export function filterByTechnology (payload)  {
+  return { type: FILTER_BY_TECHNOLOGY, payload };
+};
 
-// export const filterBySource = (payload) => {
-//   return { type: FILTER_BY_SOURCE, payload };
-// };
+export function filterBySource (payload)  {
+  return { type: FILTER_BY_SOURCE, payload };
+};

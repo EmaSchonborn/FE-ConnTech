@@ -1,6 +1,12 @@
 const Order = () => {
     return(
-        <div></div>
+        <div>
+            <select>
+                <option disabled selected defaultValue>Ordenar</option>
+                <option>A-Z</option>
+                <option>Z-A</option>
+            </select>
+        </div>
     )
 }
 

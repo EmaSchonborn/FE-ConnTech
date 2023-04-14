@@ -4,6 +4,9 @@ import {
   GET_USERS,
   GET_USER_BY_ID,
   CREATE_USER,
+  ORDER_BY_ALPHABET,
+  FILTER_BY_SOURCE,
+  FILTER_BY_TECHNOLOGY
 } from "../redux/actions";
 
 const initialState = {
@@ -43,23 +46,21 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
       };
-
-    //en creación
-    // case ORDER_BY_ALPHABET:
-    //   return {
-    //     ...state,
-    //     action: action.payload,
-    //   };
-    // case FILTER_BY_TECHNOLOGY:
-    //   return {
-    //     ...state,
-    //     action: action.payload,
-    //   };
-    // case FILTER_BY_SOURCE:
-    //   return {
-    //     ...state,
-    //     action: action.payload,
-    //   };
+    case ORDER_BY_ALPHABET:
+      return {
+        ...state,
+        filteredUsers: action.payload,
+      };
+    case FILTER_BY_TECHNOLOGY:
+      return {
+        ...state,
+        filteredUsers: action.payload,
+      };
+    case FILTER_BY_SOURCE:
+      return {
+        ...state,
+        filteredUsers: action.payload,
+      };
     default:
       return { ...state };
   }
