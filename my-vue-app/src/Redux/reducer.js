@@ -8,7 +8,8 @@ import {
   SEND_POST,
   // TYPE_USER_VERIFIED,
   CREATE_VACANT,
-  GET_VACANTS_BY_USER
+  GET_VACANTS_BY_USER,
+  CREATE_PAYMENT
 
 } from "../Redux/actions/";
 
@@ -26,8 +27,9 @@ const initialState = {
   userDetail: {},
   userVerified:{},
   VacantsByUserId:[],
-  postulations: []
+  postulations: [],
   // typeUserVerified:0
+  clientSecret:''
 };
 
 
@@ -78,6 +80,11 @@ const rootReducer = (state = initialState, action) => {
       return{
         ...state,
         VacantsByUserId:action.payload,
+      }
+    case CREATE_PAYMENT:
+      return{
+        ...state,
+        clientSecret:action.payload
       }
       case SEND_POST:
         return{

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { func } from "prop-types";
 export const GET_VACANT = "GET_VACANTE";
 export const GET_DETAILS = "GET_DETAILS";
 export const GET_USERS = "GET_USERS";
@@ -8,6 +9,7 @@ export const CREATE_VACANT = "CREATE_VACANT";
 export const LOGIN="LOGIN";
 export const GET_VACANTS_BY_USER="GET_VACANTS_BY_USER";
 export const TYPE_USER_VERIFIED="TYPE_USER_VERIFIED";
+export const CREATE_PAYMENT="CREATE_PAYMENT";
 export const SEND_POST= "SEND_POST";
 
 const pruebaUsers = [
@@ -271,6 +273,20 @@ export function GetVacantsByUserId(id){
       }
     }};
 
+export function CreatePayment(){
+  return async function(dispatch){
+    try {
+      let result=await axios.get('https://api-conntech.onrender.com/premium/payment')
+      let {client_secret: clientSecret} = await result.data;
+      dispatch({
+        type:CREATE_PAYMENT,
+        payload:clientSecret
+      });
+    } catch (error) {
+      
+    }
+  }
+};
 export function sendPost(payload){
   return async function(dispatch){
       try {

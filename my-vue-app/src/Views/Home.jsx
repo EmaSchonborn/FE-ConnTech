@@ -18,7 +18,8 @@ const Home = () => {
     const timeout = setTimeout(() => {
       setLoading(false);
 
-    }, 14000);
+    }, 12000);
+
   
     return () => {
       clearTimeout(timeout);
