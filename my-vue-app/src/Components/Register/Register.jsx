@@ -114,8 +114,12 @@ export default function CreateUser() {
       password: "",
       role: { name: "" },
     });
+    if(data.name && data.email && data.phone && data.password && data.role){
     alert("Register successfull!");
-    history.push("/login");
+    history.push("/login");}
+    else {
+      alert("You most to complete the info")
+    }
   };
 
   return (
@@ -196,9 +200,9 @@ export default function CreateUser() {
             </div>
           </div>
           <div className={style.divbutton}>
-            <Link to="/home">
+            <Link to="/login">
               <button className="flex-none rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
-                Go Home
+                Login
               </button>
             </Link>
 

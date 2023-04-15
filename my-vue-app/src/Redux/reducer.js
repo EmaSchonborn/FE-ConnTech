@@ -5,13 +5,18 @@ import {
   GET_USER_BY_ID,
   CREATE_USER,
   LOGIN,
+  SEND_POST,
   // TYPE_USER_VERIFIED,
   CREATE_VACANT,
   GET_VACANTS_BY_USER,
-  MODIFICATION,
+  CREATE_PAYMENT
+
 } from "../Redux/actions/";
 
-//LOGIN
+
+
+  //LOGIN
+
 
 const initialState = {
   vacants: [],
@@ -19,11 +24,12 @@ const initialState = {
   empresas: [],
   users: [],
   filteredUsers: [],
-  userDetail: [],
-  userVerified: {},
-  VacantsByUserId: [],
-
+  userDetail: {},
+  userVerified:{},
+  VacantsByUserId:[],
+  postulations: [],
   // typeUserVerified:0
+  clientSecret:''
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -77,8 +83,18 @@ const rootReducer = (state = initialState, action) => {
     case GET_VACANTS_BY_USER:
       return {
         ...state,
-        VacantsByUserId: action.payload,
-      };
+        VacantsByUserId:action.payload,
+      }
+    case CREATE_PAYMENT:
+      return{
+        ...state,
+        clientSecret:action.payload
+      }
+      case SEND_POST:
+        return{
+          ...state,
+          postulations: action.payload
+        };  
     default:
       return { ...state };
   }

@@ -18,6 +18,7 @@ const Vacantes = () => {
     { id: 1, title: 'Back end developer', location: 'Buenos Aires' },
     { id: 2, title: 'Analista it', location: 'Córdoba' },
     { id: 3, title: 'Full stack developer', location: 'Rosario' },
+    { id: 3, title: 'Front end developer', location: 'Rosario' },
   ];
 
   const handleVacanteClick = (vacante) => {
@@ -53,15 +54,15 @@ const Vacantes = () => {
       <h2 className="bg-gray-800 text-white p-4">Vacantes publicadas</h2>
       <div className="flex items-center justify-center h-screen w-full bg-gray-800">
       <div className="container mx-auto p-4">
-        <h1 className="text-3xl font-bold mb-4">
+        <h1>
           <ul className="flex flex-row space-x-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {VacantsByUserId.map((el) => (
-              <li key={el.id} className="bg-white rounded-lg shadow-md p-4">
+              <li key={el.id} className="w-6/12 h-96 rounded-md shadow-2xl bg-indigo-700 text-white p-5 flex flex-col justify-around">
                 <h2 className="text-lg font-bold mb-2">{el.title}</h2>
-                <p className="text-gray-700">
+                <p>
                 Description: {el.description}
                 </p><br />
-                <p className="text-gray-700">
+                <p>
                 Requeriments: {el.requeriments}
                 </p><br />
                 <div className="flex justify-center items-center h-24">
