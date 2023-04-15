@@ -1,9 +1,8 @@
 import React from "react";
 import { useState } from "react";
-import { useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { createUser } from "../../Redux/actions/";
-
 
 import style from "./Register.module.css";
 
@@ -36,16 +35,18 @@ export default function CreateUser() {
   }
 
   const roles = ["normal", "company", "hibrid"];
-  const description = ["normal user type", "company user type", "hibrid user type"]
+  const description = [
+    "normal user type",
+    "company user type",
+    "hibrid user type",
+  ];
 
   const [input, setInput] = useState({
     name: "",
     email: "",
     phone: "",
     password: "",
-    role: {name: "",
-           description: ""}
-    
+    role: { name: "", description: "" },
   });
 
   const [roleId, setRoleId] = useState({
@@ -70,24 +71,24 @@ export default function CreateUser() {
       ...roleId,
       name: e.target.value,
     });
-    if(e.target.value === "normal"){
-    setInput({
-      ...input,
-      role: {name: e.target.value,
-      description: description[0]}
-    })}
-    if(e.target.value === "company"){
+    if (e.target.value === "normal") {
       setInput({
         ...input,
-        role: {name: e.target.value,
-        description: description[1]}
-      })}
-      if(e.target.value === "hibrid"){
-        setInput({
-          ...input,
-          role: {name: e.target.value,
-          description: description[2]}
-        })}
+        role: { name: e.target.value, description: description[0] },
+      });
+    }
+    if (e.target.value === "company") {
+      setInput({
+        ...input,
+        role: { name: e.target.value, description: description[1] },
+      });
+    }
+    if (e.target.value === "hibrid") {
+      setInput({
+        ...input,
+        role: { name: e.target.value, description: description[2] },
+      });
+    }
 
     setError(
       validate({
@@ -96,23 +97,22 @@ export default function CreateUser() {
       })
     );
   };
-  
-console.log(roleId)
+
+  console.log(roleId);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (input.role.length === 0) {
       return alert("You need pick a role");
     }
-    const data = {...input};
-    console.log(data)
+    const data = { ...input };
+    console.log(data);
     dispatch(createUser(data));
     setInput({
       name: "",
       email: "",
       phone: "",
       password: "",
-      role: {name: ""}
-  
+      role: { name: "" },
     });
     if(data.name && data.email && data.phone && data.password && data.role){
     alert("Register successfull!");
@@ -125,9 +125,9 @@ console.log(roleId)
   return (
     <div className="flex flex-col items-center justify-center bg-slate-50 w-full h-screen text-white">
       <form
-      onSubmit={(e)=> handleSubmit(e)}
+        onSubmit={(e) => handleSubmit(e)}
         className="bg-indigo-700 p-5 rounded-md text-white"
-        >
+      >
         <div>
           <h1 className="text-white text-center">Create User</h1>
           <div className={style.divtextimg}>
@@ -186,7 +186,7 @@ console.log(roleId)
                 <label className={style.label}>Roles: </label>
                 <select
                   defaultValue={"none"}
-                  type= "text"
+                  type="text"
                   name="roleId"
                   onChange={(e) => handleSelect(e)}
                   className="bg-indigo-500 ml-9 p-1"
