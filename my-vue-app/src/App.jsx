@@ -10,21 +10,29 @@ import Postulation from "./Views/Postulation"
 import NewVacant from "./Components/NewVacant/NewVacant";
 import VacantDetail from "./Components/VacantDetail/VacantDetail";
 import Vacantes from "./Views/Vacantes";
-import Premium from "./Views/Premium";
+import CardDetail from "./Components/CardDetail/CardDetail";
 
 import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
-import CardDetail from "./Components/CardDetail/CardDetail";
 
+import Premium from "./Views/Premium";
+import { useSelector } from "react-redux";
+
+// Make sure to call `loadStripe` outside of a component’s render to avoid
+// recreating the `Stripe` object on every render.
 //const stripePromise = loadStripe('pk_test_Dt4ZBItXSZT1EzmOd8yCxonL');
 
 
 function App() {
 
-  /* const options = {
-    // passing the client secret obtained from the server
-    clientSecret: 'sk_test_51Mu3LiJxJBGJcqxnE5FrbtfC7La83efVuuQiNNhEcSvA8lSp25hvMvQApyEwksGrbuwcwXxiOGI5CyJOrxVwO27600nrIsdBl4',
-  }; */
+  //let client_Secret=useSelector((state)=>state.clientSecret);
+
+  //const options = {
+    // passing the client secret obtained in step 3
+    //clientSecret: `${client_Secret}`,
+    // Fully customizable with appearance API.
+    //appearance: {/*...*/},
+  //};
 
   return (
     <div className="App font-D-DIN">
@@ -44,7 +52,7 @@ function App() {
         <Route path="/newvacant" component={NewVacant} />
         <Route path="/vacant-detail/:id" component={VacantDetail} />
         <Route path="/premium" component={Premium}/>
-        <Route path="/detail/:id" component={CardDetail}/>
+        <Route path="/detail/:id" component={CardDetail} />
       </BrowserRouter>
     </div>
   );
