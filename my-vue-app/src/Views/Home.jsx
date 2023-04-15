@@ -20,7 +20,7 @@ const Home = () => {
     const timeout = setTimeout(() => {
       setLoading(false);
 
-    }, 15000);
+    }, 10000);
 
   
     return () => {
