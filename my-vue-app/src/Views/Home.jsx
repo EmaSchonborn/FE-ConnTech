@@ -3,21 +3,12 @@ import CardsContainer from "../Components/CardsContainer/CardsContainer";
 import SearchBar from "../components/NavBar/SearchBar";
 import SideBar from "../components/SideBar/SideBar";
 //import Paginate from "../components/Pagination/Pagination";
-<<<<<<< HEAD
-
-=======
->>>>>>> dev
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector, useStore } from "react-redux";
 import { getUsers, getVacantes } from "../Redux/actions";
 import CardsContainer2 from "../Components/CardsContainer/CardsContainer2";
-<<<<<<< HEAD
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getVacantes } from "../Redux/actions";
-=======
 import SideBar2 from "../Components/SideBar/SideBar2";
->>>>>>> dev
+
 
 //import Pagination from "../components/Pagination/Pagination";
 
@@ -28,13 +19,9 @@ const Home = () => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       setLoading(false);
-<<<<<<< HEAD
-    }, 10000);
-=======
 
-    }, 10000);
+    }, 12000);
 
->>>>>>> dev
   
     return () => {
       clearTimeout(timeout);

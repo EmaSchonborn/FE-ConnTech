@@ -7,13 +7,11 @@ import {
   LOGIN,
   // TYPE_USER_VERIFIED,
   CREATE_VACANT,
-  GET_VACANTS_BY_USER
-
+  GET_VACANTS_BY_USER,
+  MODIFICATION,
 } from "../Redux/actions/";
 
-
-  //LOGIN
-
+//LOGIN
 
 const initialState = {
   vacants: [],
@@ -22,11 +20,11 @@ const initialState = {
   users: [],
   filteredUsers: [],
   userDetail: [],
-  userVerified:{},
-  VacantsByUserId:[]
+  userVerified: {},
+  VacantsByUserId: [],
+
   // typeUserVerified:0
 };
-
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -52,30 +50,35 @@ const rootReducer = (state = initialState, action) => {
         userDetail: action.payload,
       };
     case CREATE_USER:
-       return{
+      return {
         ...state,
-        userVerified:action.payload
+        userVerified: action.payload,
       };
     case CREATE_VACANT:
-      return{
+      return {
         ...state,
-        vacants:action.payload
-      };  
+        vacants: action.payload,
+      };
     case LOGIN:
-      return{
+      return {
         ...state,
-        userVerified:action.payload,
-      }
+        userVerified: action.payload,
+      };
+    case MODIFICATION:
+      return {
+        ...state,
+        userVerified: action.payload,
+      };
     //  case TYPE_USER_VERIFIED:
     //   return{
     //     ...state,
     //     typeUserVerified:action.payload.user.roleId
-    //   } 
+    //   }
     case GET_VACANTS_BY_USER:
-      return{
+      return {
         ...state,
-        VacantsByUserId:action.payload,
-      }
+        VacantsByUserId: action.payload,
+      };
     default:
       return { ...state };
   }

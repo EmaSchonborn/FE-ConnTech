@@ -4,6 +4,8 @@ import userImage from "./imagen/imgPerfil.png";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { RiHome2Fill } from "react-icons/ri";
+import { modificationUser } from "../../Redux/actions";
+//import { useNavigate } from "react-router-dom";
 
 function validate(input) {
   let errors = [];
@@ -18,9 +20,20 @@ function validate(input) {
 }
 
 const ProfileUser = () => {
-  const [educacion, setEducacion] = useState("");
-  const [experiencia, setExperiencia] = useState("");
   const dispatch = useDispatch();
+  //const navigate = useNavigate();
+
+  const [educacion, setEducacion] = useState({
+    name: "",
+    dateBegin: "",
+    dateEnd: "",
+    jobActually: "",
+  });
+  const [experiencia, setExperiencia] = useState({
+    name: "",
+    institution: "",
+  });
+  
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -30,16 +43,14 @@ const ProfileUser = () => {
       setExperiencia(value);
     }
   };
+  const userVerified = useSelector((state) => state.userVerified);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch({
-      type: "SET_EDUCACION_EXPERIENCIA",
-      payload: { educacion, experiencia },
-    });
+    dispatch(modificationUser(educacion, experiencia, userVerified.id));
+   // navigate("/home");
   };
 
-  const userVerified = useSelector((state) => state.userVerified);
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -84,27 +95,43 @@ const ProfileUser = () => {
               </h2>
             </div>
           </div>
-          <div className="-mx-3 md:flex mb-6 mt-2">
+
+      <form onSubmit={(e) => handleSubmit(e)}>
+      <div className="-mx-3 md:flex mb-6 mt-2">
             <div className="md:w-full px-3">
-              <textarea
-                required
-                className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                id="grid-experiencia"
+              <input
+                className="bg-white"
+                placeholder="Cargo"
+                name="name"
                 type="text"
-                name="description"
-                placeholder="Experiencia laboral"
-                rows="5"
+                onChange={handleChange}
               />
+
+              <input
+                className="bg-white"
+                placeholder="Fecha de inicio"
+                name="dateBegin"
+              />
+
+              <input 
+              className="bg-white" 
+              placeholder="Fecha de fin" 
+              name="dateEnd" />
+
+              <input placeholder="jobActually" />
+
+
             </div>
           </div>
 
           <div className="flex justify-end h-15 p-4">
             <div className="flex">
-              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">
-                <Link to="/home">Home</Link>
+              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4" type="submit">
+                Guardar
               </button>
             </div>
           </div>
+      </form>
 
           <div className="bg-white overflow-hidden shadow sm:rounded-lg">
             <div className="px-4 py-5 sm:px-6">
