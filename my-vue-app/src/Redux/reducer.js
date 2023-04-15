@@ -7,7 +7,8 @@ import {
   LOGIN,
   // TYPE_USER_VERIFIED,
   CREATE_VACANT,
-  GET_VACANTS_BY_USER
+  GET_VACANTS_BY_USER,
+  GET_NOTIFICATION
 
 } from "../Redux/actions/";
 
@@ -23,7 +24,8 @@ const initialState = {
   filteredUsers: [],
   userDetail: {},
   userVerified:{},
-  VacantsByUserId:[]
+  VacantsByUserId:[],
+  notifications: []
   // typeUserVerified:0
 };
 
@@ -75,6 +77,11 @@ const rootReducer = (state = initialState, action) => {
       return{
         ...state,
         VacantsByUserId:action.payload,
+      }
+      case GET_NOTIFICATION:
+      return{
+        ...state,
+        notifications:action.payload,
       }
     default:
       return { ...state };

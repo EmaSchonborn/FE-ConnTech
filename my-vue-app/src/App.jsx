@@ -12,6 +12,7 @@ import VacantDetail from "./Components/VacantDetail/VacantDetail";
 import Vacantes from "./Views/Vacantes";
 import Premium from "./Views/Premium";
 import CardDetail from "./Components/CardDetail/CardDetail";
+import Notificaciones from "./Components/Notification/Notificaciones"
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
         <Route path="/vacant-detail/:id" component={VacantDetail} />
         <Route path="/premium" component={Premium} />
         <Route path="/detail/:id" component={CardDetail} />
+        <Route path="/notificaciones" component={Notificaciones} />
       </BrowserRouter>
     </div>
   );
