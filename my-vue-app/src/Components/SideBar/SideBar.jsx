@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { BiArrowFromLeft, BiArrowFromRight } from "react-icons/bi";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { CreatePayment } from "../../Redux/actions";
 
 export default function SideBar() {
   const [showSidebar, setShowSidebar] = useState(true);
   const userVerified=useSelector((state)=>state.userVerified.user);
+  const dispatch=useDispatch();
 
   const toggleSidebar = () => {
     setShowSidebar(!showSidebar);
