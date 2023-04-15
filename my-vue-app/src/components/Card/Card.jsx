@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 
 const Card = (props) => {
   return (
-    <div className="flex flex-row items-center max-w-md mx-auto rounded-md shadow-md overflow-hidden h-auto md:h-20 ">
+    <div className="container mx-auto p-4">
+    <div className="w-6/12 h-96 rounded-md shadow-2xl text-white p-5 flex flex-col justify-around">
       <img
         src="https://thumbs.dreamstime.com/b/marcador-de-foto-avatar-perfil-predeterminado-ilustraci%C3%B3n-vectorial-189495158.jpg"
         alt=""
@@ -11,9 +12,9 @@ const Card = (props) => {
       />
 
       {props.name?<h3 className="px-4 py-2 ">{props.name}</h3>:<h3 className="px-4 py-2 ">{props.title}</h3>}
-      {props.phone?<p className="px-4 py-2">Teléfono: {props.phone}</p>:<p className="px-4 py-2">Requerimientos: {props.requeriments}</p>}
+      {props.phone?<p className="px-4 py-2">Teléfono: {props.phone}</p>:null}
       <div className="px-4 py-2">
-      {props.description?<p className="px-4 py-2">Descripcion: {props.description}</p>:null}
+      {/* {props.description?<p className="px-4 py-2">Descripcion: {props.description}</p>:null} */}
         {props.name? <Link className="flex justify-center" to={`/detail/${props.id}`}>
           <h2 className="flex justify-center bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors duration-300">
             <p>Perfil</p>
@@ -24,6 +25,7 @@ const Card = (props) => {
           </h2>
         </Link>}
       </div>
+    </div>
     </div>
   );
 };
