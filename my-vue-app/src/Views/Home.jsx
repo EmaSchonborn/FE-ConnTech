@@ -9,6 +9,7 @@ import { getUsers, getVacantes } from "../Redux/actions";
 import CardsContainer2 from "../Components/CardsContainer/CardsContainer2";
 import SideBar2 from "../Components/SideBar/SideBar2";
 
+
 //import Pagination from "../components/Pagination/Pagination";
 
 const Home = () => {

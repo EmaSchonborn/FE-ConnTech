@@ -9,14 +9,12 @@ import {
   // TYPE_USER_VERIFIED,
   CREATE_VACANT,
   GET_VACANTS_BY_USER,
-  CREATE_PAYMENT
-
+  CREATE_PAYMENT,
+  //LOGIN
+  MODIFICATION,
 } from "../Redux/actions/";
 
-
-
-  //LOGIN
-
+//LOGIN
 
 const initialState = {
   vacants: [],
@@ -28,10 +26,10 @@ const initialState = {
   userVerified:{},
   VacantsByUserId:[],
   postulations: [],
+
   // typeUserVerified:0
   clientSecret:''
 };
-
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -57,27 +55,32 @@ const rootReducer = (state = initialState, action) => {
         userDetail: action.payload,
       };
     case CREATE_USER:
-       return{
+      return {
         ...state,
-        userVerified:action.payload
+        userVerified: action.payload,
       };
     case CREATE_VACANT:
-      return{
+      return {
         ...state,
-        vacants:action.payload
-      };  
+        vacants: action.payload,
+      };
     case LOGIN:
-      return{
+      return {
         ...state,
-        userVerified:action.payload,
-      }
+        userVerified: action.payload,
+      };
+    case MODIFICATION:
+      return {
+        ...state,
+        userVerified: action.payload,
+      };
     //  case TYPE_USER_VERIFIED:
     //   return{
     //     ...state,
     //     typeUserVerified:action.payload.user.roleId
-    //   } 
+    //   }
     case GET_VACANTS_BY_USER:
-      return{
+      return {
         ...state,
         VacantsByUserId:action.payload,
       }
