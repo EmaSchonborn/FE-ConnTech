@@ -5,12 +5,14 @@ import {
   GET_USER_BY_ID,
   CREATE_USER,
   LOGIN,
+  SEND_POST,
   // TYPE_USER_VERIFIED,
   CREATE_VACANT,
   GET_VACANTS_BY_USER,
   CREATE_PAYMENT
 
 } from "../Redux/actions/";
+
 
 
   //LOGIN
@@ -25,6 +27,7 @@ const initialState = {
   userDetail: {},
   userVerified:{},
   VacantsByUserId:[],
+  postulations: [],
   // typeUserVerified:0
   clientSecret:''
 };
@@ -83,6 +86,11 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         clientSecret:action.payload
       }
+      case SEND_POST:
+        return{
+          ...state,
+          postulations: action.payload
+        };  
     default:
       return { ...state };
   }

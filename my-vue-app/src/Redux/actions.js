@@ -10,6 +10,7 @@ export const LOGIN="LOGIN";
 export const GET_VACANTS_BY_USER="GET_VACANTS_BY_USER";
 export const TYPE_USER_VERIFIED="TYPE_USER_VERIFIED";
 export const CREATE_PAYMENT="CREATE_PAYMENT";
+export const SEND_POST= "SEND_POST";
 
 const pruebaUsers = [
     {
@@ -259,7 +260,7 @@ export function createVacant(payload){
     }
   }};
 
-  export function GetVacantsByUserId(id){
+export function GetVacantsByUserId(id){
     return async function(dispatch){
       try {
         let json = await axios.get(`https://api-conntech.onrender.com/vacant/vacantsbyuser/${id}`)
@@ -286,3 +287,15 @@ export function CreatePayment(){
     }
   }
 };
+export function sendPost(payload){
+  return async function(dispatch){
+      try {
+        let json = await axios.post(`https://api-conntech.onrender.com/postulation/new`, payload)
+        dispatch({
+          type: SEND_POST,
+          payload: json.data,
+        });
+      } catch (error) {
+        console.log(error.message)
+      }
+    }};
