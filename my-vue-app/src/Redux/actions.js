@@ -9,9 +9,11 @@ export const CREATE_VACANT = "CREATE_VACANT";
 export const LOGIN="LOGIN";
 export const GET_VACANTS_BY_USER="GET_VACANTS_BY_USER";
 export const TYPE_USER_VERIFIED="TYPE_USER_VERIFIED";
+export const GET_NOTIFICATION='GET_NOTIFICATION'
 export const CREATE_PAYMENT="CREATE_PAYMENT";
 export const SEND_POST= "SEND_POST";
 export const MODIFICATION="MODIFICATION";
+
 
 const pruebaUsers = [
     {
@@ -306,6 +308,20 @@ export function GetVacantsByUserId(id){
         console.log(error.message)
       }
     }};
+
+
+    export function GetNotification(id){
+      return async function(dispatch){
+        try {
+          let json = await axios.get(`https://api-conntech.onrender.com/notification/notificationbyuser/${id}`)
+          dispatch({
+            type: GET_NOTIFICATION,
+            payload: json.data.notification,
+          });
+        } catch (error) {
+          console.log(error.message)
+        }
+      }};
 
 export function CreatePayment(){
   return async function(dispatch){

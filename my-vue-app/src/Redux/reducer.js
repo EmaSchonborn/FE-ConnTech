@@ -9,6 +9,10 @@ import {
   // TYPE_USER_VERIFIED,
   CREATE_VACANT,
   GET_VACANTS_BY_USER,
+
+  GET_NOTIFICATION
+
+
   MODIFICATION,
   CREATE_PAYMENT
 } from "../Redux/actions/";
@@ -24,7 +28,11 @@ const initialState = {
   userDetail: {},
   userVerified:{},
   VacantsByUserId:[],
+
+  notifications: []
+
   postulations: [],
+
   // typeUserVerified:0
   clientSecret:''
 };
@@ -82,6 +90,13 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         VacantsByUserId:action.payload,
       }
+
+      case GET_NOTIFICATION:
+      return{
+        ...state,
+        notifications:action.payload,
+      }
+
     case CREATE_PAYMENT:
       return{
         ...state,
@@ -92,6 +107,7 @@ const rootReducer = (state = initialState, action) => {
           ...state,
           postulations: action.payload
         };  
+
     default:
       return { ...state };
   }
