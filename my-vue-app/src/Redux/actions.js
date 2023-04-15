@@ -274,7 +274,7 @@ export function GetVacantsByUserId(id){
 export function sendPost(payload){
   return async function(dispatch){
       try {
-        let json = await axios.put(`https://api-conntech.onrender.com/postulaciones/`, payload)
+        let json = await axios.post(`https://api-conntech.onrender.com/postulation/new`, payload)
         dispatch({
           type: SEND_POST,
           payload: json.data,
