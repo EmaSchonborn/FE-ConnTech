@@ -3,9 +3,9 @@ import { useState } from "react";
 import { useDispatch} from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { createUser } from "../../Redux/actions/";
-
-
+import sgMail from "@sendgrid/mail";
 import style from "./Register.module.css";
+
 
 export default function CreateUser() {
   let dispatch = useDispatch();
@@ -34,7 +34,7 @@ export default function CreateUser() {
     }
     return errors;
   }
-
+ 
   const roles = ["normal", "company", "hibrid"];
   const description = ["normal user type", "company user type", "hibrid user type"]
 
@@ -96,31 +96,46 @@ export default function CreateUser() {
       })
     );
   };
-  
+ 
 console.log(roleId)
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (input.role.length === 0) {
-      return alert("You need pick a role");
-    }
-    const data = {...input};
-    console.log(data)
-    dispatch(createUser(data));
-    setInput({
-      name: "",
-      email: "",
-      phone: "",
-      password: "",
-      role: {name: ""}
-  
-    });
-    if(data.name && data.email && data.phone && data.password && data.role){
-    alert("Register successfull!");
-    history.push("/login");}
-    else {
-      alert("You most to complete the info")
-    }
+const handleSubmit = (e) => {
+  e.preventDefault();
+  if (input.role.length === 0) {
+    return alert("You need pick a role");
+  }
+  const data = { ...input };
+  console.log(data);
+  dispatch(createUser(data));
+
+  sgMail.setApiKey("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"); // Reemplace SENDGRID_API_KEY con su propia clave API de SendGrid
+
+  const msg = {
+    to: "nicoyabichino@gmail.com",
+    from: "nicoyabichino@gmail.com",
+    subject: "Welcome to our application!",
+    text: "Thank you for registering with us!",
+    html: "<strong>Thank you for registering with us!</strong>",
   };
+
+  sgMail.send(msg).then(() => {
+    console.log("Email sent");
+  });
+
+  setInput({
+    name: "",
+    email: "",
+    phone: "",
+    password: "",
+    role: { name: "" },
+  });
+
+  if (data.name && data.email && data.phone && data.password && data.role) {
+    alert("Register successfull!");
+    history.push("/login");
+  } else {
+    alert("You most to complete the info");
+  }
+};
 
   return (
     <div className="flex flex-col items-center justify-center bg-slate-50 w-full h-screen text-white">
@@ -220,3 +235,26 @@ console.log(roleId)
     </div>
   );
 }
+// const handleSubmit = (e) => {
+//   e.preventDefault();
+//   if (input.role.length === 0) {
+//     return alert("You need pick a role");
+//   }
+//   const data = {...input};
+//   console.log(data)
+//   dispatch(createUser(data));
+//   setInput({
+//     name: "",
+//     email: "",
+//     phone: "",
+//     password: "",
+//     role: {name: ""}
+
+//   });
+//   if(data.name && data.email && data.phone && data.password && data.role){
+//   alert("Register successfull!");
+//   history.push("/login");}
+//   else {
+//     alert("You most to complete the info")
+//   }
+// };
