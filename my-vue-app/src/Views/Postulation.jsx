@@ -33,7 +33,7 @@ const Postulation = () => {
                   libero tincidunt hendrerit.
                 </p>
                 <div className="flex justify-center items-center h-24">
-                  <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                  <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                     Save Changes
                   </button>
                 </div>

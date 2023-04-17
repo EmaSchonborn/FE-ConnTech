@@ -8,6 +8,8 @@ import { useDispatch, useSelector, useStore } from "react-redux";
 import { getUsers, getVacantes } from "../Redux/actions";
 import CardsContainer2 from "../Components/CardsContainer/CardsContainer2";
 import SideBar2 from "../Components/SideBar/SideBar2";
+
+
 //import Pagination from "../components/Pagination/Pagination";
 
 const Home = () => {
@@ -18,7 +20,8 @@ const Home = () => {
     const timeout = setTimeout(() => {
       setLoading(false);
 
-    }, 14000);
+    }, 10000);
+
   
     return () => {
       clearTimeout(timeout);
