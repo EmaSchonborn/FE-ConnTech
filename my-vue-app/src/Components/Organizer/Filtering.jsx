@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { filterByTechnology, filterBySource } from "../../redux/actions";
+import { filterByTechnology, filterBySource } from "../../Redux/actions";
 
 const Filter = () => {
   const dispatch = useDispatch();
