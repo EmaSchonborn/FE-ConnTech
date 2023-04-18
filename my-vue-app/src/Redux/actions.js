@@ -6,12 +6,13 @@ export const GET_USERS = "GET_USERS";
 export const GET_USER_BY_ID = "GET_USER_BY_ID";
 export const CREATE_USER = "CREATE_USER";
 export const CREATE_VACANT = "CREATE_VACANT";
-export const LOGIN = "LOGIN";
-export const GET_VACANTS_BY_USER = "GET_VACANTS_BY_USER";
-export const TYPE_USER_VERIFIED = "TYPE_USER_VERIFIED";
-export const CREATE_PAYMENT = "CREATE_PAYMENT";
-export const SEND_POST = "SEND_POST";
-export const MODIFICATION = "MODIFICATION";
+export const LOGIN="LOGIN";
+export const GET_VACANTS_BY_USER="GET_VACANTS_BY_USER";
+export const TYPE_USER_VERIFIED="TYPE_USER_VERIFIED";
+export const GET_NOTIFICATION='GET_NOTIFICATION'
+export const CREATE_PAYMENT="CREATE_PAYMENT";
+export const SEND_POST= "SEND_POST";
+export const MODIFICATION="MODIFICATION";
 
 export function getUsers() {
   return async function (dispatch) {
@@ -172,49 +173,56 @@ export function createVacant(payload) {
   };
 }
 
-export function GetVacantsByUserId(id) {
-  return async function (dispatch) {
-    try {
-      let json = await axios.get(
-        `https://api-conntech.onrender.com/vacant/vacantsbyuser/${id}`
-      );
-      dispatch({
-        type: GET_VACANTS_BY_USER,
-        payload: json.data,
-      });
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
-}
+export function GetVacantsByUserId(id){
+    return async function(dispatch){
+      try {
+        let json = await axios.get(`https://api-conntech.onrender.com/vacant/vacantsbyuser/${id}`)
+        dispatch({
+          type: GET_VACANTS_BY_USER,
+          payload: json.data,
+        });
+      } catch (error) {
+        console.log(error.message)
+      }
+    }};
 
-export function CreatePayment() {
-  return async function (dispatch) {
+
+    export function GetNotification(id){
+      return async function(dispatch){
+        try {
+          let json = await axios.get(`https://api-conntech.onrender.com/notification/notificationbyuser/${id}`)
+          dispatch({
+            type: GET_NOTIFICATION,
+            payload: json.data.notification,
+          });
+        } catch (error) {
+          console.log(error.message)
+        }
+      }};
+
+export function CreatePayment(){
+  return async function(dispatch){
     try {
-      let result = await axios.get(
-        "https://api-conntech.onrender.com/premium/payment"
-      );
-      let { client_secret: clientSecret } = await result.data;
+      let result=await axios.get('https://api-conntech.onrender.com/premium/payment')
+      let {client_secret: clientSecret} = await result.data;
       dispatch({
-        type: CREATE_PAYMENT,
-        payload: clientSecret,
-      });
-    } catch (error) {}
-  };
-}
-export function sendPost(payload) {
-  return async function (dispatch) {
-    try {
-      let json = await axios.post(
-        `https://api-conntech.onrender.com/postulation/new`,
-        payload
-      );
-      dispatch({
-        type: SEND_POST,
-        payload: json.data,
+        type:CREATE_PAYMENT,
+        payload:clientSecret
       });
     } catch (error) {
-      console.log(error.message);
+      
     }
-  };
-}
+  }
+};
+export function sendPost(payload){
+  return async function(dispatch){
+      try {
+        let json = await axios.post(`https://api-conntech.onrender.com/postulation/new`, payload)
+        dispatch({
+          type: SEND_POST,
+          payload: json.data,
+        });
+      } catch (error) {
+        console.log(error.message)
+      }
+    }};
