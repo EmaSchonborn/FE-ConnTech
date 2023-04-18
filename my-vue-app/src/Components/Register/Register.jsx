@@ -98,14 +98,14 @@ export default function CreateUser() {
     );
   };
 
-  console.log(roleId);
+  // console.log(roleId);
   const handleSubmit = (e) => {
     e.preventDefault();
     if (input.role.length === 0) {
       return alert("You need pick a role");
     }
     const data = { ...input };
-    console.log(data);
+    // console.log(data);
     dispatch(createUser(data));
     setInput({
       name: "",
