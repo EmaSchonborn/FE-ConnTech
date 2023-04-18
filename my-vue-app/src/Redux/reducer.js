@@ -9,13 +9,10 @@ import {
   // TYPE_USER_VERIFIED,
   CREATE_VACANT,
   GET_VACANTS_BY_USER,
-
-  GET_NOTIFICATION
-
-
+  GET_NOTIFICATION,
   MODIFICATION,
   CREATE_PAYMENT
-} from "../Redux/actions/";
+} from "../Redux/actions";
 
 //LOGIN
 
@@ -29,7 +26,7 @@ const initialState = {
   userVerified:{},
   VacantsByUserId:[],
 
-  notifications: []
+  notifications: [],
 
   postulations: [],
 
