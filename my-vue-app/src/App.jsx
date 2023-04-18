@@ -12,10 +12,10 @@ import VacantDetail from "./Components/VacantDetail/VacantDetail";
 import Vacantes from "./Views/Vacantes";
 import CardDetail from "./Components/CardDetail/CardDetail";
 
-import {Elements} from '@stripe/react-stripe-js';
-import {loadStripe} from '@stripe/stripe-js';
+//import {Elements} from '@stripe/react-stripe-js';
+//import {loadStripe} from '@stripe/stripe-js';
 
-import Premium from "./Views/Premium";
+//import Premium from "./Views/Premium";
 import { useSelector } from "react-redux";
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
@@ -51,7 +51,7 @@ function App() {
         <Route path="/register" component={Register} />
         <Route path="/newvacant" component={NewVacant} />
         <Route path="/vacant-detail/:id" component={VacantDetail} />
-        <Route path="/premium" component={Premium}/>
+        {/* <Route path="/premium" component={Premium}/> */}
         <Route path="/detail/:id" component={CardDetail} />
       </BrowserRouter>
     </div>

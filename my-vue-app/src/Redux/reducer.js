@@ -70,11 +70,11 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         userVerified: action.payload,
       };
-    case MODIFICATION:
-      return {
-        ...state,
-        userVerified: action.payload,
-      };
+    // case MODIFICATION:
+    //   return {
+    //     ...state,
+    //     userVerified: action.payload,
+    //   };
     //  case TYPE_USER_VERIFIED:
     //   return{
     //     ...state,
