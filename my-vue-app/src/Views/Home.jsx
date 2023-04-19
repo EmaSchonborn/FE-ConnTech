@@ -5,26 +5,31 @@ import SideBar from "../components/SideBar/SideBar";
 //import Paginate from "../components/Pagination/Pagination";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector, useStore } from "react-redux";
-import { getUsers, getVacantes } from "../Redux/actions";
+import { fetchProtectedResource, getUsers, getVacantes } from "../Redux/actions";
 import CardsContainer2 from "../Components/CardsContainer/CardsContainer2";
 import SideBar2 from "../Components/SideBar/SideBar2";
+
+
 //import Pagination from "../components/Pagination/Pagination";
 
 const Home = () => {
   const userRole=useSelector((state)=>state.userVerified.user);
   const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
   
   useEffect(() => {
     const timeout = setTimeout(() => {
       setLoading(false);
-
     }, 1000);
 
-  
+    if(userRole){
+      dispatch(fetchProtectedResource());
+    }
+
     return () => {
       clearTimeout(timeout);
     }
-  }, [])
+  }, [dispatch, userRole]);
 
   if (loading) {
     return <div>Cargando...</div>; // Indicador de carga
