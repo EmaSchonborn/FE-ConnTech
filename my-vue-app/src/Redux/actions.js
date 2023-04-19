@@ -5,9 +5,6 @@ export const GET_DETAILS = "GET_DETAILS";
 export const GET_USERS = "GET_USERS";
 export const GET_USER_BY_ID = "GET_USER_BY_ID";
 export const CREATE_USER = "CREATE_USER";
-export const ORDER_BY_ALPHABET = "ORDER_BY_ALPHABET";
-export const FILTER_BY_TECHNOLOGY = "FILTER_BY_TECHNOLOGY";
-export const FILTER_BY_SOURCE = "FILTER_BY_SOURCE";
 export const CREATE_VACANT = "CREATE_VACANT";
 export const LOGIN="LOGIN";
 export const GET_VACANTS_BY_USER="GET_VACANTS_BY_USER";
@@ -15,9 +12,10 @@ export const TYPE_USER_VERIFIED="TYPE_USER_VERIFIED";
 export const GET_NOTIFICATION='GET_NOTIFICATION'
 export const CREATE_PAYMENT="CREATE_PAYMENT";
 export const SEND_POST= "SEND_POST";
-export const MODIFICATION="MODIFICATION";
-export const FETCH_PROTECTED_RESOURCE_SUCCESS = "FETCH_PROTECTED_RESOURCE_SUCCESS"
+export const SEND_EMAIL= "SEND_EMAIL";
 
+
+export const MODIFICATION="MODIFICATION";
 
 
 export function getUsers() {
@@ -107,10 +105,6 @@ export function verifyUser(Email, Password) {
         "https://api-conntech.onrender.com/user/login",
         body
       );
-
-      //se utiliza token del servidor y se almacena en localStorage
-      localStorage.setItem('authToken', json.data.token)
-
       return dispatch({
         type: LOGIN,
         payload: json.data,
@@ -120,32 +114,6 @@ export function verifyUser(Email, Password) {
     }
   };
 }
-
-export function fetchProtectedResource(){
-  return async function (dispatch) {
-    try {
-      const token = localStorage.getItem('authToken');
-      const headers = { Authorization: `Bearer ${token}`};
-      let json = await axios.get(
-        "https://api-conntech.onrender.com/protected-resource", {headers}
-      );
-      return dispatch({
-        type: FETCH_PROTECTED_RESOURCE_SUCCESS,
-        payload: json.data,
-      })
-    } catch(error) {
-      console.log(error.message)
-    }
- }
-}
-
-// export function verifyAdmin(User, Password) {
-//   const body = {
-//     user: User,
-//     password: Password,
-//   }
-//   const data = 
-// }
 
 export function modificationUser(Education, Experience, id) {
   const body = {
@@ -262,3 +230,15 @@ export function sendPost(payload){
         console.log(error.message)
       }
     }};
+export function sendEmail(payload){
+  return async function(dispatch){
+      try {
+        let json = await axios.post(`https://api-conntech.onrender.com/send-email`, payload)
+        dispatch({
+          type: SEND_EMAIL,
+          payload: json.data,
+        });
+        } catch (error) {
+          console.log(error.message)
+        }
+    }};    
