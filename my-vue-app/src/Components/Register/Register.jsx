@@ -245,3 +245,5 @@ const handleSubmit = (e) => {
 //     alert("You most to complete the info")
 //   }
 // };
+
+  

@@ -29,9 +29,6 @@ const Login = () => {
   return (
     <section className="flex items-center justify-center w-full h-screen bg-slate-100">
       <div className="flex flex-col items-center justify-center w-96 h-96 rounded-md shadow-2xl bg-indigo-700 text-white">
-        <div>
-          <Link to="/">BACK</Link>
-        </div>
         <br></br>
         <div className="md:flex ">
           <form onSubmit={handleSubmit} className="flex flex-col text-white ">
@@ -60,6 +57,10 @@ const Login = () => {
               <br />
               <Link to= "/register">
               <button className="flex-none rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Crear cuenta</button>
+              </Link>
+              <br />
+              <Link to= "/">
+              <button className="flex-none rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Back</button>
               </Link>
           </form>
         </div>
