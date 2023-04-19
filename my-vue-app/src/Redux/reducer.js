@@ -6,16 +6,14 @@ import {
   CREATE_USER,
   LOGIN,
   SEND_POST,
+  SEND_EMAIL,
   // TYPE_USER_VERIFIED,
   CREATE_VACANT,
   GET_VACANTS_BY_USER,
-
   GET_NOTIFICATION,
-
-
   MODIFICATION,
   CREATE_PAYMENT
-} from "../Redux/actions/";
+} from "../Redux/actions";
 
 //LOGIN
 
@@ -28,10 +26,11 @@ const initialState = {
   userDetail: {},
   userVerified:{},
   VacantsByUserId:[],
-
+  notifications: [],
+  postulations: [],
+  emails: [],
   notifications: [],
 
-  postulations: [],
 
   // typeUserVerified:0
   clientSecret:''
@@ -90,23 +89,28 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         VacantsByUserId:action.payload,
       }
+    case SEND_POST:
+      return{
+        ...state,
+        postulations: action.payload
+      };  
+    case SEND_EMAIL:
+      return{
+        ...state,
+        emails: action.payload
+      };
 
       case GET_NOTIFICATION:
       return{
         ...state,
         notifications:action.payload,
-      }
+      };
 
     case CREATE_PAYMENT:
       return{
         ...state,
         clientSecret:action.payload
-      }
-      case SEND_POST:
-        return{
-          ...state,
-          postulations: action.payload
-        };  
+      };
 
     default:
       return { ...state };

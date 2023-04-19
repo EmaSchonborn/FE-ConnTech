@@ -2,9 +2,9 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-import { createUser } from "../../Redux/actions/";
-
+import { createUser, sendEmail } from "../../Redux/actions/";
 import style from "./Register.module.css";
+
 
 export default function CreateUser() {
   let dispatch = useDispatch();
@@ -33,7 +33,7 @@ export default function CreateUser() {
     }
     return errors;
   }
-
+ 
   const roles = ["normal", "company", "hibrid"];
   const description = [
     "normal user type",
@@ -115,12 +115,34 @@ export default function CreateUser() {
       role: { name: "" },
     });
     if(data.name && data.email && data.phone && data.password && data.role){
+console.log(roleId)
+const handleSubmit = (e) => {
+  e.preventDefault();
+  if (input.role.name == "") {
+    return alert("You need pick a role");
+  }
+  const data = { ...input };
+  const dataEmail = {email: data.email}
+  console.log(dataEmail);
+  dispatch(createUser(data))
+  dispatch(sendEmail(dataEmail));
+
+  setInput({
+    name: "",
+    email: "",
+    phone: "",
+    password: "",
+    role: { name: "" },
+  });
+
+  if (data.name && data.email && data.phone && data.password && data.role) {
+
     alert("Register successfull!");
-    history.push("/login");}
-    else {
-      alert("You most to complete the info")
-    }
-  };
+    history.push("/login");
+  } else {
+    alert("You most to complete the info");
+  }
+};
 
   return (
     <div className="flex flex-col items-center justify-center bg-slate-50 w-full h-screen text-white">

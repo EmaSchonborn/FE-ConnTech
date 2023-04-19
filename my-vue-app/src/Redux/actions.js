@@ -17,7 +17,10 @@ export const CREATE_PAYMENT="CREATE_PAYMENT";
 export const SEND_POST= "SEND_POST";
 export const MODIFICATION="MODIFICATION";
 export const FETCH_PROTECTED_RESOURCE_SUCCESS = "FETCH_PROTECTED_RESOURCE_SUCCESS"
+export const SEND_EMAIL= "SEND_EMAIL";
 
+
+export const MODIFICATION="MODIFICATION";
 
 
 export function getUsers() {
@@ -262,3 +265,15 @@ export function sendPost(payload){
         console.log(error.message)
       }
     }};
+export function sendEmail(payload){
+  return async function(dispatch){
+      try {
+        let json = await axios.post(`https://api-conntech.onrender.com/send-email`, payload)
+        dispatch({
+          type: SEND_EMAIL,
+          payload: json.data,
+        });
+        } catch (error) {
+          console.log(error.message)
+        }
+    }};    
