@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { GetVacantsByUserId } from '../Redux/actions';
-// import Card from '../Components/Card/Card';
+import Card from '../Components/Card/Card';
 import { useParams, Link } from 'react-router-dom';
 import { RiHome2Fill, RiMenu3Fill, RiSettings4Fill } from "react-icons/ri";
 
