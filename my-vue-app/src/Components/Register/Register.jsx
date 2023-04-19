@@ -224,5 +224,5 @@ const handleSubmit = (e) => {
       </form>
     </div>
   );
-}
+};
 
