@@ -139,6 +139,14 @@ export function fetchProtectedResource(){
  }
 }
 
+// export function verifyAdmin(User, Password) {
+//   const body = {
+//     user: User,
+//     password: Password,
+//   }
+//   const data = 
+// }
+
 export function modificationUser(Education, Experience, id) {
   const body = {
     education: Education,
