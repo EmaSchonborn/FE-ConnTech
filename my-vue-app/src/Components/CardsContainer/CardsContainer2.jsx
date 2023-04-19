@@ -6,7 +6,7 @@ import Card from "../Card/Card";
 import Paginate from "../Pagination/Pagination";
 
 export default function CardsContainer2() {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [currentPage, setCurrentPage] = useState(1);
 
   //handlers de paginado
@@ -25,9 +25,6 @@ export default function CardsContainer2() {
   const handleNextPagination = () => {
     setCurrentPage((nextPage) => nextPage + 1);
   };
-  //esto tiene que estar asociado a state.filteredUsers (para no perder array original)
-  //parche temporal
-  //const users = useSelector((state) => state.filteredUsers);
 
   useEffect(() => {
     dispatch(getVacantes());

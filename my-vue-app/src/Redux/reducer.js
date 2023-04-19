@@ -9,14 +9,13 @@ import {
   SEND_EMAIL,
   // TYPE_USER_VERIFIED,
   CREATE_VACANT,
-  GET_VACANTS_BY_USER
+  GET_VACANTS_BY_USER,
+  GET_NOTIFICATION,
+  MODIFICATION,
+  CREATE_PAYMENT
+} from "../Redux/actions";
 
-} from "../Redux/actions/";
-
-
-
-  //LOGIN
-
+//LOGIN
 
 const initialState = {
   vacants: [],
@@ -29,9 +28,12 @@ const initialState = {
   VacantsByUserId:[],
   postulations: [],
   emails: []
-  // typeUserVerified:0
-};
+  notifications: [],
 
+
+  // typeUserVerified:0
+  clientSecret:''
+};
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -57,27 +59,32 @@ const rootReducer = (state = initialState, action) => {
         userDetail: action.payload,
       };
     case CREATE_USER:
-       return{
+      return {
         ...state,
-        userVerified:action.payload
+        userVerified: action.payload,
       };
     case CREATE_VACANT:
-      return{
+      return {
         ...state,
-        vacants:action.payload
-      };  
+        vacants: action.payload,
+      };
     case LOGIN:
-      return{
+      return {
         ...state,
-        userVerified:action.payload,
-      }
+        userVerified: action.payload,
+      };
+    case MODIFICATION:
+      return {
+        ...state,
+        userVerified: action.payload,
+      };
     //  case TYPE_USER_VERIFIED:
     //   return{
     //     ...state,
     //     typeUserVerified:action.payload.user.roleId
-    //   } 
+    //   }
     case GET_VACANTS_BY_USER:
-      return{
+      return {
         ...state,
         VacantsByUserId:action.payload,
       }
@@ -91,41 +98,22 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         emails: action.payload
       };
+
+      case GET_NOTIFICATION:
+      return{
+        ...state,
+        notifications:action.payload,
+      };
+
+    case CREATE_PAYMENT:
+      return{
+        ...state,
+        clientSecret:action.payload
+      };
+
     default:
       return { ...state };
   }
 };
 
 export default rootReducer;
-// const nodemailer = require('nodemailer');
-
-//     async function sendEmail(email, subject, message) {
-//       const transporter = nodemailer.createTransport({
-//         host: 'smtp.gmail.com',
-//         port: 465,
-//         secure: true,
-//         auth: {
-//             user: 'nicoyabichino@gmail.com',
-//             pass: 'nxjpkaptjlocketi'
-//         }
-//       });
-
-//       const mailOptions = {
-//         from: 'nicoyabichino@gmail.com',
-//         to: email,
-//         subject: subject,
-//         text: message
-//       };
-
-//       try {
-//         const info = await transporter.sendMail(mailOptions);
-//         console.log('Email enviado: ' + info.response);
-//       } catch (error) {
-//         console.log(error);
-//         throw new Error('No se pudo enviar el correo electrónico');
-//       }
-//     }
-
-//     module.exports = {
-//       sendEmail
-//     };
