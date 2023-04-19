@@ -27,7 +27,7 @@ const initialState = {
   userVerified:{},
   VacantsByUserId:[],
   postulations: [],
-  emails: []
+  emails: [],
   notifications: [],
 
 

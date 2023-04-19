@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useParams, useHistory } from "react-router-dom";
-import { getDetail, sendPost } from "../../redux/actions/";
+import { getDetail, sendPost } from "../../Redux/actions/";
 
 
 export default function VacantDetail() {
