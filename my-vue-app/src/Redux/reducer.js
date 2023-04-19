@@ -9,7 +9,10 @@ import {
   // TYPE_USER_VERIFIED,
   CREATE_VACANT,
   GET_VACANTS_BY_USER,
+
   GET_NOTIFICATION,
+
+
   MODIFICATION,
   CREATE_PAYMENT
 } from "../Redux/actions";
@@ -68,7 +71,7 @@ const rootReducer = (state = initialState, action) => {
         vacants: action.payload,
       };
     case LOGIN:
-      return {
+        return {
         ...state,
         userVerified: action.payload,
       };

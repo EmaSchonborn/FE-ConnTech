@@ -12,6 +12,7 @@ import VacantDetail from "./Components/VacantDetail/VacantDetail";
 import Vacantes from "./Views/Vacantes";
 import CardDetail from "./Components/CardDetail/CardDetail";
 import Notificaciones from "./Components/Notification/Notificaciones"
+import DashboardAdmin from "./Views/DashboardAdmin";
 
 import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
@@ -55,6 +56,7 @@ function App() {
         <Route path="/premium" component={Premium}/>
         <Route path="/detail/:id" component={CardDetail} />
         <Route path="/notificaciones" component={Notificaciones} />
+        <Route path="/administrador" component = {DashboardAdmin} />
       </BrowserRouter>
     </div>
   );
