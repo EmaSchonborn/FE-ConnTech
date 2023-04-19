@@ -8,6 +8,7 @@ export const CREATE_VACANT = "CREATE_VACANT";
 export const LOGIN="LOGIN";
 export const GET_VACANTS_BY_USER="GET_VACANTS_BY_USER";
 export const TYPE_USER_VERIFIED="TYPE_USER_VERIFIED";
+export const CREATE_USER_BY_GOOGLE = "CREATE_USER_BY_GOOGLE";
 
 const pruebaUsers = [
     {
@@ -203,6 +204,21 @@ export function createUser(payload){
       console.log(error.message)
     }
   }};
+
+export function createUserByGoogle(payload){
+
+  return async function(dispatch){
+    try {
+      const res = await axios.post('http://localhost:8000/user/registerExternal',payload)
+      dispatch({
+        type: CREATE_USER_BY_GOOGLE,
+        payload: res.data.user,
+      });
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
+}
  
 export function verifyUser(Email,Password){
   const body = {

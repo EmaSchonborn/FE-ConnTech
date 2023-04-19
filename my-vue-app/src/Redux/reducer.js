@@ -6,6 +6,7 @@ import {
   CREATE_USER,
   LOGIN,
   // TYPE_USER_VERIFIED,
+  CREATE_USER_BY_GOOGLE,
   CREATE_VACANT,
   GET_VACANTS_BY_USER
 
@@ -22,7 +23,7 @@ const initialState = {
   users: [],
   filteredUsers: [],
   userDetail: {},
-  userVerified:{},
+  userVerified:{},  
   VacantsByUserId:[]
   // typeUserVerified:0
 };
@@ -75,6 +76,11 @@ const rootReducer = (state = initialState, action) => {
       return{
         ...state,
         VacantsByUserId:action.payload,
+      }
+    case CREATE_USER_BY_GOOGLE:
+      return{
+        ...state,
+        userVerified: action.payload
       }
     default:
       return { ...state };
