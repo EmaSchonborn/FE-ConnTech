@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Card = (props) => {
   return (
-    <div className="flex flex-row items-center max-w-md mx-auto rounded-md shadow-md overflow-hidden h-auto md:h-20 ">
+    <div className="container mx-auto p-4">
       <img
         src="https://thumbs.dreamstime.com/b/marcador-de-foto-avatar-perfil-predeterminado-ilustraci%C3%B3n-vectorial-189495158.jpg"
         alt=""

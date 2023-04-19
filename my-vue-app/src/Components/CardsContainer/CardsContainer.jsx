@@ -25,9 +25,6 @@ const CardsContainer = () => {
   const handleNextPagination = () => {
     setCurrentPage((nextPage) => nextPage + 1);
   };
-  //esto tiene que estar asociado a state.filteredUsers (para no perder array original)
-  //parche temporal
-  //const users = useSelector((state) => state.filteredUsers);
 
   useEffect(() => {
     dispatch(getUsers());
