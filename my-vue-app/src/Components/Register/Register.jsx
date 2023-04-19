@@ -2,8 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch} from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-import { createUser } from "../../Redux/actions/";
-import sgMail from "@sendgrid/mail";
+import { createUser, sendEmail } from "../../Redux/actions/";
 import style from "./Register.module.css";
 
 
@@ -100,26 +99,14 @@ export default function CreateUser() {
 console.log(roleId)
 const handleSubmit = (e) => {
   e.preventDefault();
-  if (input.role.length === 0) {
+  if (input.role.name == "") {
     return alert("You need pick a role");
   }
   const data = { ...input };
-  console.log(data);
-  dispatch(createUser(data));
-
-  sgMail.setApiKey("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"); // Reemplace SENDGRID_API_KEY con su propia clave API de SendGrid
-
-  const msg = {
-    to: "nicoyabichino@gmail.com",
-    from: "nicoyabichino@gmail.com",
-    subject: "Welcome to our application!",
-    text: "Thank you for registering with us!",
-    html: "<strong>Thank you for registering with us!</strong>",
-  };
-
-  sgMail.send(msg).then(() => {
-    console.log("Email sent");
-  });
+  const dataEmail = {email: data.email}
+  console.log(dataEmail);
+  dispatch(createUser(data))
+  dispatch(sendEmail(dataEmail));
 
   setInput({
     name: "",

@@ -9,6 +9,7 @@ export const LOGIN="LOGIN";
 export const GET_VACANTS_BY_USER="GET_VACANTS_BY_USER";
 export const TYPE_USER_VERIFIED="TYPE_USER_VERIFIED";
 export const SEND_POST= "SEND_POST";
+export const SEND_EMAIL= "SEND_EMAIL";
 
 const pruebaUsers = [
     {
@@ -283,3 +284,16 @@ export function sendPost(payload){
         console.log(error.message)
       }
     }};
+export function sendEmail(payload){
+  return async function(dispatch){
+      try {
+        let json = await axios.post(`https://api-conntech.onrender.com/send-email`, payload)
+        dispatch({
+          type: SEND_EMAIL,
+          payload: json.data,
+        });
+        } catch (error) {
+          console.log(error.message)
+        }
+    }};    
+    
