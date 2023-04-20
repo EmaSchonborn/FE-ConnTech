@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { RiHome2Fill, RiMenu3Fill, RiSettings4Fill } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
-import { GetPostulationsByUserId, getDetail } from "../Redux/actions";
+/* import { GetPostulationsByUserId, getDetail } from "../Redux/actions"; */
 
 const Postulation = () => {
   const [postulations,setPostulations]=useState();
