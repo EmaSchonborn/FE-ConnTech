@@ -16,8 +16,10 @@ const Home = () => {
     const timeout = setTimeout(() => {
       setLoading(false);
     }, 1000);
+
     dispatch(getVacantes());
     dispatch(getUsers());
+
     return () => {
       clearTimeout(timeout);
     }
