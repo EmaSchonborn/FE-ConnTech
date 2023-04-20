@@ -6,16 +6,15 @@ import {
   CREATE_USER,
   LOGIN,
   SEND_POST,
+  SEND_EMAIL,
   // TYPE_USER_VERIFIED,
+  CREATE_USER_BY_GOOGLE,
   CREATE_VACANT,
   GET_VACANTS_BY_USER,
-
   GET_NOTIFICATION,
-
-
   MODIFICATION,
   CREATE_PAYMENT
-} from "../Redux/actions/";
+} from "../Redux/actions";
 
 //LOGIN
 
@@ -26,12 +25,12 @@ const initialState = {
   users: [],
   filteredUsers: [],
   userDetail: {},
-  userVerified:{},
+  userVerified:{},  
   VacantsByUserId:[],
-
+  postulations: [],
+  emails: [],
   notifications: [],
 
-  postulations: [],
 
   // typeUserVerified:0
   clientSecret:''
@@ -89,24 +88,34 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         VacantsByUserId:action.payload,
-      }
+      };
+    case CREATE_USER_BY_GOOGLE:
+      return{
+        ...state,
+        userVerified: action.payload
+      };
+    case SEND_POST:
+      return{
+        ...state,
+        postulations: action.payload
+      };  
+    case SEND_EMAIL:
+      return{
+        ...state,
+        emails: action.payload
+      };
 
       case GET_NOTIFICATION:
       return{
         ...state,
         notifications:action.payload,
-      }
+      };
 
     case CREATE_PAYMENT:
       return{
         ...state,
         clientSecret:action.payload
-      }
-      case SEND_POST:
-        return{
-          ...state,
-          postulations: action.payload
-        };  
+      };
 
     default:
       return { ...state };

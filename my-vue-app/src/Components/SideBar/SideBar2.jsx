@@ -50,7 +50,7 @@ export default function SideBar2() {
             👑 Premium
           </Link>
           <Link
-            to="/logout"
+            to="/"
             className="flex-1 block p-10 hover:bg-indigo-500 rounded-sm"
           >
             Cerrar sesión
