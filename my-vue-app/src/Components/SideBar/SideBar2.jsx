@@ -26,7 +26,7 @@ export default function SideBar2() {
             Home
           </Link>
           <Link
-            to={`/mis-postulaciones/${userVerified.id}`}
+            to={`/mis-postulaciones/${userVerified?.id}`}
             className="flex-1 block p-10 hover:bg-indigo-500 rounded-sm "
           >
             Mis Postulaciones
@@ -50,7 +50,7 @@ export default function SideBar2() {
             👑 Premium
           </Link>
           <Link
-            to="/logout"
+            to="/"
             className="flex-1 block p-10 hover:bg-indigo-500 rounded-sm"
           >
             Cerrar sesión

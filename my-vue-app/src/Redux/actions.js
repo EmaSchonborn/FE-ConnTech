@@ -9,12 +9,11 @@ export const CREATE_VACANT = "CREATE_VACANT";
 export const LOGIN="LOGIN";
 export const GET_VACANTS_BY_USER="GET_VACANTS_BY_USER";
 export const TYPE_USER_VERIFIED="TYPE_USER_VERIFIED";
+export const CREATE_USER_BY_GOOGLE = "CREATE_USER_BY_GOOGLE";
 export const GET_NOTIFICATION='GET_NOTIFICATION'
 export const CREATE_PAYMENT="CREATE_PAYMENT";
 export const SEND_POST= "SEND_POST";
 export const SEND_EMAIL= "SEND_EMAIL";
-
-
 export const MODIFICATION="MODIFICATION";
 
 
@@ -91,9 +90,23 @@ export function createUser(payload) {
     } catch (error) {
       console.log(error.message);
     }
-  };
-}
+  }};
 
+export function createUserByGoogle(payload){
+
+  return async function(dispatch){
+    try {
+      const res = await axios.post('http://localhost:8000/user/registerExternal',payload)
+      dispatch({
+        type: CREATE_USER_BY_GOOGLE,
+        payload: res.data.user,
+      });
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
+}
+ 
 export function verifyUser(Email, Password) {
   const body = {
     email: Email,
@@ -113,7 +126,7 @@ export function verifyUser(Email, Password) {
       console.log(error.message);
     }
   };
-}
+};
 
 export function modificationUser(Education, Experience, id) {
   const body = {
@@ -135,7 +148,7 @@ export function modificationUser(Education, Experience, id) {
       console.log(error.message);
     }
   };
-}
+};
 
 //  export function setTypeUser(Email,Password){
 //   const body = {
@@ -175,7 +188,7 @@ export function createVacant(payload) {
       console.log(error.message);
     }
   };
-}
+};
 
 export function GetVacantsByUserId(id){
     return async function(dispatch){
@@ -218,6 +231,7 @@ export function CreatePayment(){
     }
   }
 };
+
 export function sendPost(payload){
   return async function(dispatch){
       try {
@@ -230,6 +244,7 @@ export function sendPost(payload){
         console.log(error.message)
       }
     }};
+
 export function sendEmail(payload){
   return async function(dispatch){
       try {
