@@ -8,6 +8,7 @@ import {
   SEND_POST,
   SEND_EMAIL,
   // TYPE_USER_VERIFIED,
+  CREATE_USER_BY_GOOGLE,
   CREATE_VACANT,
   GET_VACANTS_BY_USER,
   GET_NOTIFICATION,
@@ -24,6 +25,8 @@ const initialState = {
   users: [],
   filteredUsers: [],
   userDetail: {},
+  userVerified:{},  
+  VacantsByUserId:[],
   userVerified:{},
   VacantsByUserId:[],
   postulations: [],
@@ -87,7 +90,12 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         VacantsByUserId:action.payload,
-      }
+      };
+    case CREATE_USER_BY_GOOGLE:
+      return{
+        ...state,
+        userVerified: action.payload
+      };
     case SEND_POST:
       return{
         ...state,
