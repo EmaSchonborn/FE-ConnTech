@@ -50,7 +50,7 @@ const Vacantes = () => {
           <RiSettings4Fill className="text-2xl" />
         </div>
       </nav>
-      <h2 className="bg-gray-800 text-white p-4">Vacantes publicadas</h2>
+      <h2 className="bg-gray-800 text-white p-4">Vacantes publicadas : </h2>
       <div className="flex items-center justify-center h-screen w-full bg-gray-800">
       <div className="container mx-auto p-4">
         <h1>
@@ -59,20 +59,32 @@ const Vacantes = () => {
               <li key={el.id} className="w-6/12 h-96 rounded-md shadow-2xl bg-indigo-700 text-white p-5 flex flex-col justify-around">
                 <h2 className="text-lg font-bold mb-2">{el.title}</h2>
                 <p>
-                Description: {el.description}
+                Descripcion: {el.description}
                 </p><br />
                 <p>
-                Requeriments: {el.requeriments}
+                Requerimientos: {el.requeriments}
+                </p><br />
+                <p>
+                Modalidad: {el.typeId === 1? "Fulltime" : "Partime"}
                 </p><br />
                 <div className="flex justify-center items-center h-24">
                   <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                    Save Changes
+                    Borrar
                   </button>
                 </div>
               </li>
             ))}
           </ul>
         </h1>
+        <br />
+        <br />
+        <br />
+        <br />
+        <Link to="/newvacant">
+        <button className="flex-none rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold bg-gray-800 text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+          New Vacant
+        </button>
+      </Link>
       </div>
       </div>
     </div>

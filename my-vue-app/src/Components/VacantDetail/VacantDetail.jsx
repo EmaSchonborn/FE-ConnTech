@@ -16,7 +16,7 @@ export default function VacantDetail() {
 
   const details = useSelector((state) => state.vacantDetail);
   const user = useSelector((state) => state.userVerified)
-  console.log(user)
+  console.log(details)
   const handleClick = (e) => {
     e.preventDefault()
     const data = {vacantId:params.id,

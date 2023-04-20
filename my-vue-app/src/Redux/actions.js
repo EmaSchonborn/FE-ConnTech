@@ -156,8 +156,8 @@ export function modificationUser(Education, Experience, id) {
 export function createVacant(payload) {
   const body = {
     title: payload.title,
-    modality: { name: payload.modality.name },
-    technologies: payload.technologies,
+    type: payload.type,
+    requeriments: payload.requeriments,
     description: payload.description,
     userId: payload.userId,
   };
