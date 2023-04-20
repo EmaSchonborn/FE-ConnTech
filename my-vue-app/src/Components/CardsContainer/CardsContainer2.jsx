@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { getVacantes } from "../../Redux/actions";
 import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
-import Card from "../Card/Card";
+import Card from "../Card/Card.jsx";
 import Paginate from "../Pagination/Pagination";
 
 export default function CardsContainer2() {

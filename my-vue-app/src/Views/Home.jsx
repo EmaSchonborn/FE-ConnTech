@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import CardsContainer from "../Components/CardsContainer/CardsContainer";
-import SearchBar from "../components/NavBar/SearchBar";
-import SideBar from "../components/SideBar/SideBar";
+import SearchBar from "../Components/NavBar/SearchBar";
+import SideBar from "../Components/SideBar/SideBar";
 //import Paginate from "../components/Pagination/Pagination";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector, useStore } from "react-redux";
-import { fetchProtectedResource, getUsers, getVacantes } from "../Redux/actions";
+import { getUsers, getVacantes } from "../Redux/actions";
 import CardsContainer2 from "../Components/CardsContainer/CardsContainer2";
 import SideBar2 from "../Components/SideBar/SideBar2";
 
@@ -22,9 +22,9 @@ const Home = () => {
       setLoading(false);
     }, 1000);
 
-    if(userRole){
-      dispatch(fetchProtectedResource());
-    }
+    // if(userRole){
+    //   dispatch(fetchProtectedResource());
+    // }
 
     return () => {
       clearTimeout(timeout);
