@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState,useEffect } from "react";
 import { useSelector} from "react-redux";
 import Card from "../Card/Card.jsx";
 import ReactPaginate from "react-paginate";
@@ -10,19 +10,23 @@ const CardsContainer = () => {
 
   const handlePageClick = (data) => {
     let currentPage = data.selected;
-    setItems(users.slice(currentPage*4, 4*(currentPage+1)));
+    setItems(users.slice(currentPage*3, 3*(currentPage+1)));
   };
 
   useEffect(() => {
-    setItems(users.slice(0,4));
-    setpageCount(Math.ceil(users.length / 4));
-  }, [dispatch]);
+    setItems(users.slice(0,3));
+    setpageCount(Math.ceil(users.length /3));
+  }, [users]);
 
   return (
     <>
       {
         items.map((user) => {
-          return <Card key={user.id} user={user} />;
+          return <Card key={user.id}
+                       id={user.id}
+                       name={user.name}
+                       phone={user.phone}  
+                       />;
         })
       }
       <div className='flex items-center justify-center'>
