@@ -11,7 +11,7 @@ export default function CreateVacant() {
   let dispatch = useDispatch();
   let history = useHistory();
   const [error, setError] = useState({});
-
+  const userId = useSelector((state) => state.userVerified.user.id)
   function validate(input) {
     let errors = {};
 
@@ -21,8 +21,8 @@ export default function CreateVacant() {
     if (!input.modality) {
       errors.modality = "You have to select a modality!.";
     }
-    if (!input.technologies) {
-      errors.technologies = "You have to select technologies!.";
+    if (!input.requeriments) {
+      errors.requeriments = "You have to select requeriments!.";
     }
     if (!input.description) {
       errors.description = "You have to select a description!.";
@@ -36,14 +36,15 @@ export default function CreateVacant() {
   const modalitys = ["fulltime", "partime"];
 
   const [input, setInput] = useState({
+    userId: userId,
     title: "",
-    modality: [],
-    technologies: "",
+    requeriments: "",
     description: "",
+    type: ""
   });
 
-  const [modality, setModality] = useState({
-    modality: "",
+  const [type, setType] = useState({
+    type: "",
   });
 
   const handleInput = (e) => {
@@ -60,14 +61,14 @@ export default function CreateVacant() {
   };
 
   const handleSelect = (e) => {
-    setModality({
-      ...modality,
+    setType({
+      ...type,
       [e.target.name]: e.target.value,
     });
-    if (e.target.name === "modality") {
+    if (e.target.name === "type") {
       setInput({
         ...input,
-        modality: [e.target.value],
+        type: e.target.value,
       });
     }
 
@@ -81,15 +82,17 @@ export default function CreateVacant() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (input.modality.length === 0) {
+    if (input.type.length === 0) {
       return alert("You need pick a modality");
     }
     const data = { ...input };
     dispatch(createVacant(data));
+    console.log(data)
     setInput({
+      userId: 0,
       title: "",
-      modality: {},
-      technologies: "",
+      type: "",
+      requeriments: "",
       description: "",
     });
     alert("Register successfull!");
@@ -120,15 +123,15 @@ export default function CreateVacant() {
               </div>
               <br></br>
               <div>
-                <label>Technologies: </label>
+                <label>Requeriments: </label>
                 <input
                   type="text"
-                  name="technologies"
-                  value={input.technologies}
+                  name="requeriments"
+                  value={input.requeriments}
                   onChange={(e) => handleInput(e)}
                   className="bg-indigo-500"
                 />
-                {error.technologies && <p>{error.technologies}</p>}
+                {error.requeriments && <p>{error.requeriments}</p>}
               </div>
               <br></br>
               <div>
@@ -144,10 +147,10 @@ export default function CreateVacant() {
               </div>
               <br></br>
               <div>
-                <label>Modalitys: </label>
+                <label>Types: </label>
                 <select
                   defaultValue={"none"}
-                  name="modality"
+                  name="type"
                   onChange={(e) => handleSelect(e)}
                   className="bg-indigo-500 ml-6 p-1"
                 >
