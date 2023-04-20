@@ -1,91 +1,52 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { getUsers } from "../../Redux/actions";
-import { FiArrowLeft, FiArrowRight } from "react-icons/fi";
+import React, { useEffect } from "react";
+import { useSelector} from "react-redux";
 import Card from "../Card/Card.jsx";
-import Paginate from "../Pagination/Pagination";
+import ReactPaginate from "react-paginate";
 
 const CardsContainer = () => {
-  const dispatch = useDispatch();
-  const [currentPage, setCurrentPage] = useState(1);
+  const [items,setItems] = useState([]);
+  const [pageCount, setpageCount] = useState(0);
+  const users = useSelector((state) => state.filteredUsers);
 
-  //handlers de paginado
-  const handlerPaginate = (indexPage) => {
-    setCurrentPage(indexPage);
-  };
-  const handleFirstCell = () => {
-    setCurrentPage(1);
-  };
-  const handleLastCell = () => {
-    setCurrentPage(lastCell);
-  };
-  const handlePrevPagination = () => {
-    setCurrentPage((prevPage) => prevPage - 1);
-  };
-  const handleNextPagination = () => {
-    setCurrentPage((nextPage) => nextPage + 1);
+  const handlePageClick = (data) => {
+    let currentPage = data.selected;
+    setItems(users.slice(currentPage*4, 4*(currentPage+1)));
   };
 
   useEffect(() => {
-    dispatch(getUsers());
+    setItems(users.slice(0,4));
+    setpageCount(Math.ceil(users.length / 4));
   }, [dispatch]);
 
-  const users = useSelector((state) => state.filteredUsers);
-
-  //función de paginado y botones adyacentes
-  const displayedUsers = 5;
-  const finalReference = currentPage * displayedUsers;
-  const initialReference = finalReference - displayedUsers;
-  const paginationUsers = users?.slice(initialReference, finalReference);
-  const lastCell = Math.ceil(users?.length / displayedUsers);
-
-  //lógica para mostrar sólo algunos botones de paginado
-  let startPage = Math.max(currentPage - 1, 1);
-  let endPage = Math.min(currentPage + 4, lastCell);
-  if (endPage - startPage < 6) {
-    startPage = Math.max(endPage - 4, 1);
-  }
-  const totalPages = [];
-  for (let i = startPage; i <= endPage; i++) {
-    totalPages.push(i);
-  }
-
   return (
-    <div className="">
-      <div className="flex flex-col gap-10">
-        {paginationUsers.map((user) => (
-          <Card
-            id={user.id}
-            key={user.id}
-            name={user.name}
-            email={user.email}
-            phone={user.phone}
-          />
-        ))}
+    <>
+      {
+        items.map((user) => {
+          return <Card key={user.id} user={user} />;
+        })
+      }
+      <div className='flex items-center justify-center'>
+        <ReactPaginate
+        previousLabel={"previous"}
+        nextLabel={"next"}
+        breakLabel={"..."}
+        pageCount={pageCount}
+        marginPagesDisplayed={2}
+        pageRangeDisplayed={3}
+        onPageChange={handlePageClick}
+        containerClassName={"inline-flex -space-x-px"}
+        pageClassName={"px-3 py-2 leading-tight text-blue-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"}
+        pageLinkClassName={"page-link"}
+        previousClassName={"px-3 py-2 ml-0 leading-tight text-blue-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"}
+        previousLinkClassName={"page-link"}
+        nextClassName={"px-3 py-2 leading-tight text-blue-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"}
+        nextLinkClassName={"page-link"}
+        breakClassName={"px-3 py-2 leading-tight text-blue-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"}
+        breakLinkClassName={"page-link"}
+        activeClassName={"px-3 py-2 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white"}
+      />
       </div>
-      <div className="flex flex-row fixed bottom-0 left-1/2 transform -translate-x-1/2">
-        <button disabled={currentPage === 1} onClick={handleFirstCell}>
-          First
-        </button>
-        <button disabled={currentPage === 1} onClick={handlePrevPagination}>
-          <FiArrowLeft />
-        </button>
-        <Paginate
-          totalPages={totalPages}
-          paginate={handlerPaginate}
-          currentPage={currentPage}
-        />
-        <button
-          disabled={currentPage === lastCell}
-          onClick={handleNextPagination}
-        >
-          <FiArrowRight />
-        </button>
-        <button disabled={currentPage === lastCell} onClick={handleLastCell}>
-          Last
-        </button>
-      </div>
-    </div>
+    </>
   );
 };
 
