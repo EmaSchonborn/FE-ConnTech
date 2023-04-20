@@ -43,7 +43,7 @@ const CardDetail = () => {
 				setTimeout(0)
         )}
 		<div className="flex justify-center items-center h-24">
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Contactar</button>
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Contactar</button>
 		</div>
 		</div>
 		</div>

@@ -242,3 +242,16 @@ export function sendEmail(payload){
           console.log(error.message)
         }
     }};    
+
+    // export function GetPostulationsByUserId(id){
+    //   return async function(dispatch){
+    //     try {
+    //       let json = await axios.get(`https://api-conntech.onrender.com/postulation/postulationbyuser/${id}`)
+    //       dispatch({
+    //         type: GET_POSTULATION_BY_USER,
+    //         payload: json.data.postulation,
+    //       });
+    //     } catch (error) {
+    //       console.log(error.message)
+    //     }
+    //   }};
