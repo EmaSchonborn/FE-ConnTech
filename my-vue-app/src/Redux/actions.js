@@ -1,5 +1,4 @@
 import axios from "axios";
-import { func } from "prop-types";
 export const GET_VACANT = "GET_VACANTE";
 export const GET_DETAILS = "GET_DETAILS";
 export const GET_USERS = "GET_USERS";
@@ -15,7 +14,6 @@ export const CREATE_PAYMENT="CREATE_PAYMENT";
 export const SEND_POST= "SEND_POST";
 export const SEND_EMAIL= "SEND_EMAIL";
 export const MODIFICATION="MODIFICATION";
-
 
 export function getUsers() {
   return async function (dispatch) {
@@ -37,12 +35,6 @@ export function getVacantes() {
     });
   };
 }
-
-// export const getVacantes = ()=> async (dispatch) =>{
-//     return fetch("https://api-conntech.onrender.com/vacant/")
-//     .then((r) => r.json())
-//     .then((data) => dispatch({ type: 'GET_INFO', payload: data }));
-// };
 
 export function getDetail(id) {
   return async function (dispatch) {

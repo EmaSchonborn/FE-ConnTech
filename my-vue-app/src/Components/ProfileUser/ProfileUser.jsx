@@ -161,13 +161,13 @@ const ProfileUser = () => {
             <div className="md:w-full px-3">
               <ul className="p-7 rounded-md list-disc bg-red-100">
                 <li className="mb-2 text-slate-950">
-                  {userVerified.user.name}
+                  {userVerified.user?.name}
                 </li>
                 <li className="mb-2 text-slate-950">
-                  {userVerified.user.phone}
+                  {userVerified.user?.phone}
                 </li>
                 <li className="mb-2 text-slate-950">
-                  {userVerified.user.email}
+                  {userVerified.user?.email}
                 </li>
               </ul>
             </div>
