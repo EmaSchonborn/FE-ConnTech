@@ -15,6 +15,8 @@ export const CREATE_PAYMENT = "CREATE_PAYMENT";
 export const SEND_POST = "SEND_POST";
 export const SEND_EMAIL = "SEND_EMAIL";
 export const MODIFICATION = "MODIFICATION";
+export const SUCCESS_LOGIN = "SUCCESS_LOGIN";
+export const FAILURE_LOGIN = "FAILURE_LOGIN";
 export const GET_USERS_IN_VACANT = "GET_USERS_IN_VACANT";
 
 export function getUsers() {
@@ -84,31 +86,8 @@ export function createUser(payload) {
     } catch (error) {
       console.log(error.message);
     }
-<<<<<<< HEAD
-  };
-}
-
-export function createUserByGoogle(payload) {
-  return async function (dispatch) {
-    try {
-      const res = await axios.post(
-        "http://localhost:8000/user/registerExternal",
-        payload
-      );
-      dispatch({
-        type: CREATE_USER_BY_GOOGLE,
-        payload: res.data.user,
-      });
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
-}
-
-=======
   }};
  
->>>>>>> dev
 export function verifyUser(Email, Password) {
   const body = {
     email: Email,
@@ -138,6 +117,32 @@ export function verifyUser(Email, Password) {
   };
 }
 
+export function verifyToken() {
+  return async function (dispatch) {
+    const pruebakey = localStorage.getItem("isAuthenticated");
+    const pruebaid = localStorage.getItem("id");
+
+    try {
+      let response = await axios.get(
+        `https://api-conntech.onrender.com/user/${pruebaid}`
+      );
+      if (pruebakey === "true") {
+        return dispatch({
+          type: SUCCESS_LOGIN,
+          payload: response.data,
+        });
+      } else {
+        dispatch({
+          type: FAILURE_LOGIN,
+          payload: { error: error.message },
+        });
+      }
+    } catch (error) {
+      console.log("Algo salió mal");
+    }
+  };
+}
+
 export function modificationUser(Education, Experience, id) {
   const body = {
     education: Education,
@@ -158,7 +163,7 @@ export function modificationUser(Education, Experience, id) {
       console.log(error.message);
     }
   };
-}
+};
 
 //  export function setTypeUser(Email,Password){
 //   const body = {
@@ -247,24 +252,21 @@ export function CreatePayment() {
   };
 } */
 
-export function GetNotification(id) {
-  return async function (dispatch) {
+export function GetNotification(id){
+  return async function(dispatch){
     try {
-      let json = await axios.get(
-        `https://api-conntech.onrender.com/notification/notificationbyuser/${id}`
-      );
+      let json = await axios.get(`https://api-conntech.onrender.com/notification/notificationbyuser/${id}`)
       dispatch({
         type: GET_NOTIFICATION,
         payload: json.data.notification,
       });
     } catch (error) {
-      console.log(error.message);
+      console.log(error.message)
     }
-  };
-}
+}};
 
-export function GetPostulationsByUserId() {
-  return async function (dispatch) {
+export function GetPostulationsByUserId(){
+  return async function(dispatch){
     try {
       let json = await axios.get(
         `https://api-conntech.onrender.com/postulation/postulationbyuser/${id}`
@@ -276,18 +278,52 @@ export function GetPostulationsByUserId() {
     } catch (error) {
       console.log(error.message);
     }
-  };
-}
 
-export function sendPost(payload) {
+  }
+};
+
+export function sendPost(payload){
+  return async function(dispatch){
+      try {
+        let json = await axios.post(`https://api-conntech.onrender.com/postulation/new`, payload)
+        dispatch({
+          type: SEND_POST,
+          payload: json.data,
+        });
+      } catch (error) {
+        console.log(error.message)
+      }
+}};
+
+export function sendEmail(payload){
+  return async function(dispatch){
+      try {
+      let json = await axios.post(`https://api-conntech.onrender.com/send-email`, payload)
+      dispatch({
+        type: SEND_EMAIL,
+        payload: json.data,
+      });
+      } catch (error) {
+        console.log(error.message)
+      }
+}};    
+
+export function GetUsersInVacant(id){
+  return async function(dispatch){
+    try {
+      let json = await axios.get(`https://api-conntech.onrender.com/postulation/postulationbyid/${id}`)
+      dispatch({
+        type: GET_USERS_IN_VACANT,
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log(error.message)
+    }
+}};    
+
+export function createUserByGoogle(payload) {
   return async function (dispatch) {
     try {
-<<<<<<< HEAD
-      let json = await axios.post(
-        `https://api-conntech.onrender.com/postulation/new`,
-        payload
-      );
-=======
       const res = await fetch("https://api-conntech.onrender.com/user/registerExternal",{
         method: "POST",
         body: JSON.stringify(payload),
@@ -298,43 +334,9 @@ export function sendPost(payload) {
       const data = await res.json();
       localStorage.setItem("isAuthenticated", true);
       localStorage.setItem("id", data.user.id);
->>>>>>> dev
       dispatch({
-        type: SEND_POST,
-        payload: json.data,
-      });
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
-} 
-
-export function sendEmail(payload) {
-  return async function (dispatch) {
-    try {
-      let json = await axios.post(
-        `https://api-conntech.onrender.com/send-email`,
-        payload
-      );
-      dispatch({
-        type: SEND_EMAIL,
-        payload: json.data,
-      });
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
-}
-
-export function GetUsersInVacant(id) {
-  return async function (dispatch) {
-    try {
-      let json = await axios.get(
-        `https://api-conntech.onrender.com/postulation/postulationbyid/${id}`
-      );
-      dispatch({
-        type: GET_USERS_IN_VACANT,
-        payload: json.data,
+        type: CREATE_USER_BY_GOOGLE,
+        payload: res.data.user,
       });
     } catch (error) {
       console.log(error.message);
