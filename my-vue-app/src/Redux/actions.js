@@ -6,15 +6,15 @@ export const GET_USER_BY_ID = "GET_USER_BY_ID";
 export const CREATE_USER = "CREATE_USER";
 export const CREATE_VACANT = "CREATE_VACANT";
 export const GET_POSTULATION_BY_USER = "GET_POSTULATION_BY_USER";
-export const LOGIN="LOGIN";
-export const GET_VACANTS_BY_USER="GET_VACANTS_BY_USER";
-export const TYPE_USER_VERIFIED="TYPE_USER_VERIFIED";
+export const LOGIN = "LOGIN";
+export const GET_VACANTS_BY_USER = "GET_VACANTS_BY_USER";
+export const TYPE_USER_VERIFIED = "TYPE_USER_VERIFIED";
 export const CREATE_USER_BY_GOOGLE = "CREATE_USER_BY_GOOGLE";
-export const GET_NOTIFICATION='GET_NOTIFICATION'
-export const CREATE_PAYMENT="CREATE_PAYMENT";
-export const SEND_POST= "SEND_POST";
-export const SEND_EMAIL= "SEND_EMAIL";
-export const MODIFICATION="MODIFICATION";
+export const GET_NOTIFICATION = "GET_NOTIFICATION";
+export const CREATE_PAYMENT = "CREATE_PAYMENT";
+export const SEND_POST = "SEND_POST";
+export const SEND_EMAIL = "SEND_EMAIL";
+export const MODIFICATION = "MODIFICATION";
 export const GET_USERS_IN_VACANT = "GET_USERS_IN_VACANT";
 
 export function getUsers() {
@@ -84,23 +84,26 @@ export function createUser(payload) {
     } catch (error) {
       console.log(error.message);
     }
-  }};
+  };
+}
 
-export function createUserByGoogle(payload){
-
-  return async function(dispatch){
+export function createUserByGoogle(payload) {
+  return async function (dispatch) {
     try {
-      const res = await axios.post('http://localhost:8000/user/registerExternal',payload)
+      const res = await axios.post(
+        "http://localhost:8000/user/registerExternal",
+        payload
+      );
       dispatch({
         type: CREATE_USER_BY_GOOGLE,
         payload: res.data.user,
       });
     } catch (error) {
-      console.log(error.message)
+      console.log(error.message);
     }
-  }
+  };
 }
- 
+
 export function verifyUser(Email, Password) {
   const body = {
     email: Email,
@@ -120,8 +123,7 @@ export function verifyUser(Email, Password) {
       console.log(error.message);
     }
   };
-
-};
+}
 
 export function modificationUser(Education, Experience, id) {
   const body = {
@@ -143,7 +145,7 @@ export function modificationUser(Education, Experience, id) {
       console.log(error.message);
     }
   };
-};
+}
 
 //  export function setTypeUser(Email,Password){
 //   const body = {
@@ -215,6 +217,55 @@ export function CreatePayment() {
     } catch (error) {}
   };
 }
+/* export function CreatePostulation(payload) {
+  return async function (dispatch) {
+    try {
+      let json = await axios.post(
+        `https://api-conntech.onrender.com/postulation/new`,
+        payload
+      );
+      dispatch({
+        type: SEND_POST,
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+} */
+
+export function GetNotification(id) {
+  return async function (dispatch) {
+    try {
+      let json = await axios.get(
+        `https://api-conntech.onrender.com/notification/notificationbyuser/${id}`
+      );
+      dispatch({
+        type: GET_NOTIFICATION,
+        payload: json.data.notification,
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+}
+
+export function GetPostulationsByUserId() {
+  return async function (dispatch) {
+    try {
+      let json = await axios.get(
+        `https://api-conntech.onrender.com/postulation/postulationbyuser/${id}`
+      );
+      dispatch({
+        type: GET_POSTULATION_BY_USER,
+        payload: json.data.postulation,
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+}
+
 export function sendPost(payload) {
   return async function (dispatch) {
     try {
@@ -232,71 +283,35 @@ export function sendPost(payload) {
   };
 }
 
-    export function GetNotification(id){
-      return async function(dispatch){
-        try {
-          let json = await axios.get(`https://api-conntech.onrender.com/notification/notificationbyuser/${id}`)
-          dispatch({
-            type: GET_NOTIFICATION,
-            payload: json.data.notification,
-          });
-        } catch (error) {
-          console.log(error.message)
-        }
-      }};
-
-export function CreatePayment(){
-  return async function(dispatch){
+export function sendEmail(payload) {
+  return async function (dispatch) {
     try {
-      let json = await axios.get(
-        `https://api-conntech.onrender.com/postulation/postulationbyuser/${id}`
+      let json = await axios.post(
+        `https://api-conntech.onrender.com/send-email`,
+        payload
       );
       dispatch({
-        type: GET_POSTULATION_BY_USER,
-        payload: json.data.postulation,
+        type: SEND_EMAIL,
+        payload: json.data,
       });
     } catch (error) {
       console.log(error.message);
     }
+  };
+}
 
-  }
-};
-
-export function sendPost(payload){
-  return async function(dispatch){
-      try {
-        let json = await axios.post(`https://api-conntech.onrender.com/postulation/new`, payload)
-        dispatch({
-          type: SEND_POST,
-          payload: json.data,
-        });
-      } catch (error) {
-        console.log(error.message)
-      }
-    }};
-
-export function sendEmail(payload){
-  return async function(dispatch){
-      try {
-        let json = await axios.post(`https://api-conntech.onrender.com/send-email`, payload)
-        dispatch({
-          type: SEND_EMAIL,
-          payload: json.data,
-        });
-        } catch (error) {
-          console.log(error.message)
-        }
-    }};    
-
-    export function GetUsersInVacant(id){
-      return async function(dispatch){
-        try {
-          let json = await axios.get(`https://api-conntech.onrender.com/postulation/postulationbyid/${id}`)
-          dispatch({
-            type: GET_USERS_IN_VACANT,
-            payload: json.data,
-          });
-        } catch (error) {
-          console.log(error.message)
-        }
-      }};    
+export function GetUsersInVacant(id) {
+  return async function (dispatch) {
+    try {
+      let json = await axios.get(
+        `https://api-conntech.onrender.com/postulation/postulationbyid/${id}`
+      );
+      dispatch({
+        type: GET_USERS_IN_VACANT,
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+}
