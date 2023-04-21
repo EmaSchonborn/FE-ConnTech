@@ -6,15 +6,17 @@ export const GET_USER_BY_ID = "GET_USER_BY_ID";
 export const CREATE_USER = "CREATE_USER";
 export const CREATE_VACANT = "CREATE_VACANT";
 export const GET_POSTULATION_BY_USER = "GET_POSTULATION_BY_USER";
-export const LOGIN="LOGIN";
-export const GET_VACANTS_BY_USER="GET_VACANTS_BY_USER";
-export const TYPE_USER_VERIFIED="TYPE_USER_VERIFIED";
+export const LOGIN = "LOGIN";
+export const GET_VACANTS_BY_USER = "GET_VACANTS_BY_USER";
+export const TYPE_USER_VERIFIED = "TYPE_USER_VERIFIED";
 export const CREATE_USER_BY_GOOGLE = "CREATE_USER_BY_GOOGLE";
-export const GET_NOTIFICATION='GET_NOTIFICATION'
-export const CREATE_PAYMENT="CREATE_PAYMENT";
-export const SEND_POST= "SEND_POST";
-export const SEND_EMAIL= "SEND_EMAIL";
-export const MODIFICATION="MODIFICATION";
+export const GET_NOTIFICATION = "GET_NOTIFICATION";
+export const CREATE_PAYMENT = "CREATE_PAYMENT";
+export const SEND_POST = "SEND_POST";
+export const SEND_EMAIL = "SEND_EMAIL";
+export const MODIFICATION = "MODIFICATION";
+export const SUCCESS_LOGIN = "SUCCESS_LOGIN";
+export const FAILURE_LOGIN = "FAILURE_LOGIN";
 export const GET_USERS_IN_VACANT = "GET_USERS_IN_VACANT";
 
 export function getUsers() {
@@ -112,16 +114,49 @@ export function verifyUser(Email, Password) {
         "https://api-conntech.onrender.com/user/login",
         body
       );
+
+      const { user, msg } = json.data;
+      localStorage.setItem("isAuthenticated", true);
+      localStorage.setItem("id", user.id);
+
       return dispatch({
         type: LOGIN,
-        payload: json.data,
+        payload: { user, msg },
       });
     } catch (error) {
-      console.log(error.message);
+      dispatch({
+        type: FAILURE_LOGIN,
+        payload: { error: error.message },
+      });
     }
   };
+}
 
-};
+export function verifyToken() {
+  return async function (dispatch) {
+    const pruebakey = localStorage.getItem("isAuthenticated");
+    const pruebaid = localStorage.getItem("id");
+
+    try {
+      let response = await axios.get(
+        `https://api-conntech.onrender.com/user/${pruebaid}`
+      );
+      if (pruebakey === "true") {
+        return dispatch({
+          type: SUCCESS_LOGIN,
+          payload: response.data,
+        });
+      } else {
+        dispatch({
+          type: FAILURE_LOGIN,
+          payload: { error: error.message },
+        });
+      }
+    } catch (error) {
+      console.log("Algo salió mal");
+    }
+  };
+}
 
 export function modificationUser(Education, Experience, id) {
   const body = {
