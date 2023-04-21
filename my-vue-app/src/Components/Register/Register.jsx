@@ -100,12 +100,14 @@ export default function CreateUser() {
   // console.log(roleId);
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (input.role.length === 0) {
+    if (input.role.name == "") {
       return alert("You need pick a role");
     }
     const data = { ...input };
-    // console.log(data);
+    const dataEmail = { email: data.email };
     dispatch(createUser(data));
+    dispatch(sendEmail(dataEmail));
+
     setInput({
       name: "",
       email: "",
@@ -113,36 +115,14 @@ export default function CreateUser() {
       password: "",
       role: { name: "" },
     });
+
+    if (data.name && data.email && data.phone && data.password && data.role) {
+      alert("Register successfull!");
+      history.push("/login");
+    } else {
+      alert("You most to complete the info");
+    }
   };
-
-  if (data.name && data.email && data.phone && data.password && data.role) {
-    console.log(roleId);
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      if (input.role.name == "") {
-        return alert("You need pick a role");
-      }
-      const data = { ...input };
-      const dataEmail = { email: data.email };
-      dispatch(createUser(data));
-      dispatch(sendEmail(dataEmail));
-
-      setInput({
-        name: "",
-        email: "",
-        phone: "",
-        password: "",
-        role: { name: "" },
-      });
-
-      if (data.name && data.email && data.phone && data.password && data.role) {
-        alert("Register successfull!");
-        history.push("/login");
-      } else {
-        alert("You most to complete the info");
-      }
-    };
-  }
 
   return (
     <div className="flex flex-col items-center justify-center bg-slate-50 w-full h-screen text-white">
