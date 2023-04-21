@@ -8,6 +8,8 @@ import {
   SEND_POST,
   SEND_EMAIL,
   // TYPE_USER_VERIFIED,
+  SUCCESS_LOGIN,
+  FAILURE_LOGIN,
   CREATE_USER_BY_GOOGLE,
   CREATE_VACANT,
   GET_VACANTS_BY_USER,
@@ -15,8 +17,6 @@ import {
   MODIFICATION,
   CREATE_PAYMENT
 } from "../Redux/actions";
-
-//LOGIN
 
 const initialState = {
   vacants: [],
@@ -35,7 +35,8 @@ const initialState = {
 
 
   // typeUserVerified:0
-  clientSecret:''
+  clientSecret:'',
+  isAuthenticated: false
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -75,6 +76,19 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         userVerified: action.payload,
+        isAuthenticated: true,
+      };
+    case SUCCESS_LOGIN:
+      return {
+        ...state,
+        userVerified: action.payload,
+        isAuthenticated: true,
+        error: null
+      };
+    case FAILURE_LOGIN:
+      return {
+        ...state,
+        isAuthenticated: false,
       };
     case MODIFICATION:
       return {
