@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import { Hero } from "../Components/LandingComponents/Hero";
 import { Work } from "../Components/LandingComponents/Work";
 import { verifyToken } from "../Redux/actions";
+import "../Styles/Loader.css";
 
 const Home = () => {
   const userRole = useSelector((state) => state.userVerified.user);
@@ -36,7 +37,22 @@ const Home = () => {
   const verified = useSelector((state) => state.isAuthenticated);
 
   if (loading) {
-    return <div>Cargando...</div>; // Indicador de carga
+    return (
+      <section className="bg-white w-full h-screen flex items-center justify-center">
+        <div class="spinnerContainer">
+          <div class="spinner"></div>
+          <div class="loader">
+            <p>CONNTECH</p>
+            <div class="words">
+              <span class="word">startups</span>
+              <span class="word">reclutadores</span>
+              <span class="word">talentos</span>
+              <span class="word">latam</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    ); // Indicador de carga
   }
 
   return (
@@ -70,11 +86,11 @@ const Home = () => {
         </>
       ) : (
         <main className="bg-gradient-to-r from-rose-100 to-teal-100 font-D-DIN">
-          <div class="flex flex-col items-center justify-center h-screen">
-            <h1 class="text-2xl font-bold mb-6">
+          <div className="flex flex-col items-center justify-center h-screen">
+            <h1 className="text-2xl font-bold mb-6">
               ¡Ups! Parece que todavía no iniciaste sesión
             </h1>
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
               <Link to="/login"> Iniciar Sesión </Link>
             </button>
           </div>

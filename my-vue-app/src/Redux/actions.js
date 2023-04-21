@@ -84,6 +84,7 @@ export function createUser(payload) {
     } catch (error) {
       console.log(error.message);
     }
+<<<<<<< HEAD
   };
 }
 
@@ -104,6 +105,10 @@ export function createUserByGoogle(payload) {
   };
 }
 
+=======
+  }};
+ 
+>>>>>>> dev
 export function verifyUser(Email, Password) {
   const body = {
     email: Email,
@@ -277,10 +282,23 @@ export function GetPostulationsByUserId() {
 export function sendPost(payload) {
   return async function (dispatch) {
     try {
+<<<<<<< HEAD
       let json = await axios.post(
         `https://api-conntech.onrender.com/postulation/new`,
         payload
       );
+=======
+      const res = await fetch("https://api-conntech.onrender.com/user/registerExternal",{
+        method: "POST",
+        body: JSON.stringify(payload),
+        headers:{
+          'Content-Type': 'application/json'
+        }
+      })
+      const data = await res.json();
+      localStorage.setItem("isAuthenticated", true);
+      localStorage.setItem("id", data.user.id);
+>>>>>>> dev
       dispatch({
         type: SEND_POST,
         payload: json.data,
