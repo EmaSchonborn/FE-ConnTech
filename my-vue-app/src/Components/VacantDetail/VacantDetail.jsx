@@ -2,8 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useParams, useHistory } from "react-router-dom";
-import { getDetail, sendPost } from "../../redux/actions/";
-
+import { getDetail, sendPost } from "../../Redux/actions/";
 
 export default function VacantDetail() {
   let dispatch = useDispatch();
@@ -15,17 +14,16 @@ export default function VacantDetail() {
   }, [params.id, dispatch]);
 
   const details = useSelector((state) => state.vacantDetail);
-  const user = useSelector((state) => state.userVerified)
-  console.log(user)
+  const user = useSelector((state) => state.userVerified);
+  console.log(details);
   const handleClick = (e) => {
-    e.preventDefault()
-    const data = {vacantId:params.id,
-                   userId: user.user.id}
-    console.log(data)
-    dispatch(sendPost(data))
+    e.preventDefault();
+    const data = { vacantId: params.id, userId: user.user.id };
+    console.log(data);
+    dispatch(sendPost(data));
     alert("You have applied correctly");
     history.push("/home");
-  }
+  };
 
   return (
     <div className="flex items-center justify-center h-screen w-full bg-gray-800">
@@ -77,9 +75,16 @@ export default function VacantDetail() {
                 ) : null}
               </div>
             </div>
-              <button onClick={(e) => handleClick(e)} className="flex-none rounded-md bg-indigo-500 px-2.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">Apply</button>
+            <button
+              onClick={(e) => handleClick(e)}
+              className="flex-none rounded-md bg-indigo-500 px-2.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+            >
+              Apply
+            </button>
             <Link to="/home">
-              <button className="flex-none rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">BACK HOME</button>
+              <button className="flex-none rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+                BACK HOME
+              </button>
             </Link>
           </div>
         )

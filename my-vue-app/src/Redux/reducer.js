@@ -6,32 +6,36 @@ import {
   CREATE_USER,
   LOGIN,
   SEND_POST,
+  SEND_EMAIL,
   // TYPE_USER_VERIFIED,
+  SUCCESS_LOGIN,
+  FAILURE_LOGIN,
+  CREATE_USER_BY_GOOGLE,
   CREATE_VACANT,
   GET_VACANTS_BY_USER,
   GET_NOTIFICATION,
   MODIFICATION,
-  CREATE_PAYMENT
+  CREATE_PAYMENT,
+  GET_USERS_IN_VACANT
 } from "../Redux/actions";
-
-//LOGIN
 
 const initialState = {
   vacants: [],
   vacantDetail: {},
-  empresas: [],
   users: [],
   filteredUsers: [],
   userDetail: {},
-  userVerified:{},
+  userVerified:{},  
   VacantsByUserId:[],
-
+  userVerified:{},
   notifications: [],
-
   postulations: [],
-
+  emails: [],
+  notifications: [],
+  usersInVacant: [],
   // typeUserVerified:0
-  clientSecret:''
+  clientSecret:'',
+  isAuthenticated: false
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -68,42 +72,66 @@ const rootReducer = (state = initialState, action) => {
         vacants: action.payload,
       };
     case LOGIN:
+        return {
+        ...state,
+        userVerified: action.payload,
+        isAuthenticated: true,
+      };
+    case SUCCESS_LOGIN:
       return {
         ...state,
         userVerified: action.payload,
+        isAuthenticated: true,
+        error: null
+      };
+    case FAILURE_LOGIN:
+      return {
+        ...state,
+        isAuthenticated: false,
       };
     case MODIFICATION:
       return {
         ...state,
         userVerified: action.payload,
       };
-    //  case TYPE_USER_VERIFIED:
-    //   return{
-    //     ...state,
-    //     typeUserVerified:action.payload.user.roleId
-    //   }
     case GET_VACANTS_BY_USER:
       return {
         ...state,
         VacantsByUserId:action.payload,
-      }
+      };
+    case CREATE_USER_BY_GOOGLE:
+      return{
+        ...state,
+        userVerified: action.payload
+      };
+    case SEND_POST:
+      return{
+        ...state,
+        postulations: action.payload
+      };  
+    case SEND_EMAIL:
+      return{
+        ...state,
+        emails: action.payload
+      };
 
       case GET_NOTIFICATION:
       return{
         ...state,
         notifications:action.payload,
-      }
+      };
 
     case CREATE_PAYMENT:
       return{
         ...state,
-        clientSecret:action.payload
-      }
-      case SEND_POST:
-        return{
-          ...state,
-          postulations: action.payload
-        };  
+        clientSecret:action.payload,
+      };
+     case GET_USERS_IN_VACANT:
+      return {
+        ...state,
+        usersInVacant: action.payload,
+      }; 
+
     default:
       return { ...state };
   }
