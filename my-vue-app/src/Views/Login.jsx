@@ -2,8 +2,8 @@ import { useEffect,useState } from "react";
 import { useDispatch} from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { verifyUser, createUserByGoogle } from "../Redux/actions";
-/* import { gapi } from "gapi-script";
-import GoogleLogin from 'react-google-login'; */
+ import { gapi } from "gapi-script";
+import GoogleLogin from 'react-google-login'
 
 const Login = () => {
   const clientId = "688737799752-2da6ig385v5aljm0fvjtisv2qtlbuqlb.apps.googleusercontent.com";

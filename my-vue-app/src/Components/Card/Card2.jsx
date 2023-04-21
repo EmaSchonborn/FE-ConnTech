@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Card = (props) => {
+const Card2 = (props) => {
   return (
     <div className="container mx-auto p-4">
       <img
@@ -28,4 +28,4 @@ const Card = (props) => {
   );
 };
 
-export default Card;
+export default Card2;

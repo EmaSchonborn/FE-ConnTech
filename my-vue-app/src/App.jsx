@@ -13,14 +13,11 @@ import Vacantes from "./Views/Vacantes";
 import CardDetail from "./Components/CardDetail/CardDetail";
 import Notificaciones from "./Components/Notification/Notificaciones";
 import DashboardAdmin from "./Views/DashboardAdmin";
-<<<<<<< HEAD
 import VacantDetailCompany from "./Components/VacantDetailCompany/VacantDetailCompany";
 
 import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
 
-=======
->>>>>>> 3a1daa017a7a9ace49adaa34425507c09a5d32f7
 import Premium from "./Views/Premium";
 import { useSelector } from "react-redux";
 
@@ -58,12 +55,8 @@ function App() {
         <Route path="/premium" component={Premium} />
         <Route path="/detail/:id" component={CardDetail} />
         <Route path="/notificaciones" component={Notificaciones} />
-<<<<<<< HEAD
         <Route path="/administrador" component = {DashboardAdmin} />
         <Route path="/vacant-detail-company/:id" component = {VacantDetailCompany} />
-=======
-        <Route path="/administrador" component={DashboardAdmin} />
->>>>>>> 3a1daa017a7a9ace49adaa34425507c09a5d32f7
       </BrowserRouter>
     </div>
   );

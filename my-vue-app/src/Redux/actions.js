@@ -245,35 +245,35 @@ export function sendPost(payload) {
         }
       }};
 
-export function CreatePayment(){
-  return async function(dispatch){
-    try {
-      let json = await axios.get(
-        `https://api-conntech.onrender.com/postulation/postulationbyuser/${id}`
-      );
-      dispatch({
-        type: GET_POSTULATION_BY_USER,
-        payload: json.data.postulation,
-      });
-    } catch (error) {
-      console.log(error.message);
-    }
+// export function CreatePayment(){
+//   return async function(dispatch){
+//     try {
+//       let json = await axios.get(
+//         `https://api-conntech.onrender.com/postulation/postulationbyuser/${id}`
+//       );
+//       dispatch({
+//         type: GET_POSTULATION_BY_USER,
+//         payload: json.data.postulation,
+//       });
+//     } catch (error) {
+//       console.log(error.message);
+//     }
 
-  }
-};
+//   }
+// };
 
-export function sendPost(payload){
-  return async function(dispatch){
-      try {
-        let json = await axios.post(`https://api-conntech.onrender.com/postulation/new`, payload)
-        dispatch({
-          type: SEND_POST,
-          payload: json.data,
-        });
-      } catch (error) {
-        console.log(error.message)
-      }
-    }};
+// export function sendPost(payload){
+//   return async function(dispatch){
+//       try {
+//         let json = await axios.post(`https://api-conntech.onrender.com/postulation/new`, payload)
+//         dispatch({
+//           type: SEND_POST,
+//           payload: json.data,
+//         });
+//       } catch (error) {
+//         console.log(error.message)
+//       }
+//     }};
 
 export function sendEmail(payload){
   return async function(dispatch){
