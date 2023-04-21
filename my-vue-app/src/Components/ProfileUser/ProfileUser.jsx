@@ -79,11 +79,11 @@ const ProfileUser = () => {
   };
 
 
-  const handleSubmit = async (e) => {
+  /* const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch(modificationUser(educacion, experiencia, userVerified.id));
    // navigate("/home");
-  };
+  }; */
 
 
   return (
