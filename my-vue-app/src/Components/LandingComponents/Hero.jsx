@@ -7,7 +7,7 @@ import "../../Styles/Scroll.css"
 
 const navigation = [
   { name: "Crear cuenta", to: "/register" },
-  { name: "Login", to: "/login" },
+  { name: "Ingresar", to: "/login" },
 ];
 
 export const Hero = () => {
@@ -53,7 +53,7 @@ export const Hero = () => {
 
             <Link to="/login">
               <button className="rounded-md bg-black px-3.5 py-2.5 text-xl font-size: 1.25rem; font-semibold text-white shadow-sm hover:bg-slate-50 hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                Login
+                Ingresar
               </button>
             </Link>
           </div>

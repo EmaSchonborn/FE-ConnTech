@@ -1,6 +1,7 @@
 import { Route, BrowserRouter } from "react-router-dom";
 import Home from "./Views/Home";
 import Login from "./Views/Login";
+import LoginAdmin from "./Views/LoginAdmin";
 import { Landing } from "./Views/Landing";
 import About from "./Views/About";
 import Preguntas from "./Components/Preguntas";
@@ -15,34 +16,18 @@ import Notificaciones from "./Components/Notification/Notificaciones";
 import DashboardAdmin from "./Views/DashboardAdmin";
 import VacantDetailCompany from "./Components/VacantDetailCompany/VacantDetailCompany";
 
-import {Elements} from '@stripe/react-stripe-js';
-import {loadStripe} from '@stripe/stripe-js';
 
 import Premium from "./Views/Premium";
 import { useSelector } from "react-redux";
 
-// Make sure to call `loadStripe` outside of a component’s render to avoid
-// recreating the `Stripe` object on every render.
-//const stripePromise = loadStripe('pk_test_Dt4ZBItXSZT1EzmOd8yCxonL');
-
 function App() {
-  //let client_Secret=useSelector((state)=>state.clientSecret);
-
-  //const options = {
-  // passing the client secret obtained in step 3
-  //clientSecret: `${client_Secret}`,
-  // Fully customizable with appearance API.
-  //appearance: {/*...*/},
-  //};
 
   return (
     <div className="App font-D-DIN">
-      {/* <Elements stripe={stripePromise} options={options}>
-      <Premium />
-      </Elements> */}
       <BrowserRouter>
         <Route exact path="/" component={Landing} />
         <Route exact path="/login" component={Login} />
+        <Route exact path="/login-admin" component={LoginAdmin} />
         <Route path="/home" component={Home} />
         <Route path="/about" component={About} />
         <Route path="/info" component={Preguntas} />

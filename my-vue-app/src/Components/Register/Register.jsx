@@ -5,7 +5,6 @@ import { Link, useHistory } from "react-router-dom";
 import { createUser, sendEmail } from "../../Redux/actions/";
 import style from "./Register.module.css";
 
-
 export default function CreateUser() {
   let dispatch = useDispatch();
   let history = useHistory();
@@ -33,7 +32,7 @@ export default function CreateUser() {
     }
     return errors;
   }
- 
+
   const roles = ["normal", "company", "hibrid"];
   const description = [
     "normal user type",
@@ -97,43 +96,44 @@ export default function CreateUser() {
       })
     );
   };
-console.log(roleId)
-const handleSubmit = (e) => {
-  e.preventDefault();
-  if (input.role.name == "") {
-    return alert("You need pick a role");
-  }
-  const data = { ...input };
-  const dataEmail = {email: data.email}
-  console.log(dataEmail);
-  dispatch(createUser(data))
-  dispatch(sendEmail(dataEmail));
 
-  setInput({
-    name: "",
-    email: "",
-    phone: "",
-    password: "",
-    role: { name: "" },
-  });
+  // console.log(roleId);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (input.role.name == "") {
+      return alert("You need pick a role");
+    }
+    const data = { ...input };
+    const dataEmail = { email: data.email };
+    dispatch(createUser(data));
+    dispatch(sendEmail(dataEmail));
 
-  if (data.name && data.email && data.phone && data.password && data.role) {
+    setInput({
+      name: "",
+      email: "",
+      phone: "",
+      password: "",
+      role: { name: "" },
+    });
 
-    alert("Register successfull!");
-    history.push("/login");
-  } else {
-    alert("You most to complete the info");
-  }
-};
+    if (data.name && data.email && data.phone && data.password && data.role) {
+      alert("Register successfull!");
+      history.push("/login");
+    } else {
+      alert("You most to complete the info");
+    }
+  };
 
   return (
     <div className="flex flex-col items-center justify-center bg-slate-50 w-full h-screen text-white">
       <form
         onSubmit={(e) => handleSubmit(e)}
-        className="bg-indigo-700 p-5 rounded-md text-white"
+        className="bg-indigo-600 p-5 rounded-md text-white"
       >
         <div>
-          <h1 className="text-white text-center">Create User</h1>
+          <h1 className="font-bold text-2xl text-white text-center">
+            Crear cuenta
+          </h1>
           <div className={style.divtextimg}>
             <div className={style.divtext}>
               <div className={style.diverror}>
@@ -143,7 +143,7 @@ const handleSubmit = (e) => {
                   name="name"
                   value={input.name}
                   onChange={(e) => handleInput(e)}
-                  className="bg-indigo-500 ml-10"
+                  className="bg-white text-black ml-10 rounded-md"
                 />
                 {error.name && <p className={style.error}>{error.name}</p>}
               </div>
@@ -155,7 +155,7 @@ const handleSubmit = (e) => {
                   name="email"
                   value={input.email}
                   onChange={(e) => handleInput(e)}
-                  className="bg-indigo-500 ml-11"
+                  className="bg-white text-black ml-11 rounded-md"
                 />
                 {error.email && <p className={style.error}>{error.email}</p>}
               </div>
@@ -167,7 +167,7 @@ const handleSubmit = (e) => {
                   name="phone"
                   value={input.phone}
                   onChange={(e) => handleInput(e)}
-                  className="bg-indigo-500 ml-9"
+                  className="bg-white text-black ml-9 rounded-md"
                 />
                 {error.phone && <p className={style.error}>{error.phone}</p>}
               </div>
@@ -179,7 +179,7 @@ const handleSubmit = (e) => {
                   name="password"
                   value={input.password}
                   onChange={(e) => handleInput(e)}
-                  className="bg-indigo-500 ml-1"
+                  className="bg-white text-black ml-1 rounded-md"
                 />
                 {error.password && (
                   <p className={style.error}>{error.password}</p>
@@ -205,17 +205,17 @@ const handleSubmit = (e) => {
           </div>
           <div className={style.divbutton}>
             <Link to="/login">
-              <button className="flex-none rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
-                Login
+              <button className="flex-none rounded-md bg-black px-3.5 py-2.5 text-lg font-semibold text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+                Ingresar
               </button>
             </Link>
 
             {!error.name && !error.email && !error.phone && !error.password ? (
               <button
                 type="submit"
-                className="flex-none rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+                className="flex-none rounded-md bg-black px-3.5 py-2.5 text-lg font-semibold text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
               >
-                Create User
+                Crear Usuario
               </button>
             ) : null}
           </div>
@@ -223,5 +223,4 @@ const handleSubmit = (e) => {
       </form>
     </div>
   );
-};
-
+}
