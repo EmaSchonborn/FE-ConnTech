@@ -13,13 +13,13 @@ export default function CreateUser() {
     let errors = {};
 
     if (!input.name) {
-      errors.name = "You have to select a name!.";
+      errors.name =  "You have to select a name!.";
     }
     if (input.name.search("[0-9]") !== -1) {
       errors.name = "The name must not contain numbers.";
     }
-    if (input.name.search("[^A-Za-z0-9]") !== -1) {
-      errors.name = "The name must not contain symbols or spaces.";
+    if (!/^[A-Za-z\s]+$/.test(input.name)) {
+      errors.name = "The name must only contain letters and spaces.";
     }
     if (!input.password) {
       errors.password = "You have to select a password!.";
