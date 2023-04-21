@@ -267,52 +267,6 @@ export function GetVacantsByUserId(id) {
     }
   };
 }
-export function GetVacantsByUserId(id) {
-  return async function (dispatch) {
-    try {
-      let json = await axios.get(
-        `https://api-conntech.onrender.com/vacant/vacantsbyuser/${id}`
-      );
-      dispatch({
-        type: GET_VACANTS_BY_USER,
-        payload: json.data,
-      });
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
-}
-
-export function CreatePayment() {
-  return async function (dispatch) {
-    try {
-      let result = await axios.get(
-        "https://api-conntech.onrender.com/premium/payment"
-      );
-      let { client_secret: clientSecret } = await result.data;
-      dispatch({
-        type: CREATE_PAYMENT,
-        payload: clientSecret,
-      });
-    } catch (error) {}
-  };
-}
-export function sendPost(payload) {
-  return async function (dispatch) {
-    try {
-      let json = await axios.post(
-        `https://api-conntech.onrender.com/postulation/new`,
-        payload
-      );
-      dispatch({
-        type: SEND_POST,
-        payload: json.data,
-      });
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
-}
 
 export function GetNotification(id) {
   return async function (dispatch) {
@@ -349,37 +303,6 @@ export function CreatePayment() {
     } catch (error) {
       console.log(error.message);
     }
-  };
-}
-
-export function GetNotification(id) {
-  return async function (dispatch) {
-    try {
-      let json = await axios.get(
-        `https://api-conntech.onrender.com/notification/notificationbyuser/${id}`
-      );
-      dispatch({
-        type: GET_NOTIFICATION,
-        payload: json.data.notification,
-      });
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
-}
-
-export function CreatePayment() {
-  return async function (dispatch) {
-    try {
-      let result = await axios.get(
-        "https://api-conntech.onrender.com/premium/payment"
-      );
-      let { client_secret: clientSecret } = await result.data;
-      dispatch({
-        type: CREATE_PAYMENT,
-        payload: clientSecret,
-      });
-    } catch (error) {}
   };
 }
 

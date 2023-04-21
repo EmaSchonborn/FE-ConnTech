@@ -12,7 +12,7 @@ export const Betafooter = () => {
       <Link to="/info" ><span>PREGUNTAS</span></Link> 
     </div> 
     <div className=' mr-5 cursor-pointer'>
-      <span>ADMIN</span> 
+      <Link to="/login-admin">ADMIN</Link> 
     </div>
   </footer> 
   <footer className="footer flex items-center justify-between px-10 py-4 border-t bg-black text-white border-base-300 text-xl font-size: 1.25rem;">
