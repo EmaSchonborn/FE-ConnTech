@@ -23,12 +23,14 @@ const ProfileUser = () => {
   const dispatch = useDispatch();
   //const navigate = useNavigate();
 
+
   const [experiencia, setExperiencia] = useState({
     name: "",
     dateBegin: "",
     dateEnd: "",
     jobActually: "",
   });
+
   const [ educacion, setEducacion] = useState({
     name: "",
     institution: "",
@@ -58,14 +60,28 @@ const ProfileUser = () => {
          })
        } 
   }
-  
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    if (name === "educacion") {
+      setEducacion(value);
+    } else {
+      setExperiencia(value);
+    }
+  };
   const userVerified = useSelector((state) => state.userVerified);
   const data = [educacion, experiencia, userVerified.id]
   const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch(modificationUser(data));
     console.log(data);
+   // navigate("/home");
+  };
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    dispatch(modificationUser(educacion, experiencia, userVerified.id));
    // navigate("/home");
   };
 
@@ -131,6 +147,7 @@ const ProfileUser = () => {
                 name="dateBegin"
                 type="date"
                 onChange={(e) => handleInput(e)}
+
               />
 
               <input 
@@ -188,13 +205,13 @@ const ProfileUser = () => {
             <div className="md:w-full px-3">
               <ul className="p-7 rounded-md list-disc bg-red-100">
                 <li className="mb-2 text-slate-950">
-                  {userVerified.user.name}
+                  {userVerified.user?.name}
                 </li>
                 <li className="mb-2 text-slate-950">
-                  {userVerified.user.phone}
+                  {userVerified.user?.phone}
                 </li>
                 <li className="mb-2 text-slate-950">
-                  {userVerified.user.email}
+                  {userVerified.user?.email}
                 </li>
               </ul>
             </div>

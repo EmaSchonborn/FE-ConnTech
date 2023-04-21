@@ -6,28 +6,30 @@ import {
   CREATE_USER,
   LOGIN,
   SEND_POST,
-  // TYPE_USER_VERIFIED,
+  SEND_EMAIL,
+  CREATE_USER_BY_GOOGLE,
   CREATE_VACANT,
   GET_VACANTS_BY_USER,
+  GET_NOTIFICATION,
+  MODIFICATION,
   CREATE_PAYMENT
+} from "../Redux/actions";
 
-} from "../Redux/actions/";
-
-
-
-  //LOGIN
-
+//LOGIN
 
 const initialState = {
   vacants: [],
   vacantDetail: {},
-  empresas: [],
   users: [],
   filteredUsers: [],
   userDetail: {},
+  userVerified:{},  
+  VacantsByUserId:[],
   userVerified:{},
   VacantsByUserId:[],
   postulations: [],
+  emails: [],
+  notifications: [],
   // typeUserVerified:0
   clientSecret:''
 };
@@ -70,31 +72,44 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         userVerified: action.payload,
       };
-    // case MODIFICATION:
-    //   return {
-    //     ...state,
-    //     userVerified: action.payload,
-    //   };
-    //  case TYPE_USER_VERIFIED:
-    //   return{
-    //     ...state,
-    //     typeUserVerified:action.payload.user.roleId
-    //   }
+    case MODIFICATION:
+      return {
+        ...state,
+        userVerified: action.payload,
+      };
     case GET_VACANTS_BY_USER:
       return {
         ...state,
         VacantsByUserId:action.payload,
-      }
+      };
+    case CREATE_USER_BY_GOOGLE:
+      return{
+        ...state,
+        userVerified: action.payload
+      };
+    case SEND_POST:
+      return{
+        ...state,
+        postulations: action.payload
+      };  
+    case SEND_EMAIL:
+      return{
+        ...state,
+        emails: action.payload
+      };
+
+      case GET_NOTIFICATION:
+      return{
+        ...state,
+        notifications:action.payload,
+      };
+
     case CREATE_PAYMENT:
       return{
         ...state,
         clientSecret:action.payload
-      }
-      case SEND_POST:
-        return{
-          ...state,
-          postulations: action.payload
-        };  
+      };
+
     default:
       return { ...state };
   }

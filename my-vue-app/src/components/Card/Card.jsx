@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 const Card = (props) => {
   return (
     <div className="container mx-auto p-4">
-    <div className="w-6/12 h-96 rounded-md shadow-2xl text-white p-5 flex flex-col justify-around">
       <img
         src="https://thumbs.dreamstime.com/b/marcador-de-foto-avatar-perfil-predeterminado-ilustraci%C3%B3n-vectorial-189495158.jpg"
         alt=""
@@ -25,7 +24,6 @@ const Card = (props) => {
           </h2>
         </Link>}
       </div>
-    </div>
     </div>
   );
 };

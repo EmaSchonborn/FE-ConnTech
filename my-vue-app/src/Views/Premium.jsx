@@ -1,51 +1,47 @@
 import React, { useState, useEffect } from "react";
-import { loadStripe } from "@stripe/stripe-js";
-import { Elements } from "@stripe/react-stripe-js";
-
-import CheckoutForm from "../Components/CheckoutForm/CheckoutForm";
+import ProductDisplay from "../Components/ProductDisplay/ProductDisplay";
+import Message from "../Components/Message/Message";
 import { useDispatch, useSelector } from "react-redux";
-import { CreatePayment } from "../Redux/actions";
-
-// Make sure to call loadStripe outside of a component’s render to avoid
-// recreating the Stripe object on every render.
-// This is a public sample test API key.
-// Don’t submit any personally identifiable information in requests made with this key.
-// Sign in to see your own test API key embedded in code samples.
-const stripePromise = loadStripe("pk_test_Dt4ZBItXSZT1EzmOd8yCxonL");
+//import { getUserById, getUserByName } from "../Redux/actions";
 
 export default function Premium() {
-  //const [clientSecret, setClientSecret] = useState("");
-  const dispatch=useDispatch();
+  const [message, setMessage] = useState("");
+  const user = useSelector((state)=>state.userByName)
+  console.log(user);
+  let name;
 
   useEffect(() => {
-    // Create PaymentIntent as soon as the page loads
-    dispatch(CreatePayment());
-    /* fetch("https://api-conntech.onrender.com/premium/payment", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ items: [{ id: "xl-tshirt" }] }),
-    })
-      .then((res) => res.json())
-      .then((data) => setClientSecret(data.clientSecret)); */
+    // Check to see if this is a redirect back from Checkout
+    const query = new URLSearchParams(window.location.search);
+    name=query.get("name");
+
+    if (query.get("success")) {
+      setMessage("Pedido realizado! Recibirás un correo de confirmación!");
+    }
+
+    if (query.get("canceled")) {
+      setMessage(
+        "Pedido cancelado. Continúe usando la aplicación y pague cuando esté listo!"
+      );
+    }
+
   }, []);
 
-  const appearance = {
-    theme: 'stripe',
-  };
-  const options = {
-    clientSecret,
-    appearance,
-  };
-  const clientSecret=useSelector((state)=>state.clientSecret);
-  console.log(clientSecret);
-
   return (
-    <div>
-      {clientSecret && (
-        <Elements options={options} stripe={stripePromise}>
-          <CheckoutForm />
-        </Elements>
-      )}
-    </div>
+    <>
+    {user?
+        localStorage.setItem('id', user.id) &&
+        localStorage.setItem('roleId', user.roleId) &&
+        localStorage.setItem('name', user.name) &&
+        localStorage.setItem('email', user.email) &&
+        localStorage.setItem('isPremium', user.isPremium) &&
+        localStorage.setItem('phone', user.phone) &&
+        localStorage.setItem('educationId', user.educationId) &&
+        localStorage.setItem('experienceId', user.experienceId) :null}
+    {message?
+    <Message message={message}/>
+   :
+    <ProductDisplay/>}
+    </>
   );
 }
