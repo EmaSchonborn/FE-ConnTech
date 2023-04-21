@@ -70,11 +70,11 @@ const Home = () => {
         </>
       ) : (
         <main className="bg-gradient-to-r from-rose-100 to-teal-100 font-D-DIN">
-          <div class="flex flex-col items-center justify-center h-screen">
-            <h1 class="text-2xl font-bold mb-6">
+          <div className="flex flex-col items-center justify-center h-screen">
+            <h1 className="text-2xl font-bold mb-6">
               ¡Ups! Parece que todavía no iniciaste sesión
             </h1>
-            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
               <Link to="/login"> Iniciar Sesión </Link>
             </button>
           </div>

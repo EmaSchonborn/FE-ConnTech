@@ -324,12 +324,16 @@ export function GetUsersInVacant(id){
 export function createUserByGoogle(payload) {
   return async function (dispatch) {
     try {
-      const res = await axios.post(
-        "http://localhost:8000/user/registerExternal",
-        payload
-      );
+      const res = await fetch("https://api-conntech.onrender.com/user/registerExternal",{
+        method: "POST",
+        body: JSON.stringify(payload),
+        headers:{
+          'Content-Type': 'application/json'
+        }
+      })
+      const data = await res.json();
       localStorage.setItem("isAuthenticated", true);
-      localStorage.setItem("id", user.id);
+      localStorage.setItem("id", data.user.id);
       dispatch({
         type: CREATE_USER_BY_GOOGLE,
         payload: res.data.user,
