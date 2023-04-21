@@ -11,9 +11,9 @@ export const Betafooter = () => {
     <div className=' mr-5 cursor-pointer'>
       <Link to="/info" ><span>PREGUNTAS</span></Link> 
     </div> 
-    <div className=' mr-5 cursor-pointer'>
+    {/* <div className=' mr-5 cursor-pointer'>
       <Link to="/login-admin">ADMIN</Link> 
-    </div>
+    </div> */}
   </footer> 
   <footer className="footer flex items-center justify-between px-10 py-4 border-t bg-black text-white border-base-300 text-xl font-size: 1.25rem;">
     <div className="items-center grid-flow-col">
