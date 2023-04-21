@@ -55,7 +55,7 @@ const ProfileUser = () => {
   return (
     <div className="min-h-screen bg-gray-100">
       {console.log(userVerified)}
-      <nav className="bg-white shadow">
+      <nav className="bg-indigo-600 shadow p-2">
         <div className="mx-auto px-4 max-w-7xl sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex">
@@ -83,24 +83,24 @@ const ProfileUser = () => {
       <div className="py-10">
         <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
           <label
-            className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+            className="block uppercase tracking-wide text-gray-700 text-lg font-bold mb-2"
             htmlFor="grid-experiencia"
           >
             Informacion:
           </label>
-          <div className="bg-white overflow-hidden shadow sm:rounded-lg">
+          <div className="bg-indigo-600 overflow-hidden shadow sm:rounded-lg">
             <div className="px-4 py-5 sm:px-6">
-              <h2 className="text-lg leading-6 font-medium text-gray-900">
+              <h2 className="text-lg leading-6 font-medium text-white">
                 Experiencia
               </h2>
             </div>
           </div>
 
       <form onSubmit={(e) => handleSubmit(e)}>
-      <div className="-mx-3 md:flex mb-6 mt-2">
+      <div className="w-full md:flex mb-6 mt-2">
             <div className="md:w-full px-3">
               <input
-                className="bg-white"
+                className="p-2 mt-8 rounded-md border bg-gray-50 text-[#002D74] mr-5"
                 placeholder="Cargo"
                 name="name"
                 type="text"
@@ -108,17 +108,17 @@ const ProfileUser = () => {
               />
 
               <input
-                className="bg-white"
+                className="p-2 mt-8 rounded-md border bg-gray-50 text-[#002D74] mr-5"
                 placeholder="Fecha de inicio"
                 name="dateBegin"
               />
 
               <input 
-              className="bg-white" 
+              className="p-2 mt-8 rounded-md border bg-gray-50 text-[#002D74] mr-5" 
               placeholder="Fecha de fin" 
               name="dateEnd" />
 
-              <input placeholder="jobActually" />
+              <input placeholder="Puesto actual"  className="p-2 mt-8 rounded-md border bg-gray-50 text-[#002D74]"  />
 
 
             </div>
@@ -133,9 +133,9 @@ const ProfileUser = () => {
           </div>
       </form>
 
-          <div className="bg-white overflow-hidden shadow sm:rounded-lg">
+          <div className="bg-indigo-600 overflow-hidden shadow sm:rounded-lg">
             <div className="px-4 py-5 sm:px-6">
-              <h2 className="text-lg leading-6 font-medium text-gray-900">
+              <h2 className="text-lg leading-6 font-medium text-white">
                 Educacion
               </h2>
             </div>
@@ -150,9 +150,9 @@ const ProfileUser = () => {
             </div>
           </div>
 
-          <div className="bg-white overflow-hidden shadow sm:rounded-lg">
+          <div className="bg-indigo-600 overflow-hidden shadow sm:rounded-lg">
             <div className="px-4 py-5 sm:px-6">
-              <h2 className="text-lg leading-6 font-medium text-gray-900">
+              <h2 className="text-lg leading-6 font-medium text-white">
                 Informacion de Contacto
               </h2>
             </div>
