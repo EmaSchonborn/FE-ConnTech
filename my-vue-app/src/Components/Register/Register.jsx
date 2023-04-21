@@ -163,7 +163,7 @@ export default function CreateUser() {
                   name="name"
                   value={input.name}
                   onChange={(e) => handleInput(e)}
-                  className="bg-white ml-10 rounded-md"
+                  className="bg-white text-black ml-10 rounded-md"
                 />
                 {error.name && <p className={style.error}>{error.name}</p>}
               </div>
@@ -175,7 +175,7 @@ export default function CreateUser() {
                   name="email"
                   value={input.email}
                   onChange={(e) => handleInput(e)}
-                  className="bg-white ml-11 rounded-md"
+                  className="bg-white text-black ml-11 rounded-md"
                 />
                 {error.email && <p className={style.error}>{error.email}</p>}
               </div>
@@ -187,7 +187,7 @@ export default function CreateUser() {
                   name="phone"
                   value={input.phone}
                   onChange={(e) => handleInput(e)}
-                  className="bg-white ml-9 rounded-md"
+                  className="bg-white text-black ml-9 rounded-md"
                 />
                 {error.phone && <p className={style.error}>{error.phone}</p>}
               </div>
@@ -199,7 +199,7 @@ export default function CreateUser() {
                   name="password"
                   value={input.password}
                   onChange={(e) => handleInput(e)}
-                  className="bg-white ml-1 rounded-md"
+                  className="bg-white text-black ml-1 rounded-md"
                 />
                 {error.password && (
                   <p className={style.error}>{error.password}</p>
