@@ -15,25 +15,23 @@ import {
   GET_VACANTS_BY_USER,
   GET_NOTIFICATION,
   MODIFICATION,
-  CREATE_PAYMENT
+  CREATE_PAYMENT,
+  GET_USERS_IN_VACANT
 } from "../Redux/actions";
 
 const initialState = {
   vacants: [],
   vacantDetail: {},
-  empresas: [],
   users: [],
   filteredUsers: [],
   userDetail: {},
   userVerified:{},  
   VacantsByUserId:[],
   userVerified:{},
-  VacantsByUserId:[],
   postulations: [],
   emails: [],
   notifications: [],
-
-
+  usersInVacant: [],
   // typeUserVerified:0
   clientSecret:'',
   isAuthenticated: false
@@ -95,11 +93,6 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         userVerified: action.payload,
       };
-    //  case TYPE_USER_VERIFIED:
-    //   return{
-    //     ...state,
-    //     typeUserVerified:action.payload.user.roleId
-    //   }
     case GET_VACANTS_BY_USER:
       return {
         ...state,
@@ -130,8 +123,13 @@ const rootReducer = (state = initialState, action) => {
     case CREATE_PAYMENT:
       return{
         ...state,
-        clientSecret:action.payload
+        clientSecret:action.payload,
       };
+     case GET_USERS_IN_VACANT:
+      return {
+        ...state,
+        usersInVacant: action.payload,
+      }; 
 
     default:
       return { ...state };

@@ -23,17 +23,43 @@ const ProfileUser = () => {
   const dispatch = useDispatch();
   //const navigate = useNavigate();
 
-  const [educacion, setEducacion] = useState({
+
+  const [experiencia, setExperiencia] = useState({
     name: "",
     dateBegin: "",
     dateEnd: "",
     jobActually: "",
   });
-  const [experiencia, setExperiencia] = useState({
+
+  const [ educacion, setEducacion] = useState({
     name: "",
     institution: "",
   });
-  
+
+  const handleInput = (e) => {
+    setExperiencia({
+      ...experiencia,
+      [e.target.name] : e.target.value
+    })
+  };
+
+  const handleSelect = (e) => {
+    setExperiencia({
+      ...experiencia,
+      jobActually: e.target.value
+    })
+      if(e.target.value === "SI"){
+         setExperiencia({
+           ...experiencia,
+           jobActually: e.target.value
+         })
+       }else {
+         setExperiencia({
+           ...experiencia,
+           jobActually: e.target.value
+         })
+       } 
+  }
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -44,18 +70,26 @@ const ProfileUser = () => {
     }
   };
   const userVerified = useSelector((state) => state.userVerified);
-
+  const data = [educacion, experiencia, userVerified.id]
   const handleSubmit = async (e) => {
+    e.preventDefault();
+    dispatch(modificationUser(data));
+    console.log(data);
+   // navigate("/home");
+  };
+
+
+  /* const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch(modificationUser(educacion, experiencia, userVerified.id));
    // navigate("/home");
-  };
+  }; */
 
 
   return (
     <div className="min-h-screen bg-gray-100">
       {console.log(userVerified)}
-      <nav className="bg-white shadow">
+      <nav className="bg-indigo-600 shadow p-2">
         <div className="mx-auto px-4 max-w-7xl sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
             <div className="flex">
@@ -83,42 +117,53 @@ const ProfileUser = () => {
       <div className="py-10">
         <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
           <label
-            className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+            className="block uppercase tracking-wide text-gray-700 text-lg font-bold mb-2"
             htmlFor="grid-experiencia"
           >
             Informacion:
           </label>
-          <div className="bg-white overflow-hidden shadow sm:rounded-lg">
+          <div className="bg-indigo-600 overflow-hidden shadow sm:rounded-lg">
             <div className="px-4 py-5 sm:px-6">
-              <h2 className="text-lg leading-6 font-medium text-gray-900">
+              <h2 className="text-lg leading-6 font-medium text-white">
                 Experiencia
               </h2>
             </div>
           </div>
 
       <form onSubmit={(e) => handleSubmit(e)}>
-      <div className="-mx-3 md:flex mb-6 mt-2">
+      <div className="w-full md:flex mb-6 mt-2">
             <div className="md:w-full px-3">
               <input
-                className="bg-white"
+                className="p-2 mt-8 rounded-md border bg-gray-50 text-[#002D74] mr-5"
                 placeholder="Cargo"
                 name="name"
                 type="text"
-                onChange={handleChange}
+                onChange={(e) => handleInput(e)}
               />
 
               <input
-                className="bg-white"
+                className="p-2 mt-8 rounded-md border bg-gray-50 text-[#002D74] mr-5"
                 placeholder="Fecha de inicio"
                 name="dateBegin"
+                type="date"
+                onChange={(e) => handleInput(e)}
+
               />
 
               <input 
-              className="bg-white" 
+              className="p-2 mt-8 rounded-md border bg-gray-50 text-[#002D74] mr-5" 
               placeholder="Fecha de fin" 
-              name="dateEnd" />
+              name="dateEnd"
+              type="date"
+              onChange={(e) => handleInput(e)} />
 
-              <input placeholder="jobActually" />
+              <input placeholder="Puesto actual"  className="p-2 mt-8 rounded-md border bg-gray-50 text-[#002D74]"  />
+            
+               <select name="jobActually" id="" onChange={(e) => handleSelect(e)}>
+               <option value="none" disabled>Job Actuality</option>
+               <option value="SI">SI</option>
+               <option value="NO">NO</option>
+               </select>
 
 
             </div>
@@ -126,16 +171,16 @@ const ProfileUser = () => {
 
           <div className="flex justify-end h-15 p-4">
             <div className="flex">
-              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4" type="submit">
+              <button onChange={handleSubmit}  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4" type="submit">
                 Guardar
               </button>
             </div>
           </div>
       </form>
 
-          <div className="bg-white overflow-hidden shadow sm:rounded-lg">
+          <div className="bg-indigo-600 overflow-hidden shadow sm:rounded-lg">
             <div className="px-4 py-5 sm:px-6">
-              <h2 className="text-lg leading-6 font-medium text-gray-900">
+              <h2 className="text-lg leading-6 font-medium text-white">
                 Educacion
               </h2>
             </div>
@@ -150,9 +195,9 @@ const ProfileUser = () => {
             </div>
           </div>
 
-          <div className="bg-white overflow-hidden shadow sm:rounded-lg">
+          <div className="bg-indigo-600 overflow-hidden shadow sm:rounded-lg">
             <div className="px-4 py-5 sm:px-6">
-              <h2 className="text-lg leading-6 font-medium text-gray-900">
+              <h2 className="text-lg leading-6 font-medium text-white">
                 Informacion de Contacto
               </h2>
             </div>
