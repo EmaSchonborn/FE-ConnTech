@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { verifyUser,verifyToken, createUserByGoogle } from "../Redux/actions";
 import { gapi } from "gapi-script";
-import GoogleLogin from "react-google-login";
+import GoogleLogin from 'react-google-login';
 
 const Login = () => {
   const clientId =
