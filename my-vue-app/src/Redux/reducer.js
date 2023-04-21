@@ -12,7 +12,8 @@ import {
   GET_VACANTS_BY_USER,
   GET_NOTIFICATION,
   MODIFICATION,
-  CREATE_PAYMENT
+  CREATE_PAYMENT,
+  GET_USERS_IN_VACANT
 } from "../Redux/actions";
 
 //LOGIN
@@ -26,10 +27,10 @@ const initialState = {
   userVerified:{},  
   VacantsByUserId:[],
   userVerified:{},
-  VacantsByUserId:[],
   postulations: [],
   emails: [],
   notifications: [],
+  usersInVacant: [],
   // typeUserVerified:0
   clientSecret:''
 };
@@ -107,8 +108,13 @@ const rootReducer = (state = initialState, action) => {
     case CREATE_PAYMENT:
       return{
         ...state,
-        clientSecret:action.payload
+        clientSecret:action.payload,
       };
+     case GET_USERS_IN_VACANT:
+      return {
+        ...state,
+        usersInVacant: action.payload,
+      }; 
 
     default:
       return { ...state };

@@ -15,6 +15,7 @@ export const CREATE_PAYMENT="CREATE_PAYMENT";
 export const SEND_POST= "SEND_POST";
 export const SEND_EMAIL= "SEND_EMAIL";
 export const MODIFICATION="MODIFICATION";
+export const GET_USERS_IN_VACANT = "GET_USERS_IN_VACANT";
 
 export function getUsers() {
   return async function (dispatch) {
@@ -287,3 +288,15 @@ export function sendEmail(payload){
         }
     }};    
 
+    export function GetUsersInVacant(id){
+      return async function(dispatch){
+        try {
+          let json = await axios.get(`https://api-conntech.onrender.com/postulation/postulationbyid/${id}`)
+          dispatch({
+            type: GET_USERS_IN_VACANT,
+            payload: json.data,
+          });
+        } catch (error) {
+          console.log(error.message)
+        }
+      }};    
