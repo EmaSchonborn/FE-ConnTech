@@ -4,6 +4,9 @@ export const GET_DETAILS = "GET_DETAILS";
 export const GET_USERS = "GET_USERS";
 export const GET_USER_BY_ID = "GET_USER_BY_ID";
 export const CREATE_USER = "CREATE_USER";
+export const ORDER_BY_ALPHABET = "ORDER_BY_ALPHABET";
+export const FILTER_BY_TECHNOLOGY = "FILTER_BY_TECHNOLOGY";
+export const FILTER_BY_SOURCE = "FILTER_BY_SOURCE";
 export const CREATE_VACANT = "CREATE_VACANT";
 export const GET_POSTULATION_BY_USER = "GET_POSTULATION_BY_USER";
 export const LOGIN = "LOGIN";
@@ -142,6 +145,32 @@ export function verifyToken() {
     }
   };
 }
+
+export function fetchProtectedResource(){
+  return async function (dispatch) {
+    try {
+      const token = localStorage.getItem('authToken');
+      const headers = { Authorization: `Bearer ${token}`};
+      let json = await axios.get(
+        "https://api-conntech.onrender.com/protected-resource", {headers}
+      );
+      return dispatch({
+        type: FETCH_PROTECTED_RESOURCE_SUCCESS,
+        payload: json.data,
+      })
+    } catch(error) {
+      console.log(error.message)
+    }
+ }
+}
+
+// export function verifyAdmin(User, Password) {
+//   const body = {
+//     user: User,
+//     password: Password,
+//   }
+//   const data = 
+// }
 
 export function modificationUser(Education, Experience, id) {
   const body = {
