@@ -14,7 +14,7 @@ const Card = (props) => {
       {props.phone?<p className="px-4 py-2 text-black text-base">Teléfono: {props.phone}</p>:null}
       <div className="px-4 py-2">
       {/* {props.description?<p className="px-4 py-2">Descripcion: {props.description}</p>:null} */}
-        {props.name? <Link className="flex justify-center" to={`/perfil/${props.id}`}>
+        {props.name? <Link className="flex justify-center" to={`/detail/${props.id}`}>
           <h2 className="flex justify-center  bg-black  text-base  text-white px-4 py-2 rounded-md hover:bg-slate-50 hover:text-black transition-colors duration-300">
             <p>Perfil</p>
           </h2>

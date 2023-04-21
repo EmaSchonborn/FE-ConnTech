@@ -11,12 +11,12 @@ export default function CardsContainer2() {
 
   const handlePageClick =  (data) => {
     let currentPage = data.selected;
-    setItems(vacants.slice(currentPage*4, 4*(currentPage+1)));
+    setItems(vacants.slice(currentPage*3, 3*(currentPage+1)));
   };
 
   useEffect(() => {
-    setItems(vacants.slice(0,4));
-    setpageCount(Math.ceil(vacants.length / 4));
+    setItems(vacants.slice(0,3));
+    setpageCount(Math.ceil(vacants.length / 3));
   }, [vacants, pageCount]);
 
   return (

@@ -18,7 +18,7 @@ export default function VacantDetail() {
   useEffect(() => {
     const timeout = setTimeout(() => {
       setLoading(false);
-    }, 7000);
+    }, 3000);
   
     dispatch(GetUsersInVacant(params.id));
     dispatch(getUsers());
@@ -27,8 +27,23 @@ export default function VacantDetail() {
       clearTimeout(timeout);
     }
   }, []);
-  while (loading) {
-    return <div>Cargando...</div>;
+  if (loading) {
+    return (
+      <section className="bg-white w-full h-screen flex items-center justify-center">
+        <div class="spinnerContainer">
+          <div class="spinner"></div>
+          <div class="loader">
+            <p>CONNTECH</p>
+            <div class="words">
+              <span class="word">startups</span>
+              <span class="word">reclutadores</span>
+              <span class="word">talentos</span>
+              <span class="word">latam</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    ); // Indicador de carga
   }
 // console.log(users)
 
@@ -52,7 +67,7 @@ console.log(result)
     <div className="flex items-center justify-center h-screen w-full bg-gray-800">
       <ul className="flex flex-row space-x-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {result.map((el) => (
-              <li key={el.id} className="w-6/12 h-96 rounded-md shadow-2xl bg-indigo-700 text-white p-5 flex flex-col justify-around">
+              <li key={el.id} className="w-11/12 h-96 rounded-md shadow-2xl bg-indigo-700 text-white p-5 flex flex-col justify-around">
                 <Card2 key={el.id} id = {el.id} name = {el.name} phone = {el.phone}></Card2>
                 <div className="flex justify-center items-center h-24">
                 </div>
