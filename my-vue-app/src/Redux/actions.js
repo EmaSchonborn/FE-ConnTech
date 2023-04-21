@@ -335,3 +335,22 @@ export function GetUsersInVacant(id){
       console.log(error.message)
     }
 }};    
+
+export function createUserByGoogle(payload) {
+  return async function (dispatch) {
+    try {
+      const res = await axios.post(
+        "http://localhost:8000/user/registerExternal",
+        payload
+      );
+      localStorage.setItem("isAuthenticated", true);
+      localStorage.setItem("id", user.id);
+      dispatch({
+        type: CREATE_USER_BY_GOOGLE,
+        payload: res.data.user,
+      });
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+}
