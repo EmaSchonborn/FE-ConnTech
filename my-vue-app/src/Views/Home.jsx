@@ -7,6 +7,7 @@ import { getVacantes, getUsers } from "../Redux/actions";
 import CardsContainer2 from "../Components/CardsContainer/CardsContainer2";
 import SideBar2 from "../Components/SideBar/SideBar2";
 
+
 const Home = () => {
   const userRole=useSelector((state)=>state.userVerified.user);
   const [loading, setLoading] = useState(true);
@@ -16,7 +17,6 @@ const Home = () => {
     const timeout = setTimeout(() => {
       setLoading(false);
     }, 1000);
-
     dispatch(getVacantes());
     dispatch(getUsers());
 
