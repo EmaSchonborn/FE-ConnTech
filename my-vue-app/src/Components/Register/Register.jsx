@@ -97,7 +97,6 @@ export default function CreateUser() {
       })
     );
   };
-
 console.log(roleId)
 const handleSubmit = (e) => {
   e.preventDefault();

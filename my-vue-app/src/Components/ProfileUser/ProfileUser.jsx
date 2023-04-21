@@ -23,17 +23,43 @@ const ProfileUser = () => {
   const dispatch = useDispatch();
   //const navigate = useNavigate();
 
-  const [educacion, setEducacion] = useState({
+
+  const [experiencia, setExperiencia] = useState({
     name: "",
     dateBegin: "",
     dateEnd: "",
     jobActually: "",
   });
-  const [experiencia, setExperiencia] = useState({
+
+  const [ educacion, setEducacion] = useState({
     name: "",
     institution: "",
   });
-  
+
+  const handleInput = (e) => {
+    setExperiencia({
+      ...experiencia,
+      [e.target.name] : e.target.value
+    })
+  };
+
+  const handleSelect = (e) => {
+    setExperiencia({
+      ...experiencia,
+      jobActually: e.target.value
+    })
+      if(e.target.value === "SI"){
+         setExperiencia({
+           ...experiencia,
+           jobActually: e.target.value
+         })
+       }else {
+         setExperiencia({
+           ...experiencia,
+           jobActually: e.target.value
+         })
+       } 
+  }
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -44,12 +70,20 @@ const ProfileUser = () => {
     }
   };
   const userVerified = useSelector((state) => state.userVerified);
-
+  const data = [educacion, experiencia, userVerified.id]
   const handleSubmit = async (e) => {
+    e.preventDefault();
+    dispatch(modificationUser(data));
+    console.log(data);
+   // navigate("/home");
+  };
+
+
+  /* const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch(modificationUser(educacion, experiencia, userVerified.id));
    // navigate("/home");
-  };
+  }; */
 
 
   return (
@@ -104,21 +138,32 @@ const ProfileUser = () => {
                 placeholder="Cargo"
                 name="name"
                 type="text"
-                onChange={handleChange}
+                onChange={(e) => handleInput(e)}
               />
 
               <input
                 className="p-2 mt-8 rounded-md border bg-gray-50 text-[#002D74] mr-5"
                 placeholder="Fecha de inicio"
                 name="dateBegin"
+                type="date"
+                onChange={(e) => handleInput(e)}
+
               />
 
               <input 
               className="p-2 mt-8 rounded-md border bg-gray-50 text-[#002D74] mr-5" 
               placeholder="Fecha de fin" 
-              name="dateEnd" />
+              name="dateEnd"
+              type="date"
+              onChange={(e) => handleInput(e)} />
 
               <input placeholder="Puesto actual"  className="p-2 mt-8 rounded-md border bg-gray-50 text-[#002D74]"  />
+            
+               <select name="jobActually" id="" onChange={(e) => handleSelect(e)}>
+               <option value="none" disabled>Job Actuality</option>
+               <option value="SI">SI</option>
+               <option value="NO">NO</option>
+               </select>
 
 
             </div>
@@ -126,7 +171,7 @@ const ProfileUser = () => {
 
           <div className="flex justify-end h-15 p-4">
             <div className="flex">
-              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4" type="submit">
+              <button onChange={handleSubmit}  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4" type="submit">
                 Guardar
               </button>
             </div>
