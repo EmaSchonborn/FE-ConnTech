@@ -16,25 +16,10 @@ import DashboardAdmin from "./Views/DashboardAdmin";
 import Premium from "./Views/Premium";
 import { useSelector } from "react-redux";
 
-// Make sure to call `loadStripe` outside of a component’s render to avoid
-// recreating the `Stripe` object on every render.
-//const stripePromise = loadStripe('pk_test_Dt4ZBItXSZT1EzmOd8yCxonL');
-
 function App() {
-  //let client_Secret=useSelector((state)=>state.clientSecret);
-
-  //const options = {
-  // passing the client secret obtained in step 3
-  //clientSecret: `${client_Secret}`,
-  // Fully customizable with appearance API.
-  //appearance: {/*...*/},
-  //};
 
   return (
     <div className="App font-D-DIN">
-      {/* <Elements stripe={stripePromise} options={options}>
-      <Premium />
-      </Elements> */}
       <BrowserRouter>
         <Route exact path="/" component={Landing} />
         <Route exact path="/login" component={Login} />
