@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import { Hero } from "../Components/LandingComponents/Hero";
 import { Work } from "../Components/LandingComponents/Work";
 import { verifyToken } from "../Redux/actions";
+import "../Styles/Loader.css";
 
 const Home = () => {
   const userRole = useSelector((state) => state.userVerified.user);
@@ -36,7 +37,22 @@ const Home = () => {
   const verified = useSelector((state) => state.isAuthenticated);
 
   if (loading) {
-    return <div>Cargando...</div>; // Indicador de carga
+    return (
+      <section className="bg-white w-full h-screen flex items-center justify-center">
+        <div class="spinnerContainer">
+          <div class="spinner"></div>
+          <div class="loader">
+            <p>CONNTECH</p>
+            <div class="words">
+              <span class="word">startups</span>
+              <span class="word">reclutadores</span>
+              <span class="word">talentos</span>
+              <span class="word">latam</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    ); // Indicador de carga
   }
 
   return (
