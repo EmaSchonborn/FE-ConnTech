@@ -97,7 +97,6 @@ export default function CreateUser() {
       })
     );
   };
-console.log(roleId)
 const handleSubmit = (e) => {
   e.preventDefault();
   if (input.role.name == "") {
@@ -105,7 +104,6 @@ const handleSubmit = (e) => {
   }
   const data = { ...input };
   const dataEmail = {email: data.email}
-  console.log(dataEmail);
   dispatch(createUser(data))
   dispatch(sendEmail(dataEmail));
 

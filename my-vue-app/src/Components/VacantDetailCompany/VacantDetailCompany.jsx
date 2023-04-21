@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link, useParams} from "react-router-dom";
@@ -7,19 +7,29 @@ import Card2 from "../Card/Card2";
 
 
 export default function VacantDetail() {
+  const [loading, setLoading] = useState(true);
   let dispatch = useDispatch();
   let params = useParams();
   // [{userId: 2},{3},{4}]
-  
-  useEffect(() => {
-      dispatch(GetUsersInVacant(params.id));
-      dispatch(getUsers());
-    }, [params.id, dispatch]);
-   
+  const detail = useSelector((state) => state.usersInVacant.postulation)
+  console.log(detail)
+  const users = useSelector((state) => state.users)
 
-const detail = useSelector((state) => state.usersInVacant.postulation)
-console.log(detail)
-const users = useSelector((state) => state.users)
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      setLoading(false);
+    }, 7000);
+  
+    dispatch(GetUsersInVacant(params.id));
+    dispatch(getUsers());
+  
+    return () => {
+      clearTimeout(timeout);
+    }
+  }, []);
+  while (loading) {
+    return <div>Cargando...</div>;
+  }
 // console.log(users)
 
 const result = [];

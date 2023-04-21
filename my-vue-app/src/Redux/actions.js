@@ -115,12 +115,20 @@ export function verifyUser(Email, Password) {
         "https://api-conntech.onrender.com/user/login",
         body
       );
+
+      const { user, msg } = json.data;
+      localStorage.setItem("isAuthenticated", true);
+      localStorage.setItem("id", user.id);
+
       return dispatch({
         type: LOGIN,
-        payload: json.data,
+        payload: { user, msg },
       });
     } catch (error) {
-      console.log(error.message);
+      dispatch({
+        type: FAILURE_LOGIN,
+        payload: { error: error.message },
+      });
     }
   };
 }
@@ -281,7 +289,7 @@ export function sendPost(payload) {
       console.log(error.message);
     }
   };
-}
+} 
 
 export function sendEmail(payload) {
   return async function (dispatch) {
