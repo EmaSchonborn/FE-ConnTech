@@ -354,7 +354,7 @@ export function createUserByGoogle(payload) {
   return async function (dispatch) {
     try {
       const res = await axios.post(
-        "http://localhost:8000/user/registerExternal",
+        "https://api-conntech.onrender.com/user/registerExternal",
         payload
       );
       localStorage.setItem("isAuthenticated", true);
