@@ -174,9 +174,9 @@ export function fetchProtectedResource(){
 
 export function modificationUser(Education, Experience, id) {
   const body = {
-    education: Education,
-    experience: Experience,
     id: id,
+    educacion: Education,
+    experiencia: Experience,
   };
   return async function (dispatch) {
     try {
