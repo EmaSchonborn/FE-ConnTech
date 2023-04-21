@@ -7,7 +7,6 @@ import {
   LOGIN,
   SEND_POST,
   SEND_EMAIL,
-  // TYPE_USER_VERIFIED,
   CREATE_USER_BY_GOOGLE,
   CREATE_VACANT,
   GET_VACANTS_BY_USER,
@@ -21,7 +20,6 @@ import {
 const initialState = {
   vacants: [],
   vacantDetail: {},
-  empresas: [],
   users: [],
   filteredUsers: [],
   userDetail: {},
@@ -32,8 +30,6 @@ const initialState = {
   postulations: [],
   emails: [],
   notifications: [],
-
-
   // typeUserVerified:0
   clientSecret:''
 };
@@ -81,11 +77,6 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         userVerified: action.payload,
       };
-    //  case TYPE_USER_VERIFIED:
-    //   return{
-    //     ...state,
-    //     typeUserVerified:action.payload.user.roleId
-    //   }
     case GET_VACANTS_BY_USER:
       return {
         ...state,

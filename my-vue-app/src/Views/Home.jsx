@@ -1,15 +1,11 @@
 import CardsContainer from "../Components/CardsContainer/CardsContainer";
 import SearchBar from "../Components/NavBar/SearchBar";
 import SideBar from "../Components/SideBar/SideBar";
-//import Paginate from "../components/Pagination/Pagination";
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector, useStore } from "react-redux";
-// import { fetchProtectedResource, getUsers, getVacantes } from "../Redux/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { getVacantes, getUsers } from "../Redux/actions";
 import CardsContainer2 from "../Components/CardsContainer/CardsContainer2";
 import SideBar2 from "../Components/SideBar/SideBar2";
-
-
-//import Pagination from "../components/Pagination/Pagination";
 
 const Home = () => {
   const userRole=useSelector((state)=>state.userVerified.user);
@@ -21,9 +17,8 @@ const Home = () => {
       setLoading(false);
     }, 1000);
 
-    // if(userRole){
-    //   dispatch(fetchProtectedResource());
-    // }
+    dispatch(getVacantes());
+    dispatch(getUsers());
 
     return () => {
       clearTimeout(timeout);
