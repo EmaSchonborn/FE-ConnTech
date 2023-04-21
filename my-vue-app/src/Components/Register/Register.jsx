@@ -97,6 +97,25 @@ export default function CreateUser() {
       })
     );
   };
+
+  // console.log(roleId);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (input.role.length === 0) {
+      return alert("You need pick a role");
+    }
+    const data = { ...input };
+    // console.log(data);
+    dispatch(createUser(data));
+    setInput({
+      name: "",
+      email: "",
+      phone: "",
+      password: "",
+      role: { name: "" },
+    });
+    if(data.name && data.email && data.phone && data.password && data.role){
+console.log(roleId)
 const handleSubmit = (e) => {
   e.preventDefault();
   if (input.role.name == "") {
