@@ -34,8 +34,8 @@ const Login = () => {
     // console.log(response.profileObj);
     dispatch(
       createUserByGoogle({
-        data: response.profileObj,
-        role: "normal",
+        "data" : response.profileObj,
+        "role" : "normal",
       })
     );
     history.push("/home");
