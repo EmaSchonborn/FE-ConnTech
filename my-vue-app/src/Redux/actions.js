@@ -87,21 +87,6 @@ export function createUser(payload) {
       console.log(error.message);
     }
   }};
-
-export function createUserByGoogle(payload){
-
-  return async function(dispatch){
-    try {
-      const res = await axios.post('http://localhost:8000/user/registerExternal',payload)
-      dispatch({
-        type: CREATE_USER_BY_GOOGLE,
-        payload: res.data.user,
-      });
-    } catch (error) {
-      console.log(error.message)
-    }
-  }
-}
  
 export function verifyUser(Email, Password) {
   const body = {
