@@ -15,11 +15,11 @@ import Notificaciones from "./Components/Notification/Notificaciones";
 import DashboardAdmin from "./Views/DashboardAdmin";
 import VacantDetailCompany from "./Components/VacantDetailCompany/VacantDetailCompany";
 
-import {Elements} from '@stripe/react-stripe-js';
-import {loadStripe} from '@stripe/stripe-js';
+//import {Elements} from '@stripe/react-stripe-js';
+//import {loadStripe} from '@stripe/stripe-js';
 
 import Premium from "./Views/Premium";
-import { useSelector } from "react-redux";
+//import { useSelector } from "react-redux";
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.

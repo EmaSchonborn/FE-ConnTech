@@ -215,7 +215,7 @@ export function CreatePayment() {
     } catch (error) {}
   };
 }
-export function sendPost(payload) {
+/* export function CreatePostulation(payload) {
   return async function (dispatch) {
     try {
       let json = await axios.post(
@@ -230,22 +230,22 @@ export function sendPost(payload) {
       console.log(error.message);
     }
   };
-}
+} */
 
-    export function GetNotification(id){
-      return async function(dispatch){
-        try {
-          let json = await axios.get(`https://api-conntech.onrender.com/notification/notificationbyuser/${id}`)
-          dispatch({
-            type: GET_NOTIFICATION,
-            payload: json.data.notification,
-          });
-        } catch (error) {
-          console.log(error.message)
-        }
-      }};
+export function GetNotification(id){
+  return async function(dispatch){
+    try {
+      let json = await axios.get(`https://api-conntech.onrender.com/notification/notificationbyuser/${id}`)
+      dispatch({
+        type: GET_NOTIFICATION,
+        payload: json.data.notification,
+      });
+    } catch (error) {
+      console.log(error.message)
+    }
+}};
 
-export function CreatePayment(){
+export function GetPostulationsByUserId(){
   return async function(dispatch){
     try {
       let json = await axios.get(
@@ -273,30 +273,30 @@ export function sendPost(payload){
       } catch (error) {
         console.log(error.message)
       }
-    }};
+}};
 
 export function sendEmail(payload){
   return async function(dispatch){
       try {
-        let json = await axios.post(`https://api-conntech.onrender.com/send-email`, payload)
-        dispatch({
-          type: SEND_EMAIL,
-          payload: json.data,
-        });
-        } catch (error) {
-          console.log(error.message)
-        }
-    }};    
+      let json = await axios.post(`https://api-conntech.onrender.com/send-email`, payload)
+      dispatch({
+        type: SEND_EMAIL,
+        payload: json.data,
+      });
+      } catch (error) {
+        console.log(error.message)
+      }
+}};    
 
-    export function GetUsersInVacant(id){
-      return async function(dispatch){
-        try {
-          let json = await axios.get(`https://api-conntech.onrender.com/postulation/postulationbyid/${id}`)
-          dispatch({
-            type: GET_USERS_IN_VACANT,
-            payload: json.data,
-          });
-        } catch (error) {
-          console.log(error.message)
-        }
-      }};    
+export function GetUsersInVacant(id){
+  return async function(dispatch){
+    try {
+      let json = await axios.get(`https://api-conntech.onrender.com/postulation/postulationbyid/${id}`)
+      dispatch({
+        type: GET_USERS_IN_VACANT,
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log(error.message)
+    }
+}};    

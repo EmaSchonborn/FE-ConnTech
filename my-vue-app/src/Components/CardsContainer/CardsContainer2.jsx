@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector} from "react-redux";
 import Card from "../Card/Card.jsx";
-import ReactPaginate from "react-paginate";
+import ReactPaginate from 'react-paginate';
+
 
 export default function CardsContainer2() {
   const [items,setItems] = useState([]);
