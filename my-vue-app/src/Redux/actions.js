@@ -178,6 +178,7 @@ export function modificationUser(Education, Experience, id) {
     experience: Experience,
     id: id,
   };
+  console.log(body)
   return async function (dispatch) {
     try {
       let json = await axios.post(

@@ -7,21 +7,15 @@ import { RiHome2Fill } from "react-icons/ri";
 import { modificationUser } from "../../Redux/actions";
 //import { useNavigate } from "react-router-dom";
 
-function validate(input) {
-  let errors = [];
-
-  if (!input.description) {
-    errors.description = "Agrega una descripción";
-  }
-
-  if (!input.educacion) {
-    errors.educacion = "Agrega tu descripción";
-  }
-}
-
 const ProfileUser = () => {
   const dispatch = useDispatch();
   //const navigate = useNavigate();
+  
+  const userVerified = useSelector((state) => state.userVerified);
+  
+  // useEffect(() => {
+  //   dispatch()
+  // }, [dispatch])
 
 
   const [experiencia, setExperiencia] = useState({
@@ -33,8 +27,9 @@ const ProfileUser = () => {
 
   const [ educacion, setEducacion] = useState({
     name: "",
-    institution: "",
+    institution: ""
   });
+
 
   const handleInput = (e) => {
     setExperiencia({
@@ -62,23 +57,26 @@ const ProfileUser = () => {
   }
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    if (name === "educacion") {
-      setEducacion(value);
-    } else {
-      setExperiencia(value);
-    }
+    setEducacion({
+      ...educacion,
+      name: e.target.value
+    })
   };
-  const userVerified = useSelector((state) => state.userVerified);
-  const data = [educacion, experiencia, userVerified.id]
+ 
+ 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(modificationUser(data));
-    console.log(data);
+    dispatch(modificationUser(educacion, experiencia, userVerified.user.id));
+    // console.log(educacion, experiencia, userVerified.user.id)
    // navigate("/home");
   };
 
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   dispatch(modificationUser(educacion, experiencia, userVerified.id));
+  //  // navigate("/home");
+  // };
   /* const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch(modificationUser(educacion, experiencia, userVerified.id));
@@ -88,7 +86,7 @@ const ProfileUser = () => {
 
   return (
     <div className="min-h-screen bg-gray-100">
-      {console.log(userVerified)}
+      
       <nav className="bg-indigo-600 shadow p-2">
         <div className="mx-auto px-4 max-w-7xl sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
@@ -171,7 +169,7 @@ const ProfileUser = () => {
 
           <div className="flex justify-end h-15 p-4">
             <div className="flex">
-              <button onChange={handleSubmit}  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4" type="submit">
+              <button onChange={handleSubmit}  className="bg-blue-500 hover:bg-blue-700 text-black font-bold py-2 px-4 rounded mt-4" type="submit">
                 Guardar
               </button>
             </div>
@@ -191,6 +189,8 @@ const ProfileUser = () => {
                 className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                 id="grid-experiencia"
                 type="text"
+                name="educacion"
+                onChange={(e) => handleChange(e)}
               />
             </div>
           </div>
