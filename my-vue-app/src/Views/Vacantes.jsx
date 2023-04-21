@@ -38,26 +38,33 @@ const Vacantes = () => {
   }
 
   return (
-    <div>
-      <nav className="flex items-center justify-between bg-gray-800 text-white p-4">
-        <Link to="/home">
+    <section className="bg-white">
+      <nav className="flex flex-row items-center justify-between bg-indigo-600 text-white p-4">
+        <Link to="/home" className="bg-black p-2 rounded-md">
           <RiHome2Fill className="text-2xl mr-2" />
           Home
         </Link>
+
+        <Link to="/newvacant">
+            <button className="flex-none rounded-md bg-black px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-slate-50 hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+              New Vacant
+            </button>
+          </Link>
+
         <div className="flex items-center">
           <RiMenu3Fill className="text-2xl mr-4" />
           <RiSettings4Fill className="text-2xl" />
         </div>
       </nav>
-      <h2 className="bg-gray-800 text-white p-4">Vacantes publicadas : </h2>
-      <div className="flex items-center justify-center h-screen w-full bg-gray-800">
-        <div className="container mx-auto p-4">
-          <h1>
-            <ul className="flex flex-row space-x-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <h2 className="bg-transparent text-black font-bold p-10">Vacantes publicadas : </h2>
+      <div className="flex items-center justify-center w-full h-screen bg-gray-800">
+        <div className=" flex  flex-col items-center justify-center w-full h-auto bg-white">
+          <div>
+            <ul className="flex flex-row items-center justify-center flex-wrap  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-5">
               {VacantsByUserId.map((el) => (
                 <li
                   key={el.id}
-                  className="w-6/12 h-96 rounded-md shadow-2xl bg-indigo-700 text-white p-5 flex flex-col justify-around"
+                  className="w-96 h-auto rounded-md shadow-2xl bg-indigo-700 text-white p-5 flex flex-col justify-center ml-5 mb-5"
                 >
                   <h2 className="text-lg font-bold mb-2">{el.title}</h2>
                   <p>Descripcion: {el.description}</p>
@@ -67,7 +74,7 @@ const Vacantes = () => {
                   <p>Modalidad: {el.typeId === 1 ? "Fulltime" : "Partime"}</p>
                   <br />
                   <div className="flex justify-center items-center h-24">
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    <button className="bg-black text-white hover:bg-slate-50 hover:text-black font-bold py-2 px-4 rounded mr-2">
                       Borrar
                     </button>
                     <br />
@@ -79,19 +86,11 @@ const Vacantes = () => {
                 </li>
               ))}
             </ul>
-          </h1>
-          <br />
-          <br />
-          <br />
-          <br />
-          <Link to="/newvacant">
-            <button className="flex-none rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
-              New Vacant
-            </button>
-          </Link>
+          </div>
+          
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -15,10 +15,10 @@ export default function SideBar2() {
 
   return (
     <div
-      className={`fixed left-0 transition-all duration-750 flex justify-between`}
+      className="fixed left-0 transition-all duration-750 flex justify-between"
     >
       {showSidebar && (
-        <div className="flex flex-col justify-center h-full w-50 h-screen bg-indigo-600 text-white font-semibold rounded-sm">
+        <div className="flex flex-col justify-center w-50 h-screen bg-indigo-600 text-white font-semibold rounded-sm">
           <Link
             to="/home"
             className="flex-1 block p-10 hover:bg-black rounded-sm "
@@ -57,7 +57,7 @@ export default function SideBar2() {
           </Link>
         </div>
       )}
-      <button className="bg-indigo-700 w-50 h-screen" onClick={toggleSidebar}>
+      <button className="bg-indigo-600 w-50 h-screen" onClick={toggleSidebar}>
         {!showSidebar ? (
           <BiArrowFromLeft className="text-2xl text-white" />
         ) : (

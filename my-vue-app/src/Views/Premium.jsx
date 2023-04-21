@@ -28,7 +28,7 @@ export default function Premium() {
   }, []);
 
   return (
-    <>
+    <section className="flex items-center justify-center w-full h-screen">
     {user?
         localStorage.setItem('id', user.id) &&
         localStorage.setItem('roleId', user.roleId) &&
@@ -42,6 +42,6 @@ export default function Premium() {
     <Message message={message}/>
    :
     <ProductDisplay/>}
-    </>
+    </section>
   );
 }

@@ -59,7 +59,7 @@ const Home = () => {
     <div className="bg-white">
       {verified === true ? (
         <>
-          <div className="py-4 bg-indigo-700 shadow-md">
+          <div className="py-4 bg-indigo-600 shadow-md">
             <SearchBar />
           </div>
           {userRole?.roleId === 1 ? <SideBar /> : <SideBar2 />}

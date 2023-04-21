@@ -16,8 +16,6 @@ import Notificaciones from "./Components/Notification/Notificaciones";
 import DashboardAdmin from "./Views/DashboardAdmin";
 import VacantDetailCompany from "./Components/VacantDetailCompany/VacantDetailCompany";
 
-import {Elements} from '@stripe/react-stripe-js';
-import {loadStripe} from '@stripe/stripe-js';
 
 import Premium from "./Views/Premium";
 import { useSelector } from "react-redux";
