@@ -3,8 +3,10 @@ import { BiArrowFromLeft, BiArrowFromRight } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { CreatePayment } from "../../Redux/actions";
+import { useHistory } from "react-router-dom";
 
 export default function SideBar() {
+  const history = useHistory();
   const [showSidebar, setShowSidebar] = useState(true);
   const userVerified=useSelector((state)=>state.userVerified.user);
   const dispatch=useDispatch();
@@ -12,6 +14,11 @@ export default function SideBar() {
   const toggleSidebar = () => {
     setShowSidebar(!showSidebar);
   };
+
+  const handleLogOut = () => {
+    localStorage.clear();
+    history.push("/");
+  }
 
   return (
     <div
@@ -49,12 +56,12 @@ export default function SideBar() {
           >
             👑 Premium
           </Link>
-          <Link
-            to="/"
-            className="flex-1 block p-10 hover:bg-black rounded-sm"
+          <button
+            onClick={handleLogOut}
+            className="flex-1 block p-10 hover:bg-indigo-500 rounded-sm"
           >
             Cerrar sesión
-          </Link>
+          </button>
         </div>
       )}
       <button className="bg-indigo-600 w-50 h-screen" onClick={toggleSidebar}>

@@ -28,6 +28,7 @@ const initialState = {
   userVerified:{},  
   VacantsByUserId:[],
   userVerified:{},
+  notifications: [],
   postulations: [],
   emails: [],
   notifications: [],
@@ -71,7 +72,7 @@ const rootReducer = (state = initialState, action) => {
         vacants: action.payload,
       };
     case LOGIN:
-      return {
+        return {
         ...state,
         userVerified: action.payload,
         isAuthenticated: true,

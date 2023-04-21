@@ -5,7 +5,6 @@ import { Link, useHistory } from "react-router-dom";
 import { createUser, sendEmail } from "../../Redux/actions/";
 import style from "./Register.module.css";
 
-
 export default function CreateUser() {
   let dispatch = useDispatch();
   let history = useHistory();
@@ -33,7 +32,7 @@ export default function CreateUser() {
     }
     return errors;
   }
- 
+
   const roles = ["normal", "company", "hibrid"];
   const description = [
     "normal user type",
@@ -97,32 +96,33 @@ export default function CreateUser() {
       })
     );
   };
-const handleSubmit = (e) => {
-  e.preventDefault();
-  if (input.role.name == "") {
-    return alert("You need pick a role");
-  }
-  const data = { ...input };
-  const dataEmail = {email: data.email}
-  dispatch(createUser(data))
-  dispatch(sendEmail(dataEmail));
 
-  setInput({
-    name: "",
-    email: "",
-    phone: "",
-    password: "",
-    role: { name: "" },
-  });
+  // console.log(roleId);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (input.role.name == "") {
+      return alert("You need pick a role");
+    }
+    const data = { ...input };
+    const dataEmail = { email: data.email };
+    dispatch(createUser(data));
+    dispatch(sendEmail(dataEmail));
 
-  if (data.name && data.email && data.phone && data.password && data.role) {
+    setInput({
+      name: "",
+      email: "",
+      phone: "",
+      password: "",
+      role: { name: "" },
+    });
 
-    alert("Register successfull!");
-    history.push("/login");
-  } else {
-    alert("You most to complete the info");
-  }
-};
+    if (data.name && data.email && data.phone && data.password && data.role) {
+      alert("Register successfull!");
+      history.push("/login");
+    } else {
+      alert("You most to complete the info");
+    }
+  };
 
   return (
     <div className="flex flex-col items-center justify-center bg-slate-50 w-full h-screen text-white">
@@ -131,7 +131,9 @@ const handleSubmit = (e) => {
         className="bg-indigo-600 p-5 rounded-md text-white"
       >
         <div>
-          <h1 className="font-bold text-2xl text-white text-center">Crear cuenta</h1>
+          <h1 className="font-bold text-2xl text-white text-center">
+            Crear cuenta
+          </h1>
           <div className={style.divtextimg}>
             <div className={style.divtext}>
               <div className={style.diverror}>
@@ -221,5 +223,4 @@ const handleSubmit = (e) => {
       </form>
     </div>
   );
-};
-
+}
