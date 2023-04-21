@@ -27,7 +27,7 @@ const Vacantes = () => {
     dispatch(GetVacantsByUserId(params.id));
     const timeout = setTimeout(() => {
       setLoading(false);
-    }, 8000);
+    }, 500);
   
     return () => {
       clearTimeout(timeout);
@@ -68,13 +68,17 @@ const Vacantes = () => {
                 Modalidad: {el.typeId === 1? "Fulltime" : "Partime"}
                 </p><br />
                 <div className="flex justify-center items-center h-24">
-                  <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                  <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                     Borrar
                   </button>
+                  <br />
+                  <br />
+                <Link to={`/vacant-detail-company/${el.id}`}>Ver postulantes</Link>
                 </div>
               </li>
             ))}
           </ul>
+          
         </h1>
         <br />
         <br />

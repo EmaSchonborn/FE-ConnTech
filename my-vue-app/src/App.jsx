@@ -4,15 +4,16 @@ import Login from "./Views/Login";
 import { Landing } from "./Views/Landing";
 import About from "./Views/About";
 import Preguntas from "./Components/Preguntas";
-import Profile from "./Components/ProfileUser/ProfileUser"
+import Profile from "./Components/ProfileUser/ProfileUser";
 import Register from "./Components/Register/Register";
-import Postulation from "./Views/Postulation"
+import Postulation from "./Views/Postulation";
 import NewVacant from "./Components/NewVacant/NewVacant";
 import VacantDetail from "./Components/VacantDetail/VacantDetail";
 import Vacantes from "./Views/Vacantes";
 import CardDetail from "./Components/CardDetail/CardDetail";
-import Notificaciones from "./Components/Notification/Notificaciones"
+import Notificaciones from "./Components/Notification/Notificaciones";
 import DashboardAdmin from "./Views/DashboardAdmin";
+import VacantDetailCompany from "./Components/VacantDetailCompany/VacantDetailCompany";
 
 import {Elements} from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
@@ -24,16 +25,14 @@ import { useSelector } from "react-redux";
 // recreating the `Stripe` object on every render.
 //const stripePromise = loadStripe('pk_test_Dt4ZBItXSZT1EzmOd8yCxonL');
 
-
 function App() {
-
   //let client_Secret=useSelector((state)=>state.clientSecret);
 
   //const options = {
-    // passing the client secret obtained in step 3
-    //clientSecret: `${client_Secret}`,
-    // Fully customizable with appearance API.
-    //appearance: {/*...*/},
+  // passing the client secret obtained in step 3
+  //clientSecret: `${client_Secret}`,
+  // Fully customizable with appearance API.
+  //appearance: {/*...*/},
   //};
 
   return (
@@ -53,10 +52,11 @@ function App() {
         <Route path="/register" component={Register} />
         <Route path="/newvacant" component={NewVacant} />
         <Route path="/vacant-detail/:id" component={VacantDetail} />
-        <Route path="/premium" component={Premium}/>
+        <Route path="/premium" component={Premium} />
         <Route path="/detail/:id" component={CardDetail} />
         <Route path="/notificaciones" component={Notificaciones} />
         <Route path="/administrador" component = {DashboardAdmin} />
+        <Route path="/vacant-detail-company/:id" component = {VacantDetailCompany} />
       </BrowserRouter>
     </div>
   );
