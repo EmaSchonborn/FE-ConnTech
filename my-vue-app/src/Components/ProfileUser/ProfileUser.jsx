@@ -23,17 +23,43 @@ const ProfileUser = () => {
   const dispatch = useDispatch();
   //const navigate = useNavigate();
 
-  const [educacion, setEducacion] = useState({
+
+  const [experiencia, setExperiencia] = useState({
     name: "",
     dateBegin: "",
     dateEnd: "",
     jobActually: "",
   });
-  const [experiencia, setExperiencia] = useState({
+
+  const [ educacion, setEducacion] = useState({
     name: "",
     institution: "",
   });
-  
+
+  const handleInput = (e) => {
+    setExperiencia({
+      ...experiencia,
+      [e.target.name] : e.target.value
+    })
+  };
+
+  const handleSelect = (e) => {
+    setExperiencia({
+      ...experiencia,
+      jobActually: e.target.value
+    })
+      if(e.target.value === "SI"){
+         setExperiencia({
+           ...experiencia,
+           jobActually: e.target.value
+         })
+       }else {
+         setExperiencia({
+           ...experiencia,
+           jobActually: e.target.value
+         })
+       } 
+  }
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -44,6 +70,14 @@ const ProfileUser = () => {
     }
   };
   const userVerified = useSelector((state) => state.userVerified);
+  const data = [educacion, experiencia, userVerified.id]
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    dispatch(modificationUser(data));
+    console.log(data);
+   // navigate("/home");
+  };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -54,7 +88,7 @@ const ProfileUser = () => {
 
   return (
     <div className="min-h-screen bg-gray-100">
-      {console.log(userVerified)}
+      {/* {console.log(userVerified)} */}
       <nav className="bg-white shadow">
         <div className="mx-auto px-4 max-w-7xl sm:px-6 lg:px-8">
           <div className="flex justify-between h-16">
@@ -104,21 +138,31 @@ const ProfileUser = () => {
                 placeholder="Cargo"
                 name="name"
                 type="text"
-                onChange={handleChange}
+                onChange={(e) => handleInput(e)}
               />
 
               <input
                 className="bg-white"
                 placeholder="Fecha de inicio"
                 name="dateBegin"
+                type="date"
+                onChange={(e) => handleInput(e)}
+
               />
 
               <input 
               className="bg-white" 
               placeholder="Fecha de fin" 
-              name="dateEnd" />
+              name="dateEnd"
+              type="date"
+              onChange={(e) => handleInput(e)} />
 
-              <input placeholder="jobActually" />
+            
+               <select name="jobActually" id="" onChange={(e) => handleSelect(e)}>
+               <option value="none" disabled>Job Actuality</option>
+               <option value="SI">SI</option>
+               <option value="NO">NO</option>
+               </select>
 
 
             </div>
@@ -126,7 +170,7 @@ const ProfileUser = () => {
 
           <div className="flex justify-end h-15 p-4">
             <div className="flex">
-              <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4" type="submit">
+              <button onChange={handleSubmit}  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4" type="submit">
                 Guardar
               </button>
             </div>
