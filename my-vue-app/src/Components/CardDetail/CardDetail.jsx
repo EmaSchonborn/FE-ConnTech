@@ -9,7 +9,7 @@ const CardDetail = () => {
 	let params = useParams();
 	// const handleOnClick()
 	useEffect(() => {
-		dispatch(getUserById(params.id));
+		params? dispatch(getUserById(params.id)) : null
 	}, [params.id, dispatch]);
 	const usuarioDetail = useSelector((state) => state.userDetail);
 	console.log(usuarioDetail);

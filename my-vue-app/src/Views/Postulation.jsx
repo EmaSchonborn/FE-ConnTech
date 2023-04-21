@@ -8,9 +8,9 @@ const Postulation = () => {
   const [postulations,setPostulations]=useState();
   const dispatch=useDispatch();
   const userId=useSelector((state)=>state.userVerified.user)
-  useEffect(() => {
-    dispatch(GetPostulationsByUserId(userId.id))
-  }, [])
+  // useEffect(() => {
+  //   dispatch(GetPostulationsByUserId(userId.id))
+  // }, [])
 
   const postulationsByUserId=useSelector((state)=>state.postulationsByUserId);
   if (postulationsByUserId !== null) {
