@@ -6,8 +6,7 @@ import { gapi } from "gapi-script";
 import GoogleLogin from 'react-google-login';
 
 const Login = () => {
-  const clientId =
-    "688737799752-2da6ig385v5aljm0fvjtisv2qtlbuqlb.apps.googleusercontent.com";
+  const clientId = "no hay nada";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const history = useHistory();
